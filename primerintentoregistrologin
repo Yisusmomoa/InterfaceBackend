@@ -1,0 +1,86 @@
+<?php
+session_start();
+
+$Username="";
+$Correo="";
+$Contraseña="";
+$errors=array();
+
+$server="localhost";
+$user="root";
+$password="";
+$database="discorder1";
+
+$conn=mysqli_connect($server,$user,$password,$database);
+if(!$conn){
+    die( "<script> alert('connection failed') </script>");
+}
+else{
+  //  echo "<script> alert('connection') </script>";
+   // echo "<script> alert('connection') </script>";
+  
+   if (isset($_POST['Registro'])) {
+       $Username=$_POST['Username'];
+       $Correo=$_POST['Correo'];
+       $Contraseña=$_POST['Contraseña'];
+     //  var_dump($_POST['registro']);
+     //  echo "<script> alert('" .$Username."') </script>";
+       if (empty($Username)) {
+            array_push($errors, "nombreusuario es requerido");
+       }
+       if (empty( $Correo)) {
+            array_push($errors, "correo es requerido");
+       }
+       if (empty( $Contraseña)) {
+            array_push($errors, "Contraseña es requerida");
+       }
+       if (count($errors)==0) {
+           $sql="INSERT INTO usuario(Username, Correo,Contraseña) 
+           VALUES('$Username','$Correo','$Contraseña')";
+           mysqli_query($conn, $sql);
+           $_SESSION['Username']=$Username;
+           $_SESSION['Correo']=$Correo;
+           $_SESSION['Contraseña']=$Contraseña;
+           $_SESSION['succes']="ypu are logged in";
+           header('location: index.php');
+       }
+   }
+}
+
+if(isset($_POST['login'])){
+  $Username=$_POST['UsernameLogin'];
+  $Correo=$_POST['Correo'];
+  $Contraseña=$_POST['ContraseñaLogin'];
+//  var_dump($_POST['registro']);
+//  echo "<script> alert('" .$Username."') </script>";
+  if (empty($Username)) {
+       array_push($errors, "nombreusuario es requerido");
+  }
+  if (empty( $Correo)) {
+       array_push($errors, "correo es requerido");
+  }
+  if (empty( $Contraseña)) {
+       array_push($errors, "Contraseña es requerida");
+  }
+
+  if (count($errors)==0){
+    $query="SELECT * FROM usuario WHERE Username='$Username' AND Contraseña='$Contraseña' ";
+    $result=mysqli_query($conn, $query);
+    if(mysqli_num_rows($result)==1){
+      $_SESSION['Username']=$Username;
+      $_SESSION['Correo']=$Correo;
+      $_SESSION['Contraseña']=$Contraseña;
+      $_SESSION['succes']="ypu are logged in";
+      header('location: index.php');
+    }
+  }
+}
+
+if(isset($_GET['logout'])){
+  session_destroy();
+  unset( $_SESSION['Username']);
+  unset( $_SESSION['Correo']);
+  unset( $_SESSION['Contraseña']);
+  header('location: index.php');
+}
+?>
