@@ -23,6 +23,57 @@ function AddOrRemove(){
   }
 }
 
+$('#formLogin').submit(function(e){
+  e.preventDefault();
+  var usuario=$.trim($('#Usuario').val());
+  var password=$.trim($('#Password').val());
+    //hacer individual y agregar un color no se, un border cuando uno este vacio
+  if(usuario.length=="" || password.length==""){
+    Swal.fire({
+      icon:'warning',
+      type:'warning',
+      title:'Debe ingresar un usuario y/o password',
+    });
+    return false;
+  }
+  else{
+    debugger;
+    $.ajax({
+      url:"../bd/login.php", //a donde se manda
+      type:"POST", //metodo de envío de datos
+      datatype:"json",
+      data:{usuario:usuario, password:password},
+      success:function(data){
+      // alert(data);
+        let posicion = data.indexOf("null");
+     //   alert(posicion);
+       debugger;
+        if(posicion!==-1){ //si pone un usuario que no existe
+        
+          Swal.fire({
+            icon:'error',
+            type:'error',
+            title:'Usuario y/o password incorrecto',
+          });
+        }
+        else{
+          Swal.fire({
+            icon:'success',
+            type:'success',
+            title:'conexión exitosa',
+            confirmButtonColor:'#3885d6',
+            confirmButtonText:'Ingresar'
+          }).then((result)=>{
+                    if(result.value){
+                      window.location.href="../html/index.php";
+                    }
+                });
+        }
+      }
+    });
+  }
+});
+
 
 $(document).ready(function(){
   var comboboxactivo=0;
@@ -184,6 +235,7 @@ $(document).ready(function(){
         $("#zoom_01").elevateZoom();
           
 
+     
 
 
 /*
@@ -205,7 +257,7 @@ $(document).ready(function(){
 
     //como animar bien la imagen sin que se ueva todo alv 
 
-
+   
 
 
 

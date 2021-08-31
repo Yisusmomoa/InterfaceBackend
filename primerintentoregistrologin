@@ -84,3 +84,19 @@ if(isset($_GET['logout'])){
   header('location: index.php');
 }
 ?>
+
+
+
+ <!--chinga tu puta madre pinche error de mierda .l.-->
+          <div class="dropdown show" style="top: 10%;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php if(!isset($_SESSION["s_usuario"])){
+                ?>
+            Usuario
+            <?php } else{ echo $_SESSION["s_usuario"]; }?>
+            </button>
+            <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
+              <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
+            </div>
+          </div>

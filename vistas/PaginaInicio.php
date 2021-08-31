@@ -1,8 +1,11 @@
 <?php
-  //include('../config.php');
  session_start();
+
+
+ if($_SESSION["s_usuario"]===null){
+     header("Location: ../html/index.php");
+ }
   
- 
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +45,7 @@
   crossorigin="anonymous"></script>
 
 
-  <title>Pagina Principal</title>
+  <title>Pagina inicio</title>
 </head>
 <body>
   <nav class="navbar" id ="EjNav">
@@ -57,22 +60,18 @@
         <li><a Submenu="no" href="#">productos</a></li>
         <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
         <li><a Submenu="no" href="#" id="btn-abrir-popup">Registro</a></li>
-        <?php if(isset($_SESSION["s_usuario"])){ ?>
-          <li><a Submenu="no" href="#">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
-        <?php }?>
+        <li><a Submenu="no" href="#">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
         <li>
           <!--chinga tu puta madre pinche error de mierda .l.-->
-          <?php if(isset($_SESSION["s_usuario"])){?>
-              <div class="dropdown show" style="top: 10%;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php  echo $_SESSION["s_usuario"]; ?>
-                </button>
-                <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
-                  <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
-                </div>
-              </div>
-          <?php } ?>
+          <div class="dropdown show" style="top: 10%;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo $_SESSION["s_usuario"]; ?>
+            </button>
+            <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
+              <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
+            </div>
+          </div>
         </li>
         <!-- <li><button type="menu"  data-bs-toggle="modal" data-bs-target="#exampleModal">
           Launch demo modal
@@ -296,11 +295,11 @@
     <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
     <h3>REGISTRATE</h3>
     <h4>Y recibe un cupón de descuento</h4>
-    <form action="" id="formRegistro" method="POST">
+    <form action="../bd/registration.php" method="POST">
       <div class="contenedor-inputs">
-        <input type="" name="Username" id="" placeholder="NombreUsuario" required>
-        <input type="email" name="Correo" id="" placeholder="Correo" required>
-        <input type="password" name="Contraseña" id="" placeholder="Contraseña" required>
+        <input type="" name="Username" id="" placeholder="NombreUsuario">
+        <input type="email" name="Correo" id="" placeholder="Correo">
+        <input type="password" name="Contraseña" id="" placeholder="Contraseña">
       </div>
       <input type="submit" class="btn-submit" name="Registro" value="Registrarse">
     </form>
@@ -313,8 +312,8 @@
     <h3>Inicia Sesión</h3>
     <form id="formLogin" action="" method="POST">
       <div class="contenedor-inputs">
-        <input type="" name="UsernameLogin" id="Usuario" placeholder="Nombre Usuario" required>
-        <input type="password" name="ContraseñaLogin" id="Password" placeholder="Contraseña"required> 
+        <input type="" name="UsernameLogin" id="Usuario" placeholder="Nombre Usuario">
+        <input type="password" name="ContraseñaLogin" id="Password" placeholder="Contraseña">
        <!-- <input type="checkbox" name="remember" style="display block;"> <span>Recuerdame</span>-->
       </div>
       <input type="submit" class="btn-submit" name="LogIn" value="IniciarSesion">

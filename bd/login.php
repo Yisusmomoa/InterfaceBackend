@@ -1,28 +1,41 @@
 <?php
 
-
 session_start();
 
+include_once "conexion.php";
+$objeto= new Conexion();
 
-$con=mysqli_connect('localhost','root', '');
 
-mysqli_select_db($con, 'discorder1');
+$conexion=$objeto->Conectar();
+ 
+//recpeción de los datos enviados mediante el método post de ajax
 
-$Username= $_POST['UsernameLogin'];
+$usuario=(isset($_POST['usuario'])) ? $_POST['usuario'] : '';
+$password=(isset($_POST['password'])) ? $_POST['password'] : '';
+echo $usuario;
+echo $password;
 
-$Contraseña= $_POST['ContraseñaLogin'];
+$consulta="SELECT * FROM usuario WHERE Username = '$usuario' AND Contraseña= '$password' ;";
 
-$s="SELECT * FROM usuario WHERE Username= '$Username' AND Contraseña ='$Contraseña'";
+$resultado=$conexion->prepare($consulta);
+$resultado->execute();
 
-$result=mysqli_query($con, $s);
-$num=mysqli_num_rows($result);
-
-if($num==1){
-    $_SESSION['Username']=$Username;
-    $_SESSION['Contraseña']=$Contraseña;
-    //$_SESSION['Correo']=$Correo;
-    header('location: ../html/index.php');
+if($resultado->rowCount()>=1){
+    $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+    $_SESSION["s_usuario"]=$usuario;
+} 
+else{
+    $_SESSION["s_usuario"]=null;
+    $data=null;
 }
 
+print json_encode($data);
+
+$conexion=null;
 
 
+
+
+
+
+?>
