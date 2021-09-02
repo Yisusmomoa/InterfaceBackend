@@ -8,11 +8,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/index.css"  type="text/css" media="screen">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
@@ -34,7 +35,7 @@
   integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/index.css"  type="text/css" media="screen">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -55,8 +56,15 @@
     <div class="navbar-links">
       <ul>
         <li><a Submenu="no" href="#">productos</a></li>
-        <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
-        <li><a Submenu="no" href="#" id="btn-abrir-popup">Registro</a></li>
+
+        <?php if(!isset($_SESSION["s_usuario"])){ ?>
+          <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
+        <?php }?>
+
+        <?php if(!isset($_SESSION["s_usuario"])){ ?>
+          <li><a Submenu="no" href="#" id="btn-abrir-popup">Registro</a></li>
+        <?php }?>
+
         <?php if(isset($_SESSION["s_usuario"])){ ?>
           <li><a Submenu="no" href="#">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
         <?php }?>
@@ -298,9 +306,9 @@
     <h4>Y recibe un cupón de descuento</h4>
     <form action="" id="formRegistro" method="POST">
       <div class="contenedor-inputs">
-        <input type="" name="Username" id="" placeholder="NombreUsuario" required>
-        <input type="email" name="Correo" id="" placeholder="Correo" required>
-        <input type="password" name="Contraseña" id="" placeholder="Contraseña" required>
+        <input type="" name="Username" id="NombreUsuarioR" placeholder="NombreUsuario" required>
+        <input type="email" name="Correo" id="CorreoR" placeholder="Correo electronico" required>
+        <input type="password" name="Contraseña" id="ContraseñaR" placeholder="Contraseña" required>
       </div>
       <input type="submit" class="btn-submit" name="Registro" value="Registrarse">
     </form>

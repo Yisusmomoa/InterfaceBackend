@@ -27,7 +27,7 @@ $('#formLogin').submit(function(e){
   e.preventDefault();
   var usuario=$.trim($('#Usuario').val());
   var password=$.trim($('#Password').val());
-    //hacer individual y agregar un color no se, un border cuando uno este vacio
+ 
   if(usuario.length=="" || password.length==""){
     Swal.fire({
       icon:'warning',
@@ -60,7 +60,7 @@ $('#formLogin').submit(function(e){
           Swal.fire({
             icon:'success',
             type:'success',
-            title:'conexión exitosa',
+            title:'Bienvenido a Disc-Order',
             confirmButtonColor:'#3885d6',
             confirmButtonText:'Ingresar'
           }).then((result)=>{
@@ -73,6 +73,58 @@ $('#formLogin').submit(function(e){
     });
   }
 });
+
+$('#formRegistro').submit(function(e){
+  e.preventDefault();
+  var usuario=$.trim($('#NombreUsuarioR').val());
+  var password=$.trim($('#ContraseñaR').val());
+  var email=$.trim($('#CorreoR').val());
+  if(usuario.length=="" || password.length=="" || email.length==""){
+    Swal.fire({
+      icon:'warning',
+      type:'warning',
+      title:'Debe llenar todos los campos',
+    });
+    return false;
+  }
+  else{
+    debugger;
+    $.ajax({
+      url:"../bd/registro.php", //a donde se manda
+      type:"POST", //metodo de envío de datos
+      datatype:"json",
+      data:{usuario:usuario, password:password,email:email },
+      success:function(data){
+      // alert(data);
+        let posicion = data.indexOf("null");
+     //   alert(posicion);
+       debugger;
+        if(posicion!==-1){ //si pone un usuario que no existe
+        
+          Swal.fire({
+            icon:'error',
+            type:'error',
+            title:'Usuario y/o password incorrecto',
+          });
+        }
+        else{
+          Swal.fire({
+            icon:'success',
+            type:'success',
+            title:'Registrado con exito, revise su correo electronico',
+            confirmButtonColor:'#3885d6',
+            confirmButtonText:'Ingresar'
+          }).then((result)=>{
+                    if(result.value){
+                      window.location.href="../html/index.php";
+                    }
+                });
+        }
+      }
+    });
+  }
+});
+
 
 
 $(document).ready(function(){
