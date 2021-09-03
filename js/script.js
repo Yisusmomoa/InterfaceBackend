@@ -100,7 +100,6 @@ $('#formRegistro').submit(function(e){
      //   alert(posicion);
        debugger;
         if(posicion!==-1){ //si pone un usuario que no existe
-        
           Swal.fire({
             icon:'error',
             type:'error',
