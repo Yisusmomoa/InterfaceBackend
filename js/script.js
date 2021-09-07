@@ -95,9 +95,9 @@ $('#formRegistro').submit(function(e){
       datatype:"json",
       data:{usuario:usuario, password:password,email:email },
       success:function(data){
-      // alert(data);
+      //alert(data);
         let posicion = data.indexOf("null");
-     //   alert(posicion);
+      //alert(posicion);
        debugger;
         if(posicion!==-1){ //si pone un usuario que no existe
           Swal.fire({

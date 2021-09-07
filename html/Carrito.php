@@ -1,3 +1,10 @@
+<?php
+  //include('../config.php');
+ session_start();
+  
+ 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +12,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/css/Carrito.css">
+    <link rel="stylesheet" href="../css/Carrito.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
   <!--font awesome-->
-<link rel="stylesheet" href="/css/all.min.css">
+<link rel="stylesheet" href="../css/all.min.css">
 <!--carrousel-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,7 +34,7 @@
   integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="../css/index.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -39,7 +46,7 @@
 <body>
 
     <nav class="navbar" id ="EjNav">
-        <div class="brand-title"><a href=""><img src="/Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
+        <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
         <a href="#" class="toggle-button">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -47,21 +54,32 @@
         </a>
         <div class="navbar-links">
           <ul>
-            <li><a Submenu="no" href="#">productos</a></li>
-            <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
-            <li><a Submenu="no" href="#" id="btn-abrir-popup">Registro</a></li>
-            <li><a Submenu="no" href="#">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
-            <li>
+            <li><a Submenu="no" href="../html/categorias.php">productos</a></li>
+            
+            <?php if(!isset($_SESSION["s_usuario"])){ ?>
+              <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
+            <?php }?>
+
+            <?php if(!isset($_SESSION["s_usuario"])){ ?>
+              <li><a Submenu="no" href="#" id="btn-abrir-popup">Registro</a></li>
+            <?php }?>
+
+            <?php if(!isset($_SESSION["s_usuario"])){ ?>
+              <li><a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
+            <?php }?>
+              <li>
               <!--chinga tu puta madre pinche error de mierda .l.-->
-              <div class="dropdown show" style="top: 10%;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Usuario
-                </button>
-                <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
-                  <a class="dropdown-item"  style="color:white; font-size:10px;" href="#">Cerrar sesión</a>
+              <?php if(isset($_SESSION["s_usuario"])){?>
+                <div class="dropdown show" style="top: 10%;">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php  echo $_SESSION["s_usuario"]; ?>
+                  </button>
+                  <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
+                    <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
+                  </div>
                 </div>
-              </div>
+              <?php } ?>
             </li>
             <!-- <li><button type="menu"  data-bs-toggle="modal" data-bs-target="#exampleModal">
               Launch demo modal
@@ -97,7 +115,7 @@
                       <td>
                         <div class="main">
                           <div class="d-flex">
-                            <img src="/Media/IsotipoB.PNG" alt="" width="145" height="98">
+                            <img src="../Media/IsotipoB.PNG" alt="" width="145" height="98">
                           </div>
                           <div class="des">
                             <p>lorem ipsum</p>
@@ -128,7 +146,7 @@
                       <td>
                         <div class="main">
                           <div class="d-flex">
-                            <img src="/Media/IsotipoB.PNG" alt="" width="145" height="98">
+                            <img src="../Media/IsotipoB.PNG" alt="" width="145" height="98">
                           </div>
                           <div class="des">
                             <p>lorem ipsum</p>
@@ -158,7 +176,7 @@
                       <td>
                         <div class="main">
                           <div class="d-flex">
-                            <img src="/Media/IsotipoB.PNG" alt="" width="145" height="98">
+                            <img src="../Media/IsotipoB.PNG" alt="" width="145" height="98">
                           </div>
                           <div class="des">
                             <p>lorem ipsum</p>
@@ -234,7 +252,7 @@
   
 
 
-  <script src="/js/script.js"></script>
+  <script src="../js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
    integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" 

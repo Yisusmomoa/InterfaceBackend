@@ -47,7 +47,7 @@
 </head>
 <body>
   <nav class="navbar" id ="EjNav">
-    <div class="brand-title"><a href=""><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
+    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
     <a href="#" class="toggle-button">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -55,7 +55,7 @@
     </a>
     <div class="navbar-links">
       <ul>
-        <li><a Submenu="no" href="#">productos</a></li>
+        <li><a Submenu="no" href="../html/categorias.php">productos</a></li>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
           <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
@@ -66,7 +66,7 @@
         <?php }?>
 
         <?php if(isset($_SESSION["s_usuario"])){ ?>
-          <li><a Submenu="no" href="#">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
+          <li><a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
         <?php }?>
         <li>
           <!--chinga tu puta madre pinche error de mierda .l.-->
@@ -101,16 +101,6 @@
     </ul>
   </div>
  
-  <div id="QuienesSomos">
-    <h1 class="titulosubpartes">¿QUIENES SOMOS?</h1>
-    <div id="infoquienessomos">
-      <h4>Somos especialistas en distribución discográfica. En nuestro Catálogo encontrarás, sobre todo, música:
-        ediciones especiales, limitadas, de coleccionista, así como las últimas novedades del mercado discográfico, 
-        que podrás reservar incluso antes de que salgan a la venta. ¡Intenta ponernos a prueba!</h4>
-    </div>
-    <button>Más información</button>
-    <br>
-  </div>
 
   <br><br>
     <div id="Categorias"> 
@@ -118,26 +108,25 @@
       <br><br>
 
       <section class="container">
-        <a href="">
+        <a href="../html/categorias.php">
           <div class="Card">
             <h5>Categ 1</h5>
             <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
           </div>
         </a>
-
-        <a href="">
+        <a href="../html/categorias.php">
           <div class="Card">
             <h5>Categ 2</h5>
             <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
           </div>
         </a>
-        <a href="">
+        <a href="../html/categorias.php">
           <div class="Card">
             <h5>Categ 3</h5>
             <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
           </div>
         </a>
-        <a href="">
+        <a href="../html/categorias.php">
           <div class="Card">
             <h5>Categ 4</h5>
             <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
@@ -171,7 +160,7 @@
   <div class="owl-carousel owl-theme">
     
     <div class="item">
-      <a href="">
+      <a href="../html/Producto.php">
       <div class="Card3">
         <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
         <br>
@@ -184,7 +173,7 @@
     </div>
 
     <div class="item">
-      <a href="">
+      <a href="../html/Producto.php">
       <div class="Card3">
         <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
         <br>
@@ -197,7 +186,7 @@
     </div>
 
     <div class="item">
-      <a href="">
+      <a href="../html/Producto.php">
       <div class="Card3">
         <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
         <br>
@@ -290,7 +279,18 @@
   </div>
 
   <br><br>
-
+  <div id="QuienesSomos">
+    <h1 class="titulosubpartes">¿QUIENES SOMOS?</h1>
+    <div id="infoquienessomos">
+      <h4>Somos especialistas en distribución discográfica. En nuestro Catálogo encontrarás, sobre todo, música:
+        ediciones especiales, limitadas, de coleccionista, así como las últimas novedades del mercado discográfico, 
+        que podrás reservar incluso antes de que salgan a la venta. ¡Intenta ponernos a prueba!</h4>
+    </div>
+    <!-- <button>Más información</button> -->
+   
+    <br>
+  </div>
+  
   <footer class="RedesSociales">
     <h2>Redes sociales</h2>
     <a href=""><i class="fab fa-facebook-square"></i></a>

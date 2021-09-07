@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-//require_once  '../modelos/VerifyEmail.class.php' ; //Incluir el archivo de biblioteca 
+require_once  '../modelos/VerifyEmail.class.php' ; //Incluir el archivo de biblioteca 
 include_once "conexion.php";
 $objeto= new Conexion();
 $conexion=$objeto->Conectar();
@@ -23,7 +23,6 @@ $header.="X-Mailer: PHP/".phpversion();
 
 $MensajeCompleto="Bienvenido a DiscOrder, disfruta de la mejor musica con nosotros y bla bla bla correo registrado ".$correo." con nombre de usuario ".$usuario; 
 
-/*
 //verificar que exista un email
 
 // Initialize library class
@@ -41,7 +40,7 @@ $mail->setEmailFrom('correospambj@gmail.com');
 
 // Email to check
 $email = $correo; 
-*/
+
 
 $message = "
 <html>
@@ -140,7 +139,7 @@ button {
     <article>
         <h3><i class='fas fa-compact-disc'></i> DiscOrder</h3>
         <section>
-            <p>Hola <b>".$usuario."</b> </p>
+            <p>Hola <b>UserName</b> </p>
             <p>Bienvenido a DiscOrder, donde esperamos puedas encontrar lo que buscas en nuestra tienda</p>
             <b><p>Recuerda que en tu primera compra recibiras un producto de <b>regalo</b>  </p></b>
             <hr>
@@ -167,6 +166,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $resultado=$conexion->prepare($consulta);
 //$resultado->execute();
 $data="";
+if( $mail->check($email)){
     if($resultado->execute()){
         $mailenviado=mail($correo,$asunt,$message, $headers);
         if($mailenviado){
@@ -179,7 +179,10 @@ $data="";
     else{
         $data=null;
     }
-
+}
+else{
+    $data=null;
+}
 
 print json_encode($data);
 
