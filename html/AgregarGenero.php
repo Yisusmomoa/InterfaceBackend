@@ -7,13 +7,13 @@
     <title>Agregar Genero</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
+    <form method="POST" action="../bd/InsertGenero.php" enctype="multipart/form-data">
         <label for="">Nombre Genero</label>
         <input type="text" name="NombreGenero" id="NombreGenero">
         <br>
         <label for="">ImgGenero</label>
-        <input type="file" src="" name="ImgGeneroR" alt="">
-        <br>
+        <input type="file" name="foto" >
+        <br>    
         <label for="">Descricpión Genero</label>
         <input type="text" name="DescrGenero" id="">
         <br><br>

@@ -1,0 +1,57 @@
+<?php
+
+session_start();
+include_once "conexion.php";
+$objeto= new Conexion();
+$conexion=$objeto->Conectar();
+
+if(isset($_POST['AgregarGenero'])){
+    $NombreGenero=$_POST['NombreGenero'];
+    $DescrGenero=$_POST['DescrGenero'];
+    
+    if(!empty($_FILES["image"]["name"])){
+       
+        $fileName=basename($_FILES["image"]["name"]);
+        $filetype=pathinfo($fileName, PATHINFO_EXTENSION);
+        $allowTypes=array('jpg', 'png', 'jpeg', 'gif');
+        if(in_array($filetype, $allowTypes)){
+         
+            $image=$_FILES['image']['tmp_name'];
+            $imgContent=addslashes(file_get_contents($image));
+            $sql = "INSERT INTO genero(NombreGenero, ImgGenero, DescrGenero)VALUES ('$NombreGenero', '$imgContent', '$DescrGenero')";
+            echo  $NombreGenero;
+            echo  $DescrGenero;
+
+            $resultado=$conexion->prepare($sql);
+            if ($resultado->execute()) {
+             
+                echo "successfully !";
+            }
+            else {
+                echo "Error puto: " . $sql . "" . mysqli_error($conexion);
+                }
+        }
+        else{
+            echo "solo imagenes jpg, jpeg, png y gifs";
+        }
+    }
+    else{
+        echo "selecciona una imagen";
+    } 
+}
+else{
+    echo "no entra";
+}
+    /*
+    ImgGenero
+     $sql = "INSERT INTO genero(NombreGenero, ImgGenero, DescrGenero)VALUES ('$NombreGenero', '$file', '$DescrGenero')";
+    $resultado=$conexion->prepare($sql);
+
+    if ($resultado) {
+        echo "successfully !";
+    }
+    else {
+        echo "Error puto: " . $sql . "" . mysqli_error($conexion);
+        }
+    */
+    ?>
