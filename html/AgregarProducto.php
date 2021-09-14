@@ -28,6 +28,9 @@
         <label for="">Nombre Producto</label>
         <input type="text" name="NombreProducto" id="NombreProducto">
         <br>
+        <label for="">Precio Producto</label>
+        <input type="text" name="PrecioProducto" id="PrecioProducto">
+        <br>
         <label for="">ImgProducto</label>
         <input type="file" name="foto" >
         <br>  

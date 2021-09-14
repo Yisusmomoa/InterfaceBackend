@@ -1,0 +1,1 @@
+SELECT * FROM categoria ORDER BY RAND() LIMIT 4; //4 categorias random

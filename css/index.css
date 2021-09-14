@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
     font-family:'Times New Roman', Times, serif;
+   /* font-family: 'Metal Mania', cursive;*/
 }
 
 body {
@@ -212,32 +215,39 @@ transition: .3s ease all;
 
 
 .slider{
-  width: 95%;
-  margin: auto;
+  width: 100%;
+  height: 250px;
+  margin: 0 auto;
   overflow: hidden;
-
+  margin-top: 0;
+  /*si es necesario borrar*/
+  /*si es necesario borrar*/
+  position: relative;
+  bottom: 50px;
+  /*si es necesario borrar*/
+  /*si es necesario borrar*/
 }
 
 .slider ul{
   display: flex;
-  padding: 0%;
+  padding: 0;
+  margin: 0 auto;
   width: 400%;
-  height: 100px;
-
+  height: auto;
   animation: cambio 20s infinite alternate;
   animation-timing-function:ease-in-out;
 }
 
 .slider li{
+  height: 250px;
   width: 100%;
   list-style: none;
 }
 
 .slider img{
   width: 100%;
-  height: 75%;
+  height: 270px;
 }
-
 
 @keyframes cambio{
   0%{margin-left: 0;}
@@ -253,6 +263,44 @@ transition: .3s ease all;
   100%{margin-left: -300%;}
 
 }
+
+
+#tituloProductosDashboard{
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 35px;
+  font-weight:600;
+  padding: auto;
+  margin:10px 0 0 0;
+}
+
+.row{
+  background-color: #e7e7e74f;
+  position: relative;
+  left: 25%;
+  margin: 0;
+  margin: 10px 10px 10px 10px;
+  padding: 5px;
+}
+
+.row a{
+  text-decoration: none;
+  color: #000;
+}
+
+.row .col{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.row .col .card h1{
+  text-align: center;
+}
+
+.row .col .card img{
+  height: 200px;
+}
+
 
 /*Quienes somos*/
 
@@ -346,7 +394,10 @@ div#Categorias h1{
   text-align: center;
   text-decoration: none;
 }
-
+#Categorias a{
+  text-decoration: none;
+  color: #000;
+}
 .Card{
   background-color: black;
   width: 270px;
@@ -356,13 +407,16 @@ div#Categorias h1{
 }
 
 .Card-image{
-  background-color: aqua;
+ 
+  width: 100%;
   height: 170px;
   margin-bottom: 15px;
+  
   background-size: cover;
 }
 .Card-image img{
   width: 100%;
+  height: 100px;
   
 }
 /*
@@ -420,15 +474,26 @@ div#ProductosGratis h2{
   height: 450px;
   margin: 0px;
   border-radius: 3px 3px 3px 3px;
+  margin-right: 5px;
 }
 
 .Card2-image{
-  background-color: aqua;
+  
+  background-color: rgb(0, 0, 0);
   height: 370px;
   margin-bottom: 15px;
-  background-size: cover;
-}
 
+  background-size: cover;
+  
+}
+.Card2-image img{
+  margin-top: 10px;
+  width: 80%;
+  height: 80%;
+  display:block;
+margin:auto;
+}
+/*
 .car-4{
   background-image: url(/Media/IsotipoB.PNG);
 }
@@ -436,6 +501,7 @@ div#ProductosGratis h2{
 .car-5{
   background-image: url(/Media/IsotipoB.PNG);
 }
+*/
 
 
 /*Carousel productos*/
@@ -488,6 +554,7 @@ div#ProductosGratis h2{
   border-radius: 3px 3px 3px 3px;
   display: inline-block;
 
+  
 }
 
 .Card3-image{
@@ -498,7 +565,8 @@ div#ProductosGratis h2{
 }
 
 .Card-image img{
-  height: 180%;
+  margin-top: 10px;
+  height: 160%;
 }
 
 .owl-carousel{

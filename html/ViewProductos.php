@@ -9,13 +9,12 @@
 </head>
 <body>
    <?php
-        include_once "../bd/conexion.php";
-        $objeto= new Conexion();
-        $conexion=$objeto->Conectar();
+        
         $con=mysqli_connect('localhost', 'root', '', 'discorder1');
 
 
-        $consulta="SELECT *,c.NombreCateg,a.NombreAutor,g.NombreGenero from producto p JOIN categoria c on c.IdCateg=p.IdProducto JOIN autor a on a.IdAutor= p.IdAutorFK JOIN genero g on g.IdGenero=p.IdGeneroFK;";
+        $consulta="SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p JOIN categoria c on c.IdCateg=p.IdCategFK JOIN autor a on a.IdAutor= p.IdAutorFK JOIN genero g on g.IdGenero=p.IdGeneroFK;";
+        
         $resultado=mysqli_query($con, $consulta);
 
         while ($row=mysqli_fetch_assoc($resultado)) { 

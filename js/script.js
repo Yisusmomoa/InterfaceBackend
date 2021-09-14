@@ -161,6 +161,24 @@ $(document).ready(function(){
             $(this).css({transition: "0.5s"},100);
             $(this).animate( {fontSize:"15px"},100);
           });
+
+        //Boton ver producto
+        $(".VerProducto").mouseenter(function(){
+        
+          $(this).css({color: "#fff"},100);
+          $(this).css({background: "#555555"},100);
+          $(this).css({border: "1px solid #252525"},100);
+          $(this).css({transition: "0.5s"});
+        });
+
+        $(".VerProducto").mouseleave(
+          function(){
+            $(this).css({color: "#252525"},100);
+          $(this).css({background: "#fff"},100);
+            $(this).css({transition: "0.5s"},100);
+          });
+
+
       //Boton más información
       $("div#QuienesSomos button").mouseenter(
         function(){

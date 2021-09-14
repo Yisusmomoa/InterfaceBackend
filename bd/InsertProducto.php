@@ -11,6 +11,7 @@ if(isset($_REQUEST['AgregarProducto'])){
         $NombreProducto=$_POST['NombreProducto'];
         $DescripcionProducto=$_POST['DescripcionProducto'];
         $StockProducto=$_POST['StockProducto'];
+        $PrecioProducto=$_POST['PrecioProducto'];
         //Selects
         $selectIdAutor=$_POST['selectIdAutor'];
         $selectIdCateg=$_POST['selectIdCateg'];
@@ -37,10 +38,10 @@ if(isset($_REQUEST['AgregarProducto'])){
         
         $sql = "INSERT INTO producto(NombreProducto, DescripcionProducto,
                             StockProducto, IdAutorFK,
-                            IdCategFK,IdGeneroFK, ImgProdMin, ImgProdMax)
+                            IdCategFK,IdGeneroFK, ImgProdMin, ImgProdMax, Precio)
         VALUES ('$NombreProducto','$DescripcionProducto','$StockProducto',
         '$selectIdAutor','$selectIdCateg', '$selectIdGenero',
-        '$binariosImagen', '$binariosImagen2' )";
+        '$binariosImagen', '$binariosImagen2', '$PrecioProducto')";
         //$resultado=$conexion->prepare($sql);
         $resultado=mysqli_query($con, $sql);
         

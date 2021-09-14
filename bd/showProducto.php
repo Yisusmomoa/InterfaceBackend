@@ -18,14 +18,13 @@ include_once "../bd/conexion.php";
         $conexion=$objeto->Conectar();
         $con=mysqli_connect('localhost', 'root', '', 'discorder1');
     
-        $consulta="SELECT *,c.NombreCateg,a.NombreAutor,g.NombreGenero from producto p JOIN categoria c on c.IdCateg=p.IdProducto JOIN autor a on a.IdAutor= p.IdAutorFK JOIN genero g on g.IdGenero=p.IdGeneroFK WHERE IdProducto ='$id'";
-
+        $consulta="SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p JOIN categoria c on c.IdCateg=p.IdCategFK JOIN autor a on a.IdAutor= p.IdAutorFK JOIN genero g on g.IdGenero=p.IdGeneroFK;";
+        
 
         $resultado=mysqli_query($con, $consulta);
         //$resultado=$conexion->prepare($consulta);
         //$resultado->execute();
         $data=mysqli_fetch_assoc($resultado);
-
     ?>
         <?php  
              echo "IdProducto: ". $data["IdProducto"];

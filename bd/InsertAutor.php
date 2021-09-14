@@ -27,7 +27,7 @@ if(isset($_REQUEST['AgregarAutor'])){
             echo "successfully !";
         }
         else{
-            echo "Error puto: " . $sql . "" . mysqli_error($conexion);
+            echo "Error puto: " . $sql . " " . mysqli_error($conexion);
         }
 
     }

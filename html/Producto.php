@@ -12,7 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <link rel="stylesheet" href="../css/Producto.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -94,20 +93,37 @@
 
 
       <article>
-       
+       <?php
+        if(isset($_GET["IdProducto"])){
+          $id=$_GET["IdProducto"];
+          /*
+          $objeto= new Conexion();
+          $conexion=$objeto->Conectar();
+          */
+          $con=mysqli_connect('localhost', 'root', '', 'discorder1');
+      
+          $consulta="SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p 
+          JOIN categoria c on c.IdCateg=p.IdCategFK 
+          JOIN autor a on a.IdAutor= p.IdAutorFK 
+          JOIN genero g on g.IdGenero=p.IdGeneroFK WHERE IdProducto= $id";
+        
+  
+          $resultado=mysqli_query($con, $consulta);
+          //$resultado=$conexion->prepare($consulta);
+          //$resultado->execute();
+          $data=mysqli_fetch_assoc($resultado);
+        
+       ?>
 
-        <div class="card mb-3" style="max-width: 75%; margin: 0 auto;  background-color: #181e35;">
-          <img src="../Media/IsotipoB.PNG" class="card-img-top" alt="..." id="zoom_01" data-zoom-image="../Media/IsotipoBLong.PNG">
+        <div class="card mb-3" style="max-width:75%; margin: 0 auto;  background-color: #181e35;">
+          <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" alt="..." id="zoom_01" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>">
           <div class="card-body">
-            <h3 class="card-title">Nombre Producto</h3>
-            <h1 class="card-title">Precio Producto: 5999$</h1>
-            <h3 class="card-title">Marca Producto</h3>
-            <h3 class="card-title">Categoría Producto</h3>
-            <h3 class="card-title">Descripción Producto</h3>
-            <p class="card-text" style="text-align:start;">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Eum harum quod atque cupiditate exercitationem qui itaque repellendus officiis 
-              praesentium provident fuga veritatis odio quidem, quo modi excepturi quasi est! Vitae?
-            </p>
+            <h3 class="card-title"><?php echo $data["NombreProducto"]; ?> </h3>
+            <h1 class="card-title">Precio Producto: <?php echo $data["Precio"]; ?> MXN</h1>
+            <h3 class="card-title"><?php echo $data["NombreAutor"]; ?> </h3>
+            <h3 class="card-title"><?php echo $data["NombreCateg"]; ?></h3>
+            <h3 class="card-title"> Descripción Producto </h3>
+            <p class="card-text" style="text-align:start;"><?php echo $data["DescripcionProducto"]; ?> </p>
             <div id="CantidadProd">
               <h3 class="card-text">Cantidad</h3>
               <input type="number" name="" id="Cantidad" placeholder="1" min="1" >
@@ -115,11 +131,12 @@
             <div class="d-grid gap-2 col-6 mx-auto">
               <button class="btn btn-light" id="botonagregarcarrito" type="button"> <i class="fas fa-shopping-cart"></i> 
                 add to cart</button>
-           
             </div>
           </div>
         </div>
-        
+        <?php
+         }
+        ?>
         <br>
         <br>
         <h2>Productos Similares</h2>

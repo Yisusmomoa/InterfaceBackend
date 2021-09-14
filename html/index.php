@@ -43,6 +43,7 @@
   crossorigin="anonymous"></script>
 
 
+
   <title>Pagina Principal</title>
 </head>
 <body>
@@ -94,47 +95,92 @@
     
   <div class="slider">
     <ul>
-      <li><img src="../Media/Logotipo1.PNG" alt=""></li>
-      <li><img src="../Media/Logotipo2.PNG" alt=""></li>
-      <li><img src="../Media/Logotipo3.PNG" alt=""></li>
+      <li><img src="../Media/Slider1.jpg" alt=""></li>
+      <li><img src="../Media/2.PNG" alt=""></li>
+      <li><img src="../Media/2copia.PNG" alt=""></li>
       <li><img src="../Media/Logotipo4.PNG" alt=""></li>
     </ul>
+  </div>
+
+  <br>
+  <h1 id="tituloProductosDashboard">PRODUCTOS DE TU INTERES</h1>
+  <div class="row row-cols-1 row-cols-md-2 g-1 w-50 ">
+    <a href="">
+      <div class="col ">
+        <div class="card">
+          <img src="../Media/Identificador.PNG" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-title">Card title</h2>
+          </div>
+        </div>
+      </div>
+    </a>
+   
+    <a href="">
+      <div class="col ">
+        <div class="card">
+          <img src="../Media/eye2.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-title">Card title</h2>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="">
+      <div class="col ">
+        <div class="card">
+          <img src="../Media/pixlr-bg-result.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-title">Card title</h2>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="">
+      <div class="col ">
+        <div class="card">
+          <img src="../Media/IsotipoBLong.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-title">Card title</h2>
+          </div>
+        </div>
+      </div>
+    </a>
   </div>
  
 
   <br><br>
+  
     <div id="Categorias"> 
       <h1 >CATEGORIAS</h1>
       <br><br>
-
       <section class="container">
+      <?php
+        include_once "../bd/conexion.php";
+        $objeto= new Conexion();
+        $conexion=$objeto->Conectar();
+        $con=mysqli_connect('localhost', 'root', '', 'discorder1');
+        $consulta="SELECT * FROM categoria ORDER BY RAND() LIMIT 4; ";
+        $resultado=mysqli_query($con, $consulta);//ImgCateg
+
+        while ($row=mysqli_fetch_assoc($resultado)) { 
+      ?>
         <a href="../html/categorias.php">
           <div class="Card">
-            <h5>Categ 1</h5>
-            <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
+            <h5><?php echo $row["NombreCateg"]?></h5>
+            <div class="Card-image">
+              <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgCateg'])?>">
+            </div>
           </div>
         </a>
-        <a href="../html/categorias.php">
-          <div class="Card">
-            <h5>Categ 2</h5>
-            <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
-          </div>
-        </a>
-        <a href="../html/categorias.php">
-          <div class="Card">
-            <h5>Categ 3</h5>
-            <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
-          </div>
-        </a>
-        <a href="../html/categorias.php">
-          <div class="Card">
-            <h5>Categ 4</h5>
-            <div class="Card-image"><img src="../Media/IsotipoB.PNG" alt=""></div>
-          </div>
-        </a>
-      </section>
+      <?php
+        }
+      ?>
+
         
-      
+
+      </section>
     </div>
   <br><br><br>
 
@@ -144,11 +190,15 @@
     <section class="container2">
       <div class="Card2">
         <h1>Gratis</h1>
-        <div class="Card2-image car-4"></div>
+        <div class="Card2-image car-4">
+          <img src="../Media/ProdRegalo1.png"  alt="">
+        </div>
       </div>
       <div class="Card2">
         <h1>Gratis</h1>
-        <div class="Card2-image car-5"></div>
+        <div class="Card2-image car-5">
+          <img src="../Media/ProdRegalo2.PNG" alt="">
+        </div>
       </div>
       
     </section> 
@@ -159,123 +209,30 @@
   <br>
   <div class="owl-carousel owl-theme">
     
-    <div class="item">
-      <a href="../html/Producto.php">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="../html/Producto.php">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="../html/Producto.php">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a href="">
-      <div class="Card3">
-        <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-        <br>
-        <h3>Nombre producto</h3>
-        <h5>Marca</h5>
-        <h4>Precio</h4>
-        <button class="VerProducto">Ver producto</button>
-      </div>
-      </a>
-    </div>
+  <?php
     
+    $consulta="SELECT * from producto;";
+    $resultado=mysqli_query($con, $consulta);//ImgCateg
+
+    while ($row=mysqli_fetch_assoc($resultado)) { 
+  ?>
+    <div class="item">
+     
+      <div class="Card3">
+        <div class="Card-image">
+        <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+        </div>
+        <br>
+        <h3><?php echo $row["NombreProducto"] ?></h3>
+        <h5><?php echo $row["DescripcionProducto"] ?></h5>
+        <h4><?php echo $row["Precio"] ?>MXN</h4>
+        <a href="../html/Producto.php?IdProducto=<?php echo $row["IdProducto"];?>">
+         <button class="VerProducto" id="VerProductocarrusel">Ver producto</button>
+        </a>
+      </div>
+    </div>
+
+  <?php }?>
   </div>
 
   <br><br>
