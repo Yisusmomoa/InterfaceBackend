@@ -112,7 +112,9 @@
           //$resultado=$conexion->prepare($consulta);
           //$resultado->execute();
           $data=mysqli_fetch_assoc($resultado);
-        
+        $idCategProd=$data["IdCategFK"];
+        $idAutorProd=$data["IdAutorFK"];
+        $IdGeneroProd=$data["IdGeneroFK"];
        ?>
 
         <div class="card mb-3" style="max-width:75%; margin: 0 auto;  background-color: #181e35;">
@@ -121,6 +123,7 @@
             <h3 class="card-title"><?php echo $data["NombreProducto"]; ?> </h3>
             <h1 class="card-title">Precio Producto: <?php echo $data["Precio"]; ?> MXN</h1>
             <h3 class="card-title"><?php echo $data["NombreAutor"]; ?> </h3>
+            <h3 class="card-title"><?php echo $data["NombreGenero"]; ?> </h3>
             <h3 class="card-title"><?php echo $data["NombreCateg"]; ?></h3>
             <h3 class="card-title"> Descripción Producto </h3>
             <p class="card-text" style="text-align:start;"><?php echo $data["DescripcionProducto"]; ?> </p>
@@ -142,124 +145,35 @@
         <h2>Productos Similares</h2>
         <br>
         <div class="owl-carousel owl-theme">
-          
+          <?php
+         $consulta="SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p 
+         JOIN categoria c on c.IdCateg=p.IdCategFK 
+         JOIN autor a on a.IdAutor= p.IdAutorFK 
+         JOIN genero g on g.IdGenero=p.IdGeneroFK 
+         where IdAutorFK = $idAutorProd OR IdCategFK =$idCategProd OR IdGeneroFK = $IdGeneroProd
+         ORDER BY RAND() LIMIT 6";
+            $resultado=mysqli_query($con, $consulta);//ImgCateg
+        
+            while ($row=mysqli_fetch_assoc($resultado)) { 
+          ?>
           <div class="item">
-            <a href="../html/Producto.php">
+            
             <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
+              <div class="Card-image"> 
+              <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+              </div>
               <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
+              <h3><?php echo $row["NombreProducto"]; ?> </h3>
+              <h5><?php echo $row["NombreGenero"]; ?></h5>
+              <h4><?php echo $row["Precio"]; ?> MXN</h4>
+              <a href="../html/Producto.php">
+                <button class="VerProducto" id="VerProductocarrusel">Ver producto</button>
+              </a>
             </div>
-            </a>
+           
           </div>
-      
-          <div class="item">
-            <a href="../html/Producto.php">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-      
-          <div class="item">
-            <a href="../html/Producto.php">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-      
-          <div class="item">
-            <a href="../html/Producto.php">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-      
-          <div class="item">
-            <a href="">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-      
-          <div class="item">
-            <a href="">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-      
-          <div class="item">
-            <a href="">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-      
-          <div class="item">
-            <a href="">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-      
-          <div class="item">
-            <a href="">
-            <div class="Card3">
-              <div class="Card-image"> <img src="../Media/IsotipoB.PNG" alt=""></div>
-              <br>
-              <h3>Nombre producto</h3>
-              <h5>Marca</h5>
-              <h4>Precio</h4>
-              <button class="VerProducto">Ver producto</button>
-            </div>
-            </a>
-          </div>
-          
+          <?php } ?>
+
         </div>
       
         <br><br>

@@ -86,8 +86,13 @@
         <!-- <li><button type="menu"  data-bs-toggle="modal" data-bs-target="#exampleModal">
           Launch demo modal
         </button></li> -->
-        <li><input type="text" placeholder="Search.."> <input type="button" value="Buscar" id="btn-buscar"></li>
-       
+        <form method ="GET" action="../html/ProductosBusqueda.php">
+          <li>
+            <input type="text" placeholder="Search.." value="" name="nombre">
+            <input type="text" name="pagina" value="1" hidden>
+            <input type="submit" value="Buscar" id="btn-buscar" >
+          </li>
+        </form>
       </ul>
     </div>
   </nav>
@@ -101,7 +106,6 @@
       <li><img src="../Media/Logotipo4.PNG" alt=""></li>
     </ul>
   </div>
-
   <br>
   <h1 id="tituloProductosDashboard">PRODUCTOS DE TU INTERES</h1>
   <div class="row row-cols-1 row-cols-md-2 g-1 w-50 ">
@@ -148,8 +152,6 @@
       </div>
     </a>
   </div>
- 
-
   <br><br>
   
     <div id="Categorias"> 
@@ -237,7 +239,7 @@
 
   <br><br>
   <div id="QuienesSomos">
-    <h1 class="titulosubpartes">¿QUIENES SOMOS?</h1>
+    <h1 class="titulosubpartes">ESTÁS EN DISC-ORDER</h1>
     <div id="infoquienessomos">
       <h4>Somos especialistas en distribución discográfica. En nuestro Catálogo encontrarás, sobre todo, música:
         ediciones especiales, limitadas, de coleccionista, así como las últimas novedades del mercado discográfico, 
