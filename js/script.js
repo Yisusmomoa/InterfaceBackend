@@ -197,7 +197,7 @@ $(document).ready(function(){
             console.log("si entro");
             $(this).find(".InfoProd").animate({'padding-top': '25px'},300);
             $(this).find(".InfoProd").animate({opacity: '1'},'fast');
-            $(this).find("img").css("transform", "scale(1.2)"); //jala pero va sucede demasiado rapido
+            $(this).find("img").css("transform", "scale(1.1)"); //jala pero va sucede demasiado rapido
            
             /*
             $(this).find("img").animate({

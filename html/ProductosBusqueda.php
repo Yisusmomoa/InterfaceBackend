@@ -179,9 +179,9 @@
             </div>
             <?php } 
           ?>
-        </div>
-        
-        <ul class="pagination">
+
+
+          <ul class="pagination position-relative position-absolute top-100 start-50 translate-middle">
               <li class="page-item <?php echo $_GET['pagina']<=1? 'disabled':'' ?>">
                 <a class="page-link" href="../html/ProductosBusqueda.php?pagina=<?php echo $_GET['pagina']-1?>&nombre=<?php echo $nombre?>" tabindex="-1" aria-disabled="true">Previous</a>
               </li>
@@ -196,6 +196,11 @@
                 <a class="page-link" href="../html/ProductosBusqueda.php?pagina=<?php echo $_GET['pagina']+1?>&nombre=<?php echo $nombre?>">Next</a>
               </li>
         </ul> 
+
+       
+        </div>
+        
+        
       
     <?php } else {?>
       <h1><?php echo $_GET["nombre"] ; ?></h1>
