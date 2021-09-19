@@ -257,17 +257,17 @@ $(document).ready(function(){
             }
           });
           
-        $(window).scroll(function(){
-          var scroll = $(window).scrollTop();
-          if (scroll > 10) {
-            $(".navbar").css("background" , "#2C2E36");
-            $(this).trans
-          }
-          else{
-            $(".navbar").css("background" , "rgb(109, 109, 109)	");  
-          }
-          console.log(scroll);
-        })
+        // $(window).scroll(function(){
+        //   var scroll = $(window).scrollTop();
+        //   if (scroll > 10) {
+        //     $(".navbar").css("background" , "#2C2E36");
+        //     $(this).trans
+        //   }
+        //   else{
+        //     $(".navbar").css("background" , "rgb(109, 109, 109)	");  
+        //   }
+        //   console.log(scroll);
+        // })
 
         var carousel1=document.getElementsByClassName('Card3');
         $('.owl-carousel').owlCarousel({

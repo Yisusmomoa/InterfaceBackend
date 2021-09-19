@@ -957,11 +957,10 @@ div#CabeceraCategs h1{
     display:block;
   }
   
-
   
-/* .InfoProd .btn{
+.InfoProd .btn{
 
-} */
+}
 
 }
 

@@ -101,8 +101,8 @@
   <div class="slider">
     <ul>
       <li><img src="../Media/Slider1.jpg" alt=""></li>
-      <li><img src="../Media/2.PNG" alt=""></li>
-      <li><img src="../Media/2copia.PNG" alt=""></li>
+      <li><img src="../Media/Slider1.jpg" alt=""></li>
+      <li><img src="../Media/Slider1.jpg" alt=""></li>
       <li><img src="../Media/Logotipo4.PNG" alt=""></li>
     </ul>
   </div>
@@ -219,10 +219,9 @@
     while ($row=mysqli_fetch_assoc($resultado)) { 
   ?>
     <div class="item">
-     
       <div class="Card3">
         <div class="Card-image">
-        <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+          <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
         </div>
         <br>
         <h3><?php echo $row["NombreProducto"] ?></h3>
@@ -233,7 +232,6 @@
         </a>
       </div>
     </div>
-
   <?php }?>
   </div>
 

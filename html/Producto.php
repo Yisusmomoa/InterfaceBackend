@@ -12,7 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/Producto.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
@@ -34,14 +33,15 @@
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-   <link rel="stylesheet" href="../css/index.css">
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
 
-    
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/Producto.css">
     <title>Producto</title>
 </head>
 <body>
@@ -112,31 +112,40 @@
           //$resultado=$conexion->prepare($consulta);
           //$resultado->execute();
           $data=mysqli_fetch_assoc($resultado);
-        $idCategProd=$data["IdCategFK"];
-        $idAutorProd=$data["IdAutorFK"];
-        $IdGeneroProd=$data["IdGeneroFK"];
+          $idCategProd=$data["IdCategFK"];
+          $idAutorProd=$data["IdAutorFK"];
+          $IdGeneroProd=$data["IdGeneroFK"];
        ?>
-
-        <div class="card mb-3" style="max-width:75%; margin: 0 auto;  background-color: #181e35;">
-          <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" alt="..." id="zoom_01" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>">
-          <div class="card-body">
-            <h3 class="card-title"><?php echo $data["NombreProducto"]; ?> </h3>
-            <h1 class="card-title">Precio Producto: <?php echo $data["Precio"]; ?> MXN</h1>
-            <h3 class="card-title"><?php echo $data["NombreAutor"]; ?> </h3>
-            <h3 class="card-title"><?php echo $data["NombreGenero"]; ?> </h3>
-            <h3 class="card-title"><?php echo $data["NombreCateg"]; ?></h3>
-            <h3 class="card-title"> Descripción Producto </h3>
-            <p class="card-text" style="text-align:start;"><?php echo $data["DescripcionProducto"]; ?> </p>
-            <div id="CantidadProd">
-              <h3 class="card-text">Cantidad</h3>
-              <input type="number" name="" id="Cantidad" placeholder="1" min="1" >
+<div class="card mb-1" >
+          <div class="row g-0">
+            <div class="col-md-7">
+            <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" alt="..." id="zoom_01" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>">
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button class="btn btn-light" id="botonagregarcarrito" type="button"> <i class="fas fa-shopping-cart"></i> 
-                add to cart</button>
+            <div class="col-md-4">
+              <div class="card-body">
+                <h3 class="card-title"><?php echo $data["NombreProducto"]; ?> </h3>
+                <h3 class="card-title"><?php echo $data["NombreAutor"]; ?></h3>
+                <h3 class="card-title"><?php echo $data["NombreGenero"]; ?> </h3>
+                <h3 class="card-title"><?php echo $data["NombreCateg"]; ?></h3>
+                <h1 class="card-title">Precio Producto: <b> <?php echo $data["Precio"]; ?> MXN </b></h1>
+                <h3 class="card-title">Descripción Producto: 
+                  <b> <p class="card-text"><?php echo $data["DescripcionProducto"]; ?>.</p></b>
+                </h3>
+                <div id="CantidadProd">
+                  <h3 class="card-text">Cantidad</h3>
+                  <input type="number" name="" id="Cantidad" placeholder="1" min="1" >
+                </div>
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <button class="btn btn-light" id="botonagregarcarrito" type="button"> <i class="fas fa-shopping-cart"></i> 
+                    add to cart</button>
+               
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+</div>
+        
         <?php
          }
         ?>
@@ -144,23 +153,23 @@
         <br>
         <h2>Productos Similares</h2>
         <br>
+        
         <div class="owl-carousel owl-theme">
           <?php
-         $consulta="SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p 
-         JOIN categoria c on c.IdCateg=p.IdCategFK 
-         JOIN autor a on a.IdAutor= p.IdAutorFK 
-         JOIN genero g on g.IdGenero=p.IdGeneroFK 
-         where IdAutorFK = $idAutorProd OR IdCategFK =$idCategProd OR IdGeneroFK = $IdGeneroProd
-         ORDER BY RAND() LIMIT 6";
+            $consulta="SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p 
+            JOIN categoria c on c.IdCateg=p.IdCategFK 
+            JOIN autor a on a.IdAutor= p.IdAutorFK 
+            JOIN genero g on g.IdGenero=p.IdGeneroFK 
+            where IdAutorFK = $idAutorProd OR IdCategFK =$idCategProd OR IdGeneroFK = $IdGeneroProd
+            ORDER BY RAND() LIMIT 6";
             $resultado=mysqli_query($con, $consulta);//ImgCateg
         
             while ($row=mysqli_fetch_assoc($resultado)) { 
           ?>
           <div class="item">
-            
             <div class="Card3">
               <div class="Card-image"> 
-              <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+                <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
               </div>
               <br>
               <h3><?php echo $row["NombreProducto"]; ?> </h3>
@@ -168,12 +177,11 @@
               <h4><?php echo $row["Precio"]; ?> MXN</h4>
               <a href="../html/Producto.php">
                 <button class="VerProducto" id="VerProductocarrusel">Ver producto</button>
+                <br>
               </a>
             </div>
-           
           </div>
           <?php } ?>
-
         </div>
       
         <br><br>
