@@ -70,21 +70,7 @@
         <?php if(isset($_SESSION["s_usuario"])){ ?>
           <li>
             <a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> 
-              <span style="color: rgb(255, 255, 255); font-size: 12px;" id="badgeProducto">
-                <?php 
-                
-                 include_once "../bd/conexion.php";
-                 $objeto= new Conexion();
-                 
-                 $conexion=$objeto->Conectar();
-                 $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
-                 $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
-                 $resultado=$conexion->prepare($consultacuentadeproductos);
-                 $resultado->execute();
-                 $row_cnt = $resultado->rowCount();
-                 echo $row_cnt;
-                ?>
-              </span> 
+              <span style="color: rgb(255, 255, 255); font-size: 12px;" id="badgeProducto">1</span> 
             </a>
           </li>
         <?php }?>
@@ -131,8 +117,7 @@
   <br>
   <h1 id="tituloProductosDashboard">PRODUCTOS DE TU INTERES</h1>
   <?php var_dump($_SESSION['s_usuario']);
- echo '<br>';
- echo $_SESSION['s_usuario'][0]['IdUsuario'];
+ 
   ?>
   <?php
 
@@ -239,9 +224,9 @@
      
       <section class="container">
       <?php
-        // include_once "../bd/conexion.php";
-        // $objeto= new Conexion();
-        //$conexion=$objeto->Conectar();
+        include_once "../bd/conexion.php";
+        $objeto= new Conexion();
+        $conexion=$objeto->Conectar();
         $con=mysqli_connect('localhost', 'root', '', 'discorder1');
         $consulta="SELECT * FROM categoria ORDER BY RAND() LIMIT 4; ";
         $resultado=mysqli_query($con, $consulta);//ImgCateg
@@ -290,29 +275,29 @@
   <h2>Algunos de nuestros productos</h2>
   <br>
   <div class="owl-carousel owl-theme">
-      
-      <?php
-        
-        $consulta="SELECT * from producto;";
-        $resultado=mysqli_query($con, $consulta);//ImgCateg
+    
+  <?php
+    
+    $consulta="SELECT * from producto;";
+    $resultado=mysqli_query($con, $consulta);//ImgCateg
 
-        while ($row=mysqli_fetch_assoc($resultado)) { 
-      ?>
-        <div class="item">
-          <div class="Card3">
-            <div class="Card-image"><!-- <img src="data:image/jpg;base64,<?php //echo base64_encode($row['ImgProdMin'])?>" > -->
-              <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta'];?>" alt="no aparece">
-            </div>
-            <br>
-            <h3><?php echo $row["NombreProducto"] ?></h3>
-            <h5><?php echo $row["DescripcionProducto"] ?></h5>
-            <h4><?php echo $row["Precio"] ?>MXN</h4>
-            <a href="../html/Producto.php?IdProducto=<?php echo $row["IdProducto"];?>">
-              <button class="VerProducto" id="VerProductocarrusel">Ver producto</button>
-            </a>
-          </div>
+    while ($row=mysqli_fetch_assoc($resultado)) { 
+  ?>
+    <div class="item">
+      <div class="Card3">
+        <div class="Card-image">
+          <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
         </div>
-      <?php }?>
+        <br>
+        <h3><?php echo $row["NombreProducto"] ?></h3>
+        <h5><?php echo $row["DescripcionProducto"] ?></h5>
+        <h4><?php echo $row["Precio"] ?>MXN</h4>
+        <a href="../html/Producto.php?IdProducto=<?php echo $row["IdProducto"];?>">
+         <button class="VerProducto" id="VerProductocarrusel">Ver producto</button>
+        </a>
+      </div>
+    </div>
+  <?php }?>
   </div>
 
   <br><br>

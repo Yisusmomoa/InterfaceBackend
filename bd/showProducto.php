@@ -57,6 +57,17 @@ include_once "../bd/conexion.php";
         <p><?php echo "ImgProdMax: "?></p>
         <img width="50px" height="50px" src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>" >
         <br>
+        <p>imagen por un link</p>
+        <h3><?php print($data['ImgProdMinRuta']); ?></h3>
+        <?php $rutaimg=$data['ImgProdMinRuta'];?>
+
+        <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $data['ImgProdMinRuta'];?>" alt="no aparece">
+        <br><br>
+        <h3><?php print($data['ImgProdMaxRuta']); ?></h3>
+        <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $data['ImgProdMaxRuta'];?>" alt="no aparece2">
+
+        
+        
         <?php
    } 
    else {

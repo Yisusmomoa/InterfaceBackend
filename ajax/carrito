@@ -70,21 +70,7 @@
             <a Submenu="no" href="../html/Carrito.php">Carrito
               <i class="fas fa-shopping-cart"></i> 
               <span style="color: rgb(255, 255, 255); font-size: 12px;" 
-              id="badgeProducto">
-            <?php 
-            
-            include_once "../bd/conexion.php";
-            $objeto= new Conexion();
-            
-            $conexion=$objeto->Conectar();
-            $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
-            $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
-            $resultado=$conexion->prepare($consultacuentadeproductos);
-            $resultado->execute();
-            $row_cnt = $resultado->rowCount();
-            echo $row_cnt;
-            ?>
-            </span> 
+              id="badgeProducto">#</span> 
             </a>
           </li>
         <?php }?>
@@ -123,10 +109,7 @@
           */
           $con=mysqli_connect('localhost', 'root', '', 'discorder1');
       
-          $consulta="SELECT `IdProducto`, `NombreProducto`, `DescripcionProducto`, 
-          `StockProducto`, `Destacado`, `IdAutorFK`, `IdCategFK`, `IdGeneroFK`, 
-          `ImgProdMin`, `ImgProdMax`, `Precio`, `Descuento`, `Oferta`, `ImgProdMaxRuta`, 
-          `ImgProdMinRuta`, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p 
+          $consulta="SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero from producto p 
           JOIN categoria c on c.IdCateg=p.IdCategFK 
           JOIN autor a on a.IdAutor= p.IdAutorFK 
           JOIN genero g on g.IdGenero=p.IdGeneroFK WHERE IdProducto= $id";
@@ -141,14 +124,14 @@
           $IdGeneroProd=$data["IdGeneroFK"];
        ?>
     
-          <div class="card mb-3" >
-                    <div class="row g-7">
+          <div class="card mb-1" >
+                    <div class="row g-0">
                       <div class="col-md-7">
-                         <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
-                      alt="..." id="zoom_01" height="50px" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>"> 
-                     
+                      <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
+                      alt="..." id="zoom_01" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>">
                       </div>
                       <div class="col-md-4">
+                       
                           <div class="card-body">
                           <form id="agregacarrito" action="" method="POST">
                             <h3 class="card-title"><?php echo $data["NombreProducto"]; ?> </h3>
@@ -168,6 +151,7 @@
                               </div>
                               <br>
                               <div class="d-grid gap-2 col-6 mx-auto">
+                            
                                 <button class="btn btn-light" id="botonagregarcarrito" 
                                 type="submit">
                                 <i class="fas fa-shopping-cart"></i> add to cart
@@ -300,3 +284,134 @@
 
 </body>
 </html>
+
+
+
+
+
+
+<?php
+
+session_start();
+
+//require_once  '../modelos/VerifyEmail.class.php' ; //Incluir el archivo de biblioteca 
+include_once "../bd/conexion.php";
+$objeto= new Conexion();
+$conexion=$objeto->Conectar();
+
+$idProd=$_POST['idprod'];
+$idUs=$_POST['idUs'] ;
+$Cantidad=$_POST['Cantidad'] ;
+
+
+$consulta="INSERT INTO carrito(IdProdCarritoFK, IdUsCarritoFK, Cantidad) 
+VALUES ($idProd,$idUs,$Cantidad)";
+
+
+$resultado=$conexion->prepare($consulta);
+$data="";
+
+if($resultado->execute()){
+    $data="agregado";
+}
+else{
+    $data=null;
+}
+print json_encode($data);
+
+$conexion=null;
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Carrito5
+$("#agregacarrito").submit(function(e){
+  e.preventDefault();
+  var idprod=$('#idprodtu').val();
+  var idUs=$('#IdUsuarioCarr').val();
+  //var nombreprod=$('#nombreprod').val();
+  var Cantidad=$('#Cantidad').val();
+  debugger;
+  debugger;
+    $.ajax({
+      url:"../ajax/agregarCarrito5.php", //a donde se manda
+      type:"POST", //metodo de envío de datos
+      datatype:"json",
+      data:{idprod:idprod, idUs:idUs,Cantidad:Cantidad },
+      success:function(data){
+      //alert(data);
+        //let posicion = data.indexOf("null");
+      //alert(posicion);
+       debugger;
+        if(data!=="agregado"){ //si pone un usuario que no existe
+          Swal.fire({
+            icon:'error',
+            type:'error',
+            title:'Usuario y/o password incorrecto',
+          });
+        }
+        else{
+          Swal.fire({
+            icon:'success',
+            type:'success',
+            title:'Producto agregado con exito a tu carrito',
+            confirmButtonColor:'#3885d6',
+            confirmButtonText:'Ingresar'
+          }).then((result)=>{
+                    if(result.value){
+                      window.location.href="../html/producto.php";
+                    }
+                });
+        }
+      }
+    });
+  //$("#badgeProducto").text(Cantidad);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

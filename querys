@@ -1,1 +1,22 @@
 SELECT * FROM categoria ORDER BY RAND() LIMIT 4; //4 categorias random
+
+ <?php  var_dump(  $_SESSION['s_usuario']) ?>
+      <br>
+      <?php echo "idusuario".$_SESSION['s_usuario'][0]['IdUsuario'];?>
+      <br>
+      <?php echo "Username".$_SESSION['s_usuario'][0]['Username'];?>
+      <br>
+      <?php echo "Correo".$_SESSION['s_usuario'][0]['Correo'];?>
+      <br>
+      <?php echo "Contraseña".$_SESSION['s_usuario'][0]['Contraseña'];?>
+      <br>
+      <?php  print_r(  $_SESSION['s_usuario'][0]['IdUsuario'] );?>
+      <br><br>
+
+      
+Paleta de colores
+array(1) { [0]=> array(4) { ["IdUsuario"]=> string(2) "25" ["Username"]=> string(6) "Admin3" ["Correo"]=> string(16) "Admin3@admin.com" ["Contraseña"]=> string(6) "Admin3" } }
+
+var_dump($array["multi"]["dimensional"]["array"]);
+Array ( [0] => Array (
+	 [IdUsuario] => 25 [Username] => Admin3 [Correo] => Admin3@admin.com [Contraseña] => Admin3 ) )

@@ -24,6 +24,7 @@
     <title>Agregar Producto</title>
 </head>
 <body>
+    <?php echo $_SERVER['DOCUMENT_ROOT'] ?>
     <form method="POST" action="../bd/InsertProducto.php" enctype="multipart/form-data">
         <label for="">Nombre Producto</label>
         <input type="text" name="NombreProducto" id="NombreProducto">

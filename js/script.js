@@ -23,6 +23,183 @@ function AddOrRemove(){
   }
 }
 
+function cambiarcantidadprodcarrito(idpordcant, iduscant,cantidadprod ){
+  debugger;
+ // var cantidadprod= $( "#cantidadprod" ).val();
+  $.ajax({
+    type:'POST',
+    data:{"cantidadprod":cantidadprod, "idpordcant":idpordcant, "iduscant": iduscant},
+    url: '../ajax/ModificarCantidadCarrito.php',
+    datatype:"json",
+    beforeSend:function(){},
+    success:function(data){
+       
+          window.location.href="../html/Carrito.php";
+        
+    }
+
+  });
+  // alert(cantidadprod);
+  // alert(idpordcant);
+  // alert(iduscant);
+}
+
+function Decrementarcantidadprodcarrito(idpordcant, iduscant,cantidadprod ){
+  debugger;
+ // var cantidadprod= $( "#cantidadprod" ).val();
+  $.ajax({
+    type:'POST',
+    data:{"cantidadprod":cantidadprod, "idpordcant":idpordcant, "iduscant": iduscant},
+    url: '../ajax/DecrementarCantidadCarrito.php',
+    datatype:"json",
+    beforeSend:function(){},
+    success:function(data){
+       
+          window.location.href="../html/Carrito.php";
+        
+    }
+
+  });
+  // alert(cantidadprod);
+  // alert(idpordcant);
+  // alert(iduscant);
+}
+
+function EliminarProducto(codigo,iduseliminar){
+  debugger;
+  $.ajax({
+    data:{"idprodcarrito":codigo, "iduseliminar":iduseliminar},
+    url: '../ajax/EliminarProductoCarrito.php',
+    type:'POST',
+    beforeSend:function(){},
+    success:function(){
+      debugger;
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      ).then((result)=>{
+        
+        if(result.value){
+          window.location.href="../html/Carrito.php";
+        }
+    });
+    }
+  });
+
+}
+function listarprodscarrito(iduscarritolistar){
+  table=$('#tablacarrito').DataTable({
+    ajax:"../bd/listarprodscarrito.php"
+  })
+
+}
+
+function AlertarEliminacion(codigo,iduseliminar){
+  debugger;
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      EliminarProducto(codigo,iduseliminar)
+    }
+  })
+}
+
+
+// //Carrito5
+$("#agregacarrito").submit(function(e){
+  e.preventDefault();
+  var idprod=$('#idprodtu').val();
+  var idUs=$('#IdUsuarioCarr').val();
+  //var nombreprod=$('#nombreprod').val();
+  var Cantidad=$('#Cantidad').val();
+  debugger;
+    $.ajax({
+      url:"../ajax/agregarCarrito5.php", //a donde se manda
+      type:"POST", //metodo de envío de datos
+      datatype:"json",
+      data:{idprod:idprod, idUs:idUs,Cantidad:Cantidad },
+      success:function(data){
+      //alert(data);
+        //let posicion = data.indexOf("null");
+      //alert(posicion);
+       debugger;
+        if(data=="agregado"){ //si pone un usuario que no existe
+          Swal.fire({
+            icon:'error',
+            type:'error',
+            title:'Usuario y/o password incorrecto',
+          });
+        }
+        else{
+          $("#badgeProducto").text(data);
+          Swal.fire({
+            icon:'success',
+            type:'success',
+            title:'Producto agregado con exito a tu carrito',
+            confirmButtonColor:'#3885d6',
+            confirmButtonText:'Ingresar'
+          })
+          
+          
+        }
+      }
+    });
+  //$("#badgeProducto").text(Cantidad);
+});
+
+
+
+
+
+// //Carrito4
+// $("#agregacarrito").submit(function(e){
+//   e.preventDefault();
+//   var idprod=$('#idprodtu').val();
+//   //var idUs=$('#IdUsuarioCarr').val();
+//   var nombreprod=$('#nombreprod').val();
+//   var Cantidad=$('#Cantidad').val();
+//   debugger;
+//   $.ajax({
+//     url:"../ajax/agregarCarrito4.php",
+//     type:"POST",
+//     datatype:"json",
+//     data:{idprod:idprod, nombreprod:nombreprod, 
+//     Cantidad:Cantidad}
+//   }).done (function (data){
+//     if(data==1){
+//       //alert("tuptm");
+//       Swal.fire({
+//         icon:'success',
+//         type:'success',
+//         title:'Producto agregado al carrito',
+//         confirmButtonColor:'#3885d6',
+//         confirmButtonText:'Ingresar'
+//       });
+//       // //let posicion = response.indexOf("null");
+//       //var cantidadproductos=Object.keys(data).length;
+//        $("#badgeProducto").text(numobj);
+//     }
+//     else{
+//       Swal.fire({
+//         icon:'error',
+//         type:'error',
+//         title:'Error',
+//       });
+//     }
+//   });
+//   //$("#badgeProducto").text(Cantidad);
+// });
+
+
+
 $('#formLogin').submit(function(e){
   e.preventDefault();
   var usuario=$.trim($('#Usuario').val());
@@ -49,7 +226,6 @@ $('#formLogin').submit(function(e){
      //   alert(posicion);
        debugger;
         if(posicion!==-1){ //si pone un usuario que no existe
-        
           Swal.fire({
             icon:'error',
             type:'error',
@@ -127,6 +303,8 @@ $('#formRegistro').submit(function(e){
 
 
 $(document).ready(function(){
+
+
   var comboboxactivo=0;
   //links categorias iniciar sesión registrate
     $(".navbar-links li a[Submenu=no]").mouseenter(
@@ -272,7 +450,7 @@ $(document).ready(function(){
         var carousel1=document.getElementsByClassName('Card3');
         $('.owl-carousel').owlCarousel({
           loop:true,
-          margin:100,
+          margin:10,
           merge:true,
           mergeFit:true,
         //  nav:true, //se puede quitar
@@ -281,27 +459,27 @@ $(document).ready(function(){
           
           responsive:{
               600:{
-                  items:2
-                  
+                center:false,
+                
+                  items:1
               },
               900:{
-                  items:3
-              },
-              800:{
                   items:2
               },
-              1000:{
-                items:4
+              1100:{
+                items:3
               },
-              500:{
-                items:1
-                
-                //modificar el padding o margin
+              1600:{
+                items:4
               }
           }
         });
 
-        $("#zoom_01").elevateZoom();
+      $('#zoom_01').elevateZoom({
+        cursor: "crosshair",  
+        zoomWindowFadeIn: 500, 
+        zoomWindowFadeOut: 750 
+      }); 
           
 
      
@@ -400,3 +578,6 @@ function decrementValue()
     }
     
 }
+
+
+

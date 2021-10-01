@@ -72,7 +72,7 @@
               <?php if(isset($_SESSION["s_usuario"])){?>
                 <div class="dropdown show" style="top: 10%;">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php  echo $_SESSION["s_usuario"]; ?>
+                  <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
                   </button>
                   <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
@@ -96,10 +96,10 @@
 
        
         <section class="mt-3">
-          <div class="container">
+          <div class="container" >
             <div class="cart">
               <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="tablacarrito">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col" class="text-white">Producto</th>
@@ -110,97 +110,59 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <?php 
+                    include_once "../bd/conexion.php";
+                    $objeto= new Conexion();
+                    $SubTotal=0;
+                    $conexion=$objeto->Conectar();
+                    $con=mysqli_connect('localhost', 'root', '', 'discorder1');
+                    $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
+                     $consulta="SELECT * from carrito c 
+                     JOIN producto p on p.IdProducto=c.IdProdCarritoFK
+                     WHERE c.IdUsCarritoFK=$idus;";
+                     $resultado=mysqli_query($con, $consulta);//ImgCateg
+                     while ($row=mysqli_fetch_assoc($resultado)) {
+                     
+                       $SubTotal+=$row["Precio"]*$row['Cantidad'] ;
+                    ?>
                     <!--Aquí empieza la fila de la tabla-->
                     <tr>
                       <td>
                         <div class="main">
                           <div class="d-flex">
-                            <img src="../Media/IsotipoB.PNG" alt="" width="145" height="98">
+                            <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta'];?>" alt="" width="145" height="98">
                           </div>
                           <div class="des">
-                            <p>lorem ipsum</p>
+                            <p><?php echo $row["NombreProducto"] ?></p>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <h6>$200</h6>
+                        <h6><?php echo $row["Precio"] ?>MXN</h6>
                       </td>
                       <td>
                         <div class="counter">
-                          <i class="fas fa-angle-down" onclick="decrementValue()"></i>
-                          <input class="input-number"  type="number" name="" value="1" min="0" max="99" id="1">
-                          <i class="fas fa-angle-up" onclick="incrementValue()" ></i>
-                        </div>
-                      </td>
-                      <td>
-                        <h6>$200</h6>
-                      </td>
-                      <td>
-                        <a href="#"> <h1><i class="far fa-times-circle" style="color: red; padding-right: 5px; padding-left: 5px;"></i></h1></a>
-                      </td>
-                    </tr>
-                    <!--Aquí finaliza la fila de la tabla-->
+                          <i class="fas fa-angle-down" onclick="Decrementarcantidadprodcarrito('<?php echo $row['IdProducto'] ?>',
+                          '<?php echo  $idus ?>', '<?php echo $row['Cantidad']  ?>');"></i>
 
-                    <!--Aquí empieza la fila de la tabla-->
-                    <tr>
-                      <td>
-                        <div class="main">
-                          <div class="d-flex">
-                            <img src="../Media/IsotipoB.PNG" alt="" width="145" height="98">
-                          </div>
-                          <div class="des">
-                            <p>lorem ipsum</p>
-                          </div>
+                          <input class="input-number" id="cantidadprod"type="number" name="" value="<?php echo $row['Cantidad']; ?>" min="0" max="99" id="1">
+                          
+                          <i class="fas fa-angle-up"  onclick="cambiarcantidadprodcarrito('<?php echo $row['IdProducto'] ?>',
+                          '<?php echo  $idus ?>', '<?php echo $row['Cantidad']  ?>');"></i>
                         </div>
                       </td>
                       <td>
-                        <h6>$200</h6>
+                        <h6><?php echo $row["Precio"]*$row['Cantidad'] ?>MXN</h6>
                       </td>
+                      
                       <td>
-                        <div class="counter">
-                          <i class="fas fa-angle-down" onclick="decrementValue()"></i>
-                          <input class="input-number" type="number" name="" value="1" min="0" max="99" id="2">
-                          <i class="fas fa-angle-up" onclick="incrementValue()"></i>
-                        </div>
-                      </td>
-                      <td>
-                        <h6>$200</h6>
-                      </td>
-                      <td>
-                        <a href="#"> <h1><i class="far fa-times-circle" style="color: red; padding-right: 5px; padding-left: 5px;"></i></h1></a>
+                        <a href="#" onclick="AlertarEliminacion('<?php echo $row['IdProducto'] ?>', '<?php echo $_SESSION['s_usuario'][0]['IdUsuario'];?>');"> 
+                          <h1><i class="far fa-times-circle" style="color: red; padding-right: 5px; padding-left: 5px;"></i></h1>
+                        </a>
                       </td>
                     </tr>
                     <!--Aquí finaliza la fila de la tabla-->
-                    <!--Aquí empieza la fila de la tabla textr-->
-                    <tr>
-                      <td>
-                        <div class="main">
-                          <div class="d-flex">
-                            <img src="../Media/IsotipoB.PNG" alt="" width="145" height="98">
-                          </div>
-                          <div class="des">
-                            <p>lorem ipsum</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6>$200</h6>
-                      </td>
-                      <td>
-                        <div class="counter">
-                          <i class="fas fa-angle-down"></i>
-                          <input class="input-number" type="number" name="" value="1" min="0" max="99" id="3">
-                          <i class="fas fa-angle-up"></i>
-                        </div>
-                      </td>
-                      <td>
-                        <h6>$200</h6>
-                      </td>
-                      <td>
-                        <a href="#"> <h1><i class="far fa-times-circle" style="color: red; padding-right: 5px; padding-left: 5px;"></i></h1></a>
-                      </td>
-                    </tr>
-                    <!--Aquí finaliza la fila de la tabla-->
+                    <?php }?>
                   </tbody>
                 </table>
               </div>
@@ -211,8 +173,8 @@
         <div class="col-lg-4 offset-lg-4">
           <div class="checkout">
             <ul>
-              <li class="subtotal">SubTotal <span>$60</span></li>
-              <li class="cart-total">Total <span>$60</span></li>
+              <li class="subtotal">SubTotal <span>$<?php echo $SubTotal ?></span></li>
+              <li class="cart-total">Total <span>$<?php echo $SubTotal+=($SubTotal*0.16); ?></span></li>
             </ul>
             <a href="#" class="proceed-btn">COMPRAR</a>
           </div>
@@ -245,6 +207,11 @@
   </div>
 </div>
       </article>
+
+      <!-- sweet alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+ 
     
        <!--Slider-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
