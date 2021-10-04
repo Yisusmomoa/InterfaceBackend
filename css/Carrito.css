@@ -1,3 +1,17 @@
+article{
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+   /* left: 50%;
+    margin-left: -40%;*/
+    top: 120px !important;
+    background-color: #171717de;
+    
+  }
+
+
+
 .mt-5{
 
 }
@@ -7,7 +21,6 @@
     
 }
 .cart .table{
-    
     margin-bottom: 30px;
     border-bottom: 1px solidrgb(0, 0, 0);
 }
@@ -135,7 +148,7 @@
 .checkout .proceed-btn{
     font-size: 15px;
     font-weight: bold;
-    color: #fff;
+    color: #EDEDED;
     background: #252525;
     text-transform: uppercase;
     padding:  15px 25px 14px 25px;

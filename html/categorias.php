@@ -35,6 +35,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/categoria.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -50,7 +51,7 @@
 <body>
     
   <nav class="navbar" id ="EjNav">
-    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
+    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-resultBN.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
     <a href="#" class="toggle-button">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -69,7 +70,25 @@
         <?php }?>
 
         <?php if(isset($_SESSION["s_usuario"])){ ?>
-          <li><a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
+          <li>
+            <a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> 
+              <span style="color: rgb(255, 255, 255); font-size: 12px;">
+              <?php 
+                
+                include_once "../bd/conexion.php";
+                $objeto= new Conexion();
+                
+                $conexion=$objeto->Conectar();
+                $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
+                $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
+                $resultado=$conexion->prepare($consultacuentadeproductos);
+                $resultado->execute();
+                $row_cnt = $resultado->rowCount();
+                echo $row_cnt;
+               ?>
+              </span> 
+            </a>
+          </li>
         <?php }?>
 
         <li>
@@ -77,7 +96,7 @@
           <?php if(isset($_SESSION["s_usuario"])){?>
             <div class="dropdown show" style="top: 10%;">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php  echo $_SESSION["s_usuario"]; ?>
+              <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
               </button>
               <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
@@ -255,7 +274,13 @@
             </ul> 
         </div>
 
-      
+        <footer class="RedesSociales">
+    <h2>Redes sociales</h2>
+    <a href=""><i class="fab fa-facebook-square"></i></a>
+    <a href=""><i class="fab fa-instagram-square"></i></a>
+    <a href=""><i class="fab fa-twitter-square"></i></a>
+
+  </footer>
     
     
     </article>

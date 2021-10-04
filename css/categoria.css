@@ -1,0 +1,23 @@
+article{
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+   /* left: 50%;
+    margin-left: -40%;*/
+    top: 120px !important;
+    background-color: #171717de;
+    
+  }
+
+
+.categs>a>h4:hover{
+    color: #ebfb47;
+}
+  /* 171717
+  444444
+  ebfb47
+  EDEDED 
+  
+  {}{}{^`^`^`^~~~~~
+  */

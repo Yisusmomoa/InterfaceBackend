@@ -40,6 +40,11 @@
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
 
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+
+
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/Producto.css">
     <title>Producto</title>
@@ -47,7 +52,7 @@
 <body>
     
   <nav class="navbar" id ="EjNav">
-    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
+    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-resultBN.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
     <a href="#" class="toggle-button">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -71,29 +76,28 @@
               <i class="fas fa-shopping-cart"></i> 
               <span style="color: rgb(255, 255, 255); font-size: 12px;" 
               id="badgeProducto">
-            <?php 
-            
-            include_once "../bd/conexion.php";
-            $objeto= new Conexion();
-            
-            $conexion=$objeto->Conectar();
-            $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
-            $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
-            $resultado=$conexion->prepare($consultacuentadeproductos);
-            $resultado->execute();
-            $row_cnt = $resultado->rowCount();
-            echo $row_cnt;
-            ?>
+                <?php 
+                include_once "../bd/conexion.php";
+                $objeto= new Conexion();
+                
+                $conexion=$objeto->Conectar();
+                $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
+                $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
+                $resultado=$conexion->prepare($consultacuentadeproductos);
+                $resultado->execute();
+                $row_cnt = $resultado->rowCount();
+                echo $row_cnt;
+                ?>
             </span> 
             </a>
           </li>
         <?php }?>
         <li>
-          <!--chinga tu puta madre pinche error de mierda .l.-->
+
           <?php if(isset($_SESSION["s_usuario"])){?>
             <div class="dropdown show" style="top: 10%;">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
+              <?php  echo $_SESSION['s_usuario'][0]['Username']; ?>
               </button>
               <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
@@ -141,7 +145,7 @@
           $IdGeneroProd=$data["IdGeneroFK"];
        ?>
     
-          <div class="card mb-3" >
+          <div class="card mb-3 " >
                     <div class="row g-7">
                       <div class="col-md-7">
                          <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
@@ -161,6 +165,13 @@
                             <h3 class="card-title">Descripción Producto: 
                               <b> <p class="card-text"><?php echo $data["DescripcionProducto"]; ?>.</p></b>
                             </h3>
+                            <label class="favorite-checkbox" title="Marcar como favorito">
+                              <input type="checkbox" name="favorite" id="favorite">
+                              <span>
+                                <span class="material-icons unchecked">favorite_border</span>
+                                <span class="material-icons checked">favorite</span>
+                              </span>
+                            </label>
                               <div id="CantidadProd">
                                 <h3 class="card-text">Cantidad</h3>
                                 <input type="number" name="CantidadCarritotuptm" id="Cantidad" 

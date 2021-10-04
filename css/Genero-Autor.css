@@ -1,3 +1,17 @@
+article{
+  position: absolute;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+ /* left: 50%;
+  margin-left: -40%;*/
+  top: 120px !important;
+  background-color: #171717de;
+ 
+}
+
+
+
 .image{
     position: relative;
     width: 45%;
@@ -62,8 +76,7 @@
 
 div#CabeceraCategs h1{
     text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 35px;
+    font-size: 35px;  
     font-weight:600;
     padding: auto;
     margin:10px 0 0 0;
@@ -75,7 +88,7 @@ div#CabeceraCategs h1{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #333;
+    background-color: #171717;
     width: 80%;
     height: 450px;
     border-radius: 3px;
@@ -92,6 +105,7 @@ div#CabeceraCategs h1{
     height: 50px;
     border-radius: 3px;
     top: 10%;/*aquí es para mover el combobox y quede más arroba*/
+
   }
   @media screen and (max-width:962px){
  

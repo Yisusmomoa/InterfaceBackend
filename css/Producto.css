@@ -15,7 +15,7 @@ body {
     position: relative;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(109, 109, 109);
+    background-color: #131313;
     color: white;
     transition: .5s ease all;
 
@@ -222,7 +222,7 @@ transition: .3s ease all;
 
 .row{
   left:0;
-  
+  background-color: #171717;
 }
 .card-body {
   left: 0;
@@ -238,8 +238,8 @@ transition: .3s ease all;
 }
 
 .col-md-4{
-  background-color: #54555f;
-  color: white;
+  background-color: #353535;
+  color: #EDEDED;
 }
 #CantidadProd h3{
   padding-right: 10px;
@@ -253,12 +253,15 @@ transition: .3s ease all;
    width: 100px;
    
 }
+#botonagregarcarrito{
+  transition: all 0.5s  ease-in-out;
+}
 
 #botonagregarcarrito:hover{
   cursor: pointer;
-  color: white;
-  background-color: rgb(61, 61, 61);
-  transition: all 0.5s  ease-in-out;
+  color: #ebfb47;
+  background-color: #222222;
+
   
 }
 
@@ -344,7 +347,56 @@ transition: .3s ease all;
 
 
 
+/*favorito*/
 
+.favorite-checkbox{
+  position: relative;
+  display: inline-block;
+}
+
+.favorite-checkbox > input[type="checkbox"]{
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  left: -9999px;
+}
+
+.favorite-checkbox > input[type="checkbox"] + span{
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background:rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 10px 10px -5px rgb(0 0 0 / 5%);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+
+.favorite-checkbox > input[type="checkbox"] + span:hover{
+  background:rgba(255, 255, 255, 1);
+  color: #333;
+}
+
+
+.favorite-checkbox > input[type="checkbox"]:not(:checked) + span > .checked{
+  display: none;
+}
+
+.favorite-checkbox > input[type="checkbox"]:checked + span{
+  background:rgba(255, 255, 255, 1);
+  color: #FA8E7D;
+}
+
+.favorite-checkbox > input[type="checkbox"]:checked + span > .checked{
+  display: block;
+}
+
+.favorite-checkbox > input[type="checkbox"]:checked + span > .unchecked{
+  display: none;
+}
 
 
 
@@ -505,8 +557,8 @@ transition: .3s ease all;
 
 
   article{
-    background-color:rgb(255, 247, 247) ;
-    color: #000000;
-  
+    background-color: #171717de;
+    color: #EDEDED;
+    font-family: 'Bebas Neue', cursive;
   }
 

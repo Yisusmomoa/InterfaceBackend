@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metal&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap');
 
 * {
+  
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
-    font-family:'Times New Roman', Times, serif;
+    /* font-family:'Times New Roman', Times, serif; */
    /* font-family: 'Metal Mania', cursive;*/
 }
 
 body {
+
     margin: 0;
     padding: 0;
 }
@@ -18,7 +24,7 @@ body {
     position: relative;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(109, 109, 109);
+    background-color: #131313;
     color: white;
     transition: .5s ease all;
 
@@ -42,7 +48,7 @@ nav{
    /* left: 50%;
     margin-left: -40%;*/
     top: 18.7%;
-    background:  #ffffff;
+    background-color: #171717de;
     
   }
 
@@ -54,7 +60,7 @@ nav{
    /* left: 50%;
     margin-left: -40%;*/
     top: 18.7%;
-    background:  #ffffff;
+    background-color: #171717de;
     margin-top: 300px;
   }
 
@@ -267,15 +273,15 @@ transition: .3s ease all;
 
 #tituloProductosDashboard{
   text-align: center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 35px;
+  /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-size: 45px;
   font-weight:600;
   padding: auto;
   margin:10px 0 0 0;
 }
 
 .row{
-  background-color: #e7e7e74f;
+  background-color: #866c6c4f;
   position: relative;
   left: 25%;
   margin: 0;
@@ -306,7 +312,7 @@ transition: .3s ease all;
 
 
 div#QuienesSomos{
-  background-color: rgb(32, 31, 31);
+  background-color: #171717;
   color: #ffffff;
   position: relative;
   padding: auto;
@@ -315,9 +321,9 @@ div#QuienesSomos{
 
 div#QuienesSomos h1{
   text-align: center;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-size: 55px;
-  font-weight: 300;
+  font-weight: 800;
   padding: auto;
   margin:10px 0 0 0;
 }
@@ -326,7 +332,7 @@ div#QuienesSomos #infoquienessomos h4{
   text-align: center;
   text-transform: uppercase;
   hyphens: auto;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 400;
   margin: 25px 250px 55px 250px;/*centrar el texto*/
 }
@@ -373,8 +379,8 @@ div#QuienesSomos button{
 
 div#Categorias h1{
   text-align: center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 35px;
+  /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-size: 40px;
   font-weight:600;
   padding: auto;
   margin:10px 0 0 0;
@@ -390,7 +396,7 @@ div#Categorias h1{
 }
 
 .Card h5{
-  color: white;
+  color: #EDEDED;
   text-align: center;
   text-decoration: none;
 }
@@ -399,13 +405,14 @@ div#Categorias h1{
   color: #000;
 }
 .Card{
-  background-color: black;
+  background-color: #171717;
   width: 270px;
   height: 350px;
   margin: 0px;
   margin-left: 3px;
   margin-right: 3px;
   border-radius: 3px 3px 3px 3px;
+  transition: all 0.6s ease-in-out ;
 }
 
 .Card-image{
@@ -413,14 +420,25 @@ div#Categorias h1{
   width: 100%;
   height: 170px;
   margin-bottom: 15px;
-  
   background-size: cover;
 }
 .Card-image img{
   width: 100%;
   height: 100px;
-  
 }
+
+a .Card{
+  color: white;
+  text-decoration: none;
+}
+
+.Card:hover{
+  color: white;
+  cursor: pointer;
+  transform: scale(1.1);
+ 
+}
+
 /*
 .car-1{
   background-image: url(/Media/IsotipoB.PNG);
@@ -434,25 +452,15 @@ div#Categorias h1{
 }
 */
 
-a .Card{
-  color: white;
-  text-decoration: none;
-}
 
-.Card:hover{
-  color: white;
-  cursor: pointer;
-  transform: scale(1.1);
-  transition: all 1s ease;
-}
 
 
 
 /*Producto gratis en la primera compra*/
 div#ProductosGratis h2{
   text-align: center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 35px;
+  /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-size: 40px;
   font-weight:600;
   padding: auto;
   margin:10px 0 0 0;
@@ -471,7 +479,7 @@ div#ProductosGratis h2{
 }
 
 .Card2{
-  background-color: black;
+  background-color: #171717;
   width: 570px;
   height: 450px;
   margin: 0px;
@@ -481,7 +489,7 @@ div#ProductosGratis h2{
 
 .Card2-image{
   
-  background-color: rgb(0, 0, 0);
+  background-color: #171717;
   height: 370px;
   margin-bottom: 15px;
 
@@ -509,19 +517,22 @@ margin:auto;
 /*Carousel productos*/
  h2{
   text-align: center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 35px;
+  /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-size: 40px;
   font-weight:600;
   padding: auto;
   margin:10px 0 0 0;
 }
+/* .owl-carousel{
+  height: 100px;
+} */
 
 .Card3 h3{
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   color: white;
   text-align: center;
   text-decoration: none;
-  margin-top: 70px;
+  margin-top: 5px;
 }
 .Card3 h4{
   color: white;
@@ -538,41 +549,40 @@ margin:auto;
 .Card3 button{
  float: right;
  position: relative;
- right: 30%;
- 
+ right: 33%;
  border-radius: 3px 3px 3px 3px;
- background-color: #e7e7e7; color: black;
+ background-color: #e7e7e7; 
+ color: black;
  border: none;
- padding: 15px 32px;
+ padding: 5px 16px;
  text-align: center;
  text-decoration: none;
  display: inline-block;
  font-size: 16px;
 }
 .Card3{
-  background-color: black;
+  background-color: #171717;
   width: 350px;
-  height: 450px;
+  height: 150px;
   border-radius: 3px 3px 3px 3px;
   display: inline-block;
-  margin-bottom: 10px;
-  
+    
 }
 
 .Card3-image{
   background-color: aqua;
-  height: 170px;
+  height: 150px;
   margin-bottom: 15px;
   background-size: cover;
 }
 
 .Card-image img{
-  margin-top: 30px;
-  height: 160%;
+  margin-top: 15px;
+  height: 125%;
 }
 
 .owl-carousel{
- background-color: black;
+  background-color: #171717;
 }
 
 
@@ -606,12 +616,12 @@ margin:auto;
 
 .RedesSociales a{
   font-size: 40px;
-  color: black;
+  color: #EDEDED;
   margin-right: 15px;
 }
 
 .RedesSociales a:hover{
-  color: #555555;
+  color: #ebfb47  ;
 }
 
 
@@ -638,7 +648,7 @@ margin:auto;
   background: #f8f8f8;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
-  font-family:'Montserrat', sans-serif;
+  /* font-family:'Montserrat', sans-serif; */
   padding: 20px;
   text-align: center;
   width: 700px;
@@ -699,7 +709,7 @@ opacity: 0;
   color: #ffffff;
   background: #5e7ed3;
   border-radius: 3px;
-  font-family:'Montserrat', sans-serif;
+  /* font-family:'Montserrat', sans-serif; */
   font-size: 16px;
   cursor: pointer;
   transition: .3s ease all;
@@ -786,7 +796,7 @@ opacity: 0;
 
 div#CabeceraCategs h1{
   text-align: center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   font-size: 35px;
   font-weight:600;
   padding: auto;
@@ -799,7 +809,7 @@ div#CabeceraCategs h1{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #333;
+  background-color: #171717;
   width: 80%;
   height: 450px;
   border-radius: 3px;
@@ -872,7 +882,7 @@ div#CabeceraCategs h1{
 .containercardsprods{
   width: 90%;
   height: auto;
-  background-color: rgb(17, 17, 17);
+  background-color: #242424;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -903,7 +913,7 @@ div#CabeceraCategs h1{
  .box {
   width: 20%;
   height: 450px;/*alto de la card*/
-  background-color: rgb(255, 255, 255);
+  background-color: #0c0c0c;
   margin: 20px;
   padding-bottom: 90px;
   margin-bottom: 20px;
@@ -927,6 +937,7 @@ div#CabeceraCategs h1{
 }
 
 .InfoProd{
+  color: #EDEDED;
   text-align: center;
   text-transform: uppercase;
  /* padding-top: 25px;*/
@@ -935,7 +946,8 @@ div#CabeceraCategs h1{
 }
 
 .InfoProd .btn{
-  background-color: #b8b8b8; color: black;
+  background-color: #EDEDED; 
+  color: #171717;
   border: none;
  
   padding: 16px 22px;
@@ -949,8 +961,8 @@ div#CabeceraCategs h1{
   padding-bottom: 30px;
 }
 .InfoProd .btn:hover{
-  background-color: #000000; /* Green */
-  color: white;
+  background-color: #444444; /* Green */
+  /* color: #ebfb47; */
 }
 
 @media screen and (max-width:1200px){
@@ -1009,5 +1021,54 @@ div#CabeceraCategs h1{
     transition-duration: 4s;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav{
+ 
+  /* font-family: 'Bebas Neue', cursive; */
+  /*para el cuerpo de la pagina*/
+  color: #EDEDED;
+  background-color: #171717;
+  font-family: 'Merriweather Sans', sans-serif;
+   
+}
+
+
+
+article{
+ 
+  background-color: #171717de;
+  color: #EDEDED;
+  font-family: 'Bebas Neue', cursive;
+  /*para el cuerpo de la pagina*/
+  
+  /* font-family: 'Merriweather Sans', sans-serif; */
+   
+}
+
+
 
 

@@ -310,11 +310,13 @@ $(document).ready(function(){
     $(".navbar-links li a[Submenu=no]").mouseenter(
       function(){
         $(this).animate( {fontSize:"1.1rem"},10);
-        $(this).animate({opacity: '0.5'},'fast');
+        $(this).css({color: "#ebfb47"},100);
+        $(this).animate({opacity: '1'},'fast');
       });
       $(".navbar-links li a[Submenu=no]").mouseleave(
         function(){
             $(this).animate( {fontSize:"1rem"},10);
+            $(this).css({color: "#EDEDED"},100);
             $(this).animate({opacity: '1', },'fast');
       });
       //toggle animacion slide
@@ -329,7 +331,7 @@ $(document).ready(function(){
           $(this).css({background: "#fff"},100);
           $(this).css({border: "1px solid #252525"},100);
           $(this).css({transition: "0.5s"});
-          $(this).animate( {fontSize:"1.1rem"},100);
+          $(this).animate( {fontSize:"20px"},100);
         });
 
         $(".proceed-btn").mouseleave(
@@ -343,7 +345,7 @@ $(document).ready(function(){
         //Boton ver producto
         $(".VerProducto").mouseenter(function(){
         
-          $(this).css({color: "#fff"},100);
+          $(this).css({color: "#ebfb47"},100);
           $(this).css({background: "#555555"},100);
           $(this).css({border: "1px solid #252525"},100);
           $(this).css({transition: "0.5s"});
@@ -400,6 +402,20 @@ $(document).ready(function(){
               $(this).find("img").css("transform", "scale(1)");
           });
          
+
+          $(".InfoProd .btn").mouseenter(
+            function(){
+            
+              $(this).css({color: "#ebfb47"},100);
+              $(this).animate({background: '#444444'},"slow");
+            });
+            $(".InfoProd .btn").mouseleave(
+              function(){
+             
+                  $(this).css({color: "#171717"},100);
+                  $(this).animate({  background: '#EDEDED', },"slow");
+            });
+
 /*
 //desplazamieto pagina usando el menu 
           //Evento click en combobox

@@ -49,7 +49,7 @@
 </head>
 <body>
   <nav class="navbar" id ="EjNav">
-    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
+    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-resultBN.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
     <a href="#" class="toggle-button">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -70,7 +70,7 @@
         <?php if(isset($_SESSION["s_usuario"])){ ?>
           <li>
             <a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> 
-              <span style="color: rgb(255, 255, 255); font-size: 12px;" id="badgeProducto">
+              <span style="color: #F65F5F; font-size: 15px;" id="badgeProducto">
                 <?php 
                 
                  include_once "../bd/conexion.php";
@@ -89,8 +89,7 @@
           </li>
         <?php }?>
         <li>
-        
-          <!--chinga tu puta madre pinche error de mierda .l.-->
+          
           <?php if(isset($_SESSION["s_usuario"])){?>
               <div class="dropdown show" style="top: 10%;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

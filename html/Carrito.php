@@ -46,7 +46,7 @@
 <body>
 
     <nav class="navbar" id ="EjNav">
-        <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
+        <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-resultBN.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
         <a href="#" class="toggle-button">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -99,7 +99,7 @@
           <div class="container" >
             <div class="cart">
               <div class="table-responsive">
-                <table class="table" id="tablacarrito">
+                <table class="table table-light table-hover" id="tablacarrito">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col" class="text-white">Producto</th>
@@ -130,15 +130,16 @@
                       <td>
                         <div class="main">
                           <div class="d-flex">
-                            <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta'];?>" alt="" width="145" height="98">
+                            <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta'];?>"
+                             alt="" width="250" height="150">
                           </div>
                           <div class="des">
-                            <p><?php echo $row["NombreProducto"] ?></p>
+                            <h5><?php echo $row["NombreProducto"] ?></h5>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <h6><?php echo $row["Precio"] ?>MXN</h6>
+                        <h4><?php echo $row["Precio"] ?>MXN</h4>
                       </td>
                       <td>
                         <div class="counter">
@@ -152,7 +153,7 @@
                         </div>
                       </td>
                       <td>
-                        <h6><?php echo $row["Precio"]*$row['Cantidad'] ?>MXN</h6>
+                        <h3><?php echo $row["Precio"]*$row['Cantidad'] ?>MXN</h3>
                       </td>
                       
                       <td>
@@ -174,7 +175,7 @@
           <div class="checkout">
             <ul>
               <li class="subtotal">SubTotal <span>$<?php echo $SubTotal ?></span></li>
-              <li class="cart-total">Total <span>$<?php echo $SubTotal+=($SubTotal*0.16); ?></span></li>
+              <li class="cart-total"><h3>Total</h3> <span>$<?php echo $SubTotal+=($SubTotal*0.16); ?></span></li>
             </ul>
             <a href="#" class="proceed-btn">COMPRAR</a>
           </div>

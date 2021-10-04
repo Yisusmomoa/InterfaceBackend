@@ -35,18 +35,22 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/Genero-Autor.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
+ 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
 
     <title>Genero/Autor</title>
 </head>
 <body>
        
   <nav class="navbar" id ="EjNav">
-    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-result.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
+    <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-resultBN.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
     <a href="#" class="toggle-button">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -65,15 +69,32 @@
         <?php }?>
         
         <?php if(isset($_SESSION["s_usuario"])){ ?>
-          <li><a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
+          <li>
+            <a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> 
+            <span style="color: #F65F5F; font-size: 15px;" id="badgeProducto">
+                <?php 
+                
+                 include_once "../bd/conexion.php";
+                 $objeto= new Conexion();
+                 
+                 $conexion=$objeto->Conectar();
+                 $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
+                 $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
+                 $resultado=$conexion->prepare($consultacuentadeproductos);
+                 $resultado->execute();
+                 $row_cnt = $resultado->rowCount();
+                 echo $row_cnt;
+                ?>
+              </span> 
+            </a>
+          </li>
         <?php }?>
 
         <li>
-          <!--chinga tu puta madre pinche error de mierda .l.-->
           <?php if(isset($_SESSION["s_usuario"])){?>
             <div class="dropdown show" style="top: 10%;">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php  echo $_SESSION["s_usuario"]; ?>
+              <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
               </button>
               <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
