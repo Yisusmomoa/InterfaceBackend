@@ -121,8 +121,15 @@
                      JOIN producto p on p.IdProducto=c.IdProdCarritoFK
                      WHERE c.IdUsCarritoFK=$idus;";
                      $resultado=mysqli_query($con, $consulta);//ImgCateg
+                   
                      while ($row=mysqli_fetch_assoc($resultado)) {
-                     
+                      // echo "idprod: ".$row["IdProducto"];
+                      // echo "<br>";
+                      // echo "nombreprod: ".$row["NombreProducto"];
+                      // echo "<br>";
+                      // echo "cantidad: ".$row["Cantidad"];
+                      // echo "<br>";
+                      
                        $SubTotal+=$row["Precio"]*$row['Cantidad'] ;
                     ?>
                     <!--Aquí empieza la fila de la tabla-->
@@ -170,43 +177,43 @@
             </div>
           </div>
         </section>
-
+<br><br>
         <div class="col-lg-4 offset-lg-4">
           <div class="checkout">
             <ul>
               <li class="subtotal">SubTotal <span>$<?php echo $SubTotal ?></span></li>
               <li class="cart-total"><h3>Total</h3> <span>$<?php echo $SubTotal+=($SubTotal*0.16); ?></span></li>
             </ul>
-            <a href="#" class="proceed-btn">COMPRAR</a>
+            <a href="../html/checkout.php?IdUs=<?php echo $_SESSION['s_usuario'][0]['IdUsuario']; ?>&TotalVenta=<?php echo $SubTotal; ?> " class="proceed-btn">COMPRAR</a>
           </div>
         </div>
         
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-  <footer class="RedesSociales">
-    <h2>Redes sociales</h2>
-    <a href=""><i class="fab fa-facebook-square"></i></a>
-    <a href=""><i class="fab fa-instagram-square"></i></a>
-    <a href=""><i class="fab fa-twitter-square"></i></a>
+          <footer class="RedesSociales">
+            <h2>Redes sociales</h2>
+            <a href=""><i class="fab fa-facebook-square"></i></a>
+            <a href=""><i class="fab fa-instagram-square"></i></a>
+            <a href=""><i class="fab fa-twitter-square"></i></a>
 
-  </footer>
+          </footer>
 
-  <div class="overlay" id="overlay">
-  <div class="popup" id="popup">
-    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
-    <h3>REGISTRATE</h3>
-    <h4>Y recibe un cupón de descuento</h4>
-    <form action="">
-      <div class="contenedor-inputs">
-        <input type="" name="" id="" placeholder="Nombre">
-        <input type="email" name="" id="" placeholder="Correo">
-        <input type="password" name="" id="" placeholder="Contraseña">
-      </div>
-      <input type="submit" class="btn-submit" value="Suscribirse">
-    </form>
-  </div>
-</div>
+          <div class="overlay" id="overlay">
+          <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
+            <h3>REGISTRATE</h3>
+            <h4>Y recibe un cupón de descuento</h4>
+            <form action="">
+              <div class="contenedor-inputs">
+                <input type="" name="" id="" placeholder="Nombre">
+                <input type="email" name="" id="" placeholder="Correo">
+                <input type="password" name="" id="" placeholder="Contraseña">
+              </div>
+              <input type="submit" class="btn-submit" value="Suscribirse">
+            </form>
+          </div>
+        </div>
       </article>
 
       <!-- sweet alert -->

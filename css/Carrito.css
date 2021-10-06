@@ -12,8 +12,9 @@ article{
 
 
 
-.mt-5{
-
+.mt-3{
+    height: 750px; /* or any value */
+    overflow-y: auto;
 }
 .cart{
     width: 100%;

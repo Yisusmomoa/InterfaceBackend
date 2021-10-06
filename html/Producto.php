@@ -165,13 +165,19 @@
                             <h3 class="card-title">Descripción Producto: 
                               <b> <p class="card-text"><?php echo $data["DescripcionProducto"]; ?>.</p></b>
                             </h3>
-                            <label class="favorite-checkbox" title="Marcar como favorito">
-                              <input type="checkbox" name="favorite" id="favorite">
-                              <span>
-                                <span class="material-icons unchecked">favorite_border</span>
-                                <span class="material-icons checked">favorite</span>
-                              </span>
-                            </label>
+                         
+                              <label class="favorite-checkbox" title="Marcar como favorito">
+                                <input type="checkbox"  name="favorite" id="favorite"
+                                onclick="agregarfavoritos('<?php  echo $_SESSION['s_usuario'][0]['IdUsuario'] ?>'
+                                ,'<?php echo $data['IdProducto'];?>');">
+                                <span>
+                                  
+                                  <span class="material-icons unchecked">favorite_border</span>
+                              
+                                  <span class="material-icons checked">favorite</span>
+                                </span>
+                              </label>
+
                               <div id="CantidadProd">
                                 <h3 class="card-text">Cantidad</h3>
                                 <input type="number" name="CantidadCarritotuptm" id="Cantidad" 

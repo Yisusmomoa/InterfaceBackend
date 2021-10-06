@@ -23,6 +23,57 @@ function AddOrRemove(){
   }
 }
 
+
+
+//favoritos//favoritos//favoritos//favoritos
+//favoritos//favoritos//favoritos//favoritos
+//favoritos//favoritos//favoritos//favoritos
+
+
+function agregarfavoritos(IdUsuarioFav, IdProductoFav){
+  debugger;
+  $.ajax({
+    type:'POST',
+    data:{'IdUsuarioFav': IdUsuarioFav, 'IdProductoFav': IdProductoFav},
+    url: '../bd/AgregarFavoritos.php',
+    datatype:'json',
+    beforeSend:function(){},
+    success:function(data){
+      var output = JSON.parse(data);
+      debugger;
+      //alert(output.Mensaje);
+      if(output["Mensaje"]=="Agregado"){
+        debugger;
+          Swal.fire({
+            icon: 'success',
+            title: 'Producto agregado a favoritos'
+          }).then((result)=>{
+            if(result.value){
+              window.location.href="../html/Producto.php?IdProducto="+IdProductoFav;
+            }
+        });
+      }
+      else{
+        debugger;
+        Swal.fire({
+          icon: 'success',
+          title: 'Producto eliminado de tus favoritos'
+        }).then((result)=>{
+          if(result.value){
+            window.location.href="../html/Producto.php?IdProducto="+IdProductoFav;
+          }
+      });
+
+      }
+      
+    }
+  });
+}
+
+//favoritos//favoritos//favoritos//favoritos
+//favoritos//favoritos//favoritos//favoritos
+//favoritos//favoritos//favoritos//favoritos
+
 function cambiarcantidadprodcarrito(idpordcant, iduscant,cantidadprod ){
   debugger;
  // var cantidadprod= $( "#cantidadprod" ).val();
@@ -112,6 +163,29 @@ function AlertarEliminacion(codigo,iduseliminar){
   })
 }
 
+function EfectuarCompra(IdUs, TotalVenta){
+  // alert(IdUs);
+  // alert(TotalVenta);
+  $.ajax({
+    type:'POST',
+    data:{'idUs': IdUs, 'TotalVenta': TotalVenta},
+    url: '../bd/EfectuarCompra.php',
+    datatype:'json',
+    beforeSend:function(){
+    },
+    success:function(data){
+        debugger;
+          Swal.fire({
+            icon: 'success',
+            title: 'Compra realizada con exito'
+          }).then((result)=>{
+            if(result.value){
+             // window.location.href="../html/index.php";
+            }
+        }); 
+    }
+  });
+}
 
 // //Carrito5
 $("#agregacarrito").submit(function(e){
@@ -594,6 +668,18 @@ function decrementValue()
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
