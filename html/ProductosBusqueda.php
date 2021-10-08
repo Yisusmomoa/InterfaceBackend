@@ -140,6 +140,7 @@
         <br>
         
         <div class="containercardsprods" >
+        <input type="text" id="idcateg" name="" id=""  value="<?php echo $Categ ?>">
         <?php
   
           if(isset($_GET["nombre"]) && isset($_GET["pagina"])){

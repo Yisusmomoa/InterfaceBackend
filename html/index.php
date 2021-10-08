@@ -96,7 +96,7 @@
               <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
                 </button>
                 <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
+                  <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Perfil.php">Favoritos</a>
                   <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
                 </div>
               </div>
@@ -233,11 +233,11 @@
   
     <div id="Categorias"> 
 
-  
       <h1 >CATEGORIAS</h1>
      
       <section class="container">
       <?php
+       
         // include_once "../bd/conexion.php";
         // $objeto= new Conexion();
         //$conexion=$objeto->Conectar();
@@ -247,7 +247,7 @@
 
         while ($row=mysqli_fetch_assoc($resultado)) { 
       ?>
-        <a href="../html/categorias.php">
+        <a href="../html/categorias.php?Categ=<?php echo $row['IdCateg'];?>&pagina=1">
           <div class="Card">
             <h5><?php echo $row["NombreCateg"]?></h5>
             <div class="Card-image">

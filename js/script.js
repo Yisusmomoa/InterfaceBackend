@@ -30,6 +30,9 @@ function AddOrRemove(){
 //favoritos//favoritos//favoritos//favoritos
 
 
+
+
+
 function agregarfavoritos(IdUsuarioFav, IdProductoFav){
   debugger;
   $.ajax({
@@ -180,7 +183,7 @@ function EfectuarCompra(IdUs, TotalVenta){
             title: 'Compra realizada con exito'
           }).then((result)=>{
             if(result.value){
-             // window.location.href="../html/index.php";
+             window.location.href="../html/index.php";
             }
         }); 
     }
@@ -228,7 +231,6 @@ $("#agregacarrito").submit(function(e){
     });
   //$("#badgeProducto").text(Cantidad);
 });
-
 
 
 
@@ -377,6 +379,33 @@ $('#formRegistro').submit(function(e){
 
 
 $(document).ready(function(){
+
+
+  //favoritos//favoritos//favoritos//favoritos//favoritos//favoritos
+
+
+  $('#searchfavs').on('keyup',function(){
+  
+    var search=$('#searchfavs').val();
+    var idus=$("#idusfavs").val();
+    debugger;
+    //alert(search);
+    $.ajax({
+      type: 'POST',
+      url:'../ajax/SearchFavs.php',
+      data: {'search': search},
+      success:function(resultado){
+        debugger;
+        $('#resultBusquedaFavs').html(resultado);
+      }
+    });
+  });
+
+
+
+  //favoritos//favoritos//favoritos//favoritos//favoritos//favoritos
+
+
 
 
   var comboboxactivo=0;
@@ -536,6 +565,33 @@ $(document).ready(function(){
         //   }
         //   console.log(scroll);
         // })
+
+
+
+
+          //ordenar prods
+            $("#comboboxordenarpor").change(function(){
+              var selectedordenar = $(this).children("option:selected").val();
+              var idcateg=$.trim($('#idcateg').val());
+debugger;
+
+             $.ajax({
+                url: "../bd/PaginadorProds.php",
+                type:"POST",
+                datatype:"json",
+                async:false,
+                data:{selectedordenar: selectedordenar,
+                  idcateg:idcateg,pagina:1 }
+              }).done(function(listasords){
+                debugger;
+                document.getElementById("contenedorprodscateg").innerHTML=listasords;
+              });
+              
+
+              // alert(selectedordenar);
+              // alert(idcateg);
+          });
+            //ordenar prods
 
         var carousel1=document.getElementsByClassName('Card3');
         $('.owl-carousel').owlCarousel({

@@ -2,6 +2,7 @@
   //include('../config.php');
  session_start();
   
+ $Categ=$_GET['Categ'];
  
 ?>
 
@@ -72,7 +73,8 @@
         <?php if(isset($_SESSION["s_usuario"])){ ?>
           <li>
             <a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> 
-              <span style="color: rgb(255, 255, 255); font-size: 12px;">
+             
+              <span style="color: #F65F5F; font-size: 15px;" id="badgeProducto">
               <?php 
                 
                 include_once "../bd/conexion.php";
@@ -128,7 +130,7 @@
               <a href=""><h4>Blu-Ray Disc</h4></a>
               <div class="CabeceraOrdenarPor">
                 <select id="comboboxordenarpor" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  <option  selected>Ordenar por</option>
+                  <option selected>Ordenar por</option>
                   <option value="1">Precio(Barato-Caro)</option>
                   <option value="2">Precio(Caro-Barato)</option>
                   <option value="3">Nombre(a-z)</option>
@@ -144,134 +146,72 @@
         <br>
         <br>
         <br>
-        
-        <div class="containercardsprods">
+          <input type="text" id="idcateg" name="" id="" hidden  value="<?php echo $Categ ?>">
+        <div id="contenedorprodscateg" class="containercardsprods">
+          <?php 
+          //  echo $Categ;
+           $pagina=$_GET['pagina'];
+           $con=mysqli_connect('localhost', 'root', '', 'discorder1');
+           $Articulosporpagina=2;
+           
+           $consulta= "SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero
+           from producto p 
+           JOIN categoria c on c.IdCateg=p.IdCategFK 
+           JOIN autor a on a.IdAutor= p.IdAutorFK 
+           JOIN genero g on g.IdGenero=p.IdGeneroFK 
+           WHERE IdCategFK= $Categ;";
+            $resultado=mysqli_query($con, $consulta);
+            $totalarticulosdb=$resultado->num_rows;
+            // echo '<h2>'. $totalarticulosdb.'</h2>';
+            $paginas=$totalarticulosdb/$Articulosporpagina;
+            $paginas=ceil($paginas);
+            $iniciar=($_GET['pagina']-1)* $Articulosporpagina;
 
-        
+            $consultadeprodsparalapaginacion=
+            "SELECT *, c.NombreCateg, a.NombreAutor, g.NombreGenero
+            from producto p 
+            JOIN categoria c on c.IdCateg=p.IdCategFK 
+            JOIN autor a on a.IdAutor= p.IdAutorFK 
+            JOIN genero g on g.IdGenero=p.IdGeneroFK 
+            WHERE IdCategFK= $Categ ORDER BY idProducto
+            LIMIT $iniciar,$Articulosporpagina;";
+            $resultadoprod=mysqli_query($con, $consultadeprodsparalapaginacion);
+            while ($row=mysqli_fetch_assoc($resultadoprod)) { 
+          ?>
             <div class="box">
-              <a href="../html/Producto.php"><img src="../Media/IsotipoB.PNG" alt=""> </a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
+                <a href="../bd/showProducto.php?IdProducto=<?php echo $row["IdProducto"]; ?>">
+                <img  src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+                </a>
+                <div class="InfoProd">
+                  <h5><?php echo $row["NombreProducto"]; ?></h5>
+                  <h6><?php echo $row["NombreAutor"]; ?></h6>
+                  <h2><?php echo $row["Precio"]; ?></h2>
+                  <a href="" class="btn">Añadir carrito</a>
+                </div>
             </div>
-            <div class="box">
-              <a href="../html/Producto.php"><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href="../html/Producto.php"><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href="../html/Producto.php"><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-
-            <div class="box">
-              <a href="../html/Producto.php"><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href=""><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href=""><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href=""><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-
-            <div class="box">
-              <a href=""><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href=""><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href=""><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
-            <div class="box">
-              <a href=""><img src="../Media/IsotipoB.PNG" alt=""></a>
-              <div class="InfoProd">
-                <h5>Nombre producto</h5>
-                <h6>Marca</h6>
-                <h2>Precio</h2>
-                <a href="" class="btn">Añadir carrito</a>
-              </div>
-            </div>
+            <?php }?>
+            
          
-            <ul class="pagination">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            <ul class="pagination position-relative position-absolute top-100 start-50 translate-middle">
+              <li class="page-item <?php echo $_GET['pagina']<=1? 'disabled':'' ?>">
+                
+                <a class="page-link" href="../html/categorias.php?Categ=<?php echo  $Categ;?>&pagina=<?php echo $_GET['pagina']-1?>" tabindex="-1" aria-disabled="true">Previous</a>
               </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2</a>
+             <?php for($i=0; $i<$paginas; $i++){?>
+              <li class="page-item  <?php echo $_GET['pagina']==$i+1 ?'active':''  ?>">
+              
+                <a class="page-link" href="../html/categorias.php?Categ=<?php echo  $Categ;?>&pagina=<?php echo $i+1?>"> 
+                 <?php echo $i+1 ?>
+                </a>
               </li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+            <?php }?>
+              <li class="page-item <?php echo $_GET['pagina']>=$paginas? 'disabled':'' ?>">
+             
+                <a class="page-link" href="../html/categorias.php?Categ=<?php echo  $Categ;?>&pagina=<?php echo $_GET['pagina']+1?>">Next</a>
               </li>
-            </ul> 
+           </ul> 
+
+
         </div>
 
         <footer class="RedesSociales">

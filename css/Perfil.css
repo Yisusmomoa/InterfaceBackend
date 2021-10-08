@@ -1,0 +1,37 @@
+
+article{
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+   /* left: 50%;
+    margin-left: -40%;*/
+    top: 120px !important;
+    background-color: #171717de;
+   margin-bottom: 30px;
+   height: 819px;
+  }
+
+#articleid nav{
+    
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    
+    background-color: transparent;
+}
+
+#articleid nav h4{
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+.containercardsprods .box{
+    height: 350px;
+    width: 20%;
+}
+
+.containercardsprods a img{
+    width: 80%;
+    height: 200px;
+}
