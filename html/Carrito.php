@@ -65,13 +65,15 @@
             <?php }?>
 
             <?php if(!isset($_SESSION["s_usuario"])){ ?>
-              <li><a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> <span style="color: rgb(255, 255, 255); font-size: 12px;">1</span> </a></li>
+              <li><a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> 
+              <span style="color: #F65F5F; font-size: 15px;" id="badgeProducto">1</span> </a></li>
             <?php }?>
               <li>
               <!--chinga tu puta madre pinche error de mierda .l.-->
               <?php if(isset($_SESSION["s_usuario"])){?>
                 <div class="dropdown show" style="top: 10%;">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" 
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
                   </button>
                   <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
@@ -88,7 +90,7 @@
            
           </ul>
         </div>
-      </nav>
+</nav>
 
 
 
@@ -182,7 +184,7 @@
           <div class="checkout">
             <ul>
               <li class="subtotal">SubTotal <span>$<?php echo $SubTotal ?></span></li>
-              <li class="cart-total"><h3>Total</h3> <span>$<?php echo $SubTotal+=($SubTotal*0.16); ?></span></li>
+              <li class="cart-total"><h3>Super total</h3> <span>$<?php echo $SubTotal+=($SubTotal*0.16); ?></span></li>
             </ul>
             <a href="../html/checkout.php?IdUs=<?php echo $_SESSION['s_usuario'][0]['IdUsuario']; ?>&TotalVenta=<?php echo $SubTotal; ?> " class="proceed-btn">COMPRAR</a>
           </div>

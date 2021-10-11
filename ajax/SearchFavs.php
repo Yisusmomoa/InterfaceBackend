@@ -19,15 +19,13 @@ $resultado=mysqli_query($con, $consulta);
 $rutaimg="\\"."php"."\\"."DiscOrder3"."\\"."ImagenesServidor"."\\";
  while ($row=mysqli_fetch_assoc($resultado)){
 
-    echo'
-    <div class="box">'.
+    echo'<div class="box">'.
         '<a href=""><img src="'.$rutaimg.$row["ImgProdMinRuta"].'" alt=""> </a>'.
         '<div class="InfoProd">'.
           '<h5>'.$row["NombreProducto"].'</h5>'.
           '<h2>'.$row["Precio"].'</h2>'.
         '</div>
-      </div>
-      ';
+      </div>' ;
 
     
  }

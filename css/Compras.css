@@ -1,0 +1,57 @@
+body{
+    background-color: #171717de;
+    color: white;
+}
+
+article{
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+   /* left: 50%;
+    margin-left: -40%;*/
+    top: 120px !important;
+   height: 819px;
+    
+  }
+
+  .list-group{
+      margin: 0 auto;
+      display: block;
+      width: 50%;
+      
+  }
+  .list-group a{
+    transition: all 0.4s ease-in-out ;
+  }
+  .list-group a>p{
+      display: block;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-size: 20px;
+  }
+
+.list-group a + p{
+    color: tomato;
+}
+
+.list-group a:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    background-color: #ebfb47;
+    color: black;
+    
+}
+
+.table{
+    width: 80%;
+    margin:0 auto;
+}
+
+.table #SubTotal{
+    position: relative;
+    text-align: right;
+    color: #F65F5F;
+    left: 50%;
+}
+

@@ -97,11 +97,13 @@
                 </button>
                 <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Perfil.php">Favoritos</a>
+                  <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Compras.php">Compras</a>
                   <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
                 </div>
               </div>
           <?php } ?>
         </li>
+
         <!-- <li><button type="menu"  data-bs-toggle="modal" data-bs-target="#exampleModal">
           Launch demo modal
         </button></li> -->

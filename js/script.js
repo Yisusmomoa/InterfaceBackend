@@ -402,6 +402,27 @@ $(document).ready(function(){
   });
 
 
+  
+  // $('#searchfavs').on('keyup',function(){
+  
+  //   var search=$('#searchfavs').val();
+  //   var idus=$("#idusfavs").val();
+  //   debugger;
+  //   //alert(search);
+  //   $.ajax({
+  //     type: 'POST',
+  //     url:'../ajax/SearchFavs.php',
+  //     data: {'search': search},
+  //     beforeSend:function(){
+
+  //     }
+  //   }). done(function(resultado){
+  //     debugger;
+  //     $('#resultBusquedaFavs').html(resultado);
+  //   })
+  // });
+
+
 
   //favoritos//favoritos//favoritos//favoritos//favoritos//favoritos
 
