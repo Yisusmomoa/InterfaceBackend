@@ -48,7 +48,9 @@
         <label for="">Autor</label>
         <select name="selectIdAutor">
             <?php  while ($row=mysqli_fetch_assoc($resultadoAutor)) { ?>
-                <option value="<?php echo $row["IdAutor"]; ?>"> <?php echo $row["NombreAutor"];?> </option>
+                <option value="<?php echo $row["IdAutor"]; ?>"> 
+                    <?php echo $row["NombreAutor"];?>
+                </option>
             <?php }?>
         </select>
         <br>
