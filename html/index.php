@@ -169,56 +169,34 @@
 
     ?>
 
-   
-   <?php 
-  // }
-  // print_r($emailBody);
- var_dump($_SESSION['s_usuario'][1]);
-
-  ?>
+ 
   <div class="row row-cols-1 row-cols-md-2 g-1 w-50 ">
+      
+   <?php 
+    // }
+    // print_r($emailBody);
+  //var_dump($_SESSION['s_usuario'][1]);
+  $consultaProdsMasVendidos="SELECT *,SUM(UnidadesVenta) AS TotalQuantity
+ FROM producto p
+ join detalleventa dv on p.IdProducto=dv.IdProductoDetalleVentaFK
+ GROUP BY IdProducto
+ ORDER BY TotalQuantity DESC LIMIT 4;";
+   $con=mysqli_connect('localhost', 'root', '', 'discorder1');
+   $resultado=mysqli_query($con, $consultaProdsMasVendidos);//ImgCateg          
+   while($rowMasVendidos=mysqli_fetch_assoc($resultado)){
+  ?>
+ 
     <a href="">
       <div class="col ">
         <div class="card">
-          <img src="../Media/Identificador.PNG" class="card-img-top" alt="...">
+          <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $rowMasVendidos['ImgProdMinRuta']; ?>" class="card-img-top" alt="...">
           <div class="card-body">
-            <h2 class="card-title">Card title</h2>
+            <h2 class="card-title"><?php echo $rowMasVendidos['NombreProducto']?></h2>
           </div>
         </div>
       </div>
     </a>
-   
-    <a href="">
-      <div class="col ">
-        <div class="card">
-          <img src="../Media/eye2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h2 class="card-title">Card title</h2>
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <a href="">
-      <div class="col ">
-        <div class="card">
-          <img src="../Media/pixlr-bg-result.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h2 class="card-title">Card title</h2>
-          </div>
-        </div>
-      </div>
-    </a>
-    <a href="">
-      <div class="col ">
-        <div class="card">
-          <img src="../Media/IsotipoBLong.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h2 class="card-title">Card title</h2>
-          </div>
-        </div>
-      </div>
-    </a>
+   <?php }?>
   </div>
   <br><br>
   
