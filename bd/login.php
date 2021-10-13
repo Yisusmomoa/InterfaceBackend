@@ -66,20 +66,24 @@ while ($row = @mysqli_fetch_array($result)) {
         //     $indice++;
         // }
         $emailBody="";
-        
+        // chunk_split(base64_encode(file_get_contents($fileAttachment)));
+        // <img src="data:image/jpg;base64,"'.base64_encode($row['ImgProdMin']).'"
         while ($row=mysqli_fetch_assoc($resultadofavs)){
+            $DescuentoDecimal=$row["Descuento"]/100;
+            $DescuentoaAplicar=$row["Precio"]*$DescuentoDecimal;
+            $nuevoPrecio=$row["Precio"]-$DescuentoaAplicar;
             $emailBody.= '<div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="../Media/IsotipoB.PNG"
-                     class="img-fluid rounded-start" >
+                <img src="data:image/jpg;base64,"'.base64_encode($row['ImgProdMin']).'"
+                     class="img-fluid rounded-start">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="card-title">NOMBRE PRODUCTO</h4>
+                        <h4 class="card-title">'.$row["NombreProducto"].'</h4>
                         <div class="precios">
-                            <h5 class="card-text">$5.56</h5>
-                            <h3 class="card-text">$3.56</h3>
+                            <h5 class="card-text">'.$row["Precio"].'</h5>
+                            <h3 class="card-text">'.$nuevoPrecio.'</h3>
                         </div>
                         <div class="BotonIrDiscord">
                             <button>Ir a DiscOrder</button>
@@ -219,6 +223,9 @@ while ($row = @mysqli_fetch_array($result)) {
                             }
                             .card-body .precios h5{
                                 text-decoration: line-through;
+                            }
+                            .card-body .precios h3{
+                                color:yellow;
                             }
                             .card-body .precios .card-text{
                                 color: rgb(2, 0, 0);
