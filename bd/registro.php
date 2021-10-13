@@ -45,118 +45,116 @@ $email = $correo;
 
 $message = "
 <html>
-<head>
-  <!--font awesome-->
-<link rel='stylesheet' href='../css/all.min.css'>
+    <head>
+    <!--font awesome-->
+    <link rel='stylesheet' href='../css/all.min.css'>
 
     <title>Document</title>
     <style>
         article{
-    font-family:serif;
-    border: 1px solid #333311;
-    margin: 0 auto;
-    width: 80%;
-    margin-top: 3rem;
-    background-color: rgba(160, 160, 160, 0.308);
-}
-article>h3{
-    margin-top: 20px;
-    text-align: center;
-    color: white;
-    font-weight:lighter;
-}
-section{
-    position: relative;
-    background-color: white;
-    box-shadow:
-     0 -3em 3em rgba(0,0,0,0.1),
-          0 0  0 2px rgb(255,255,255),
-          0.3em 0.3em 1em rgba(0,0,0,0.3);
-    margin: 0 auto;
-   
-    width: 50%;
-    border-radius: 2px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-   
-}
-section >p b{
-    font-size: 17px;
-}
+        font-family:serif;
+        border: 1px solid #333311;
+        margin: 0 auto;
+        width: 80%;
+        margin-top: 3rem;
+        background-color: rgba(160, 160, 160, 0.308);
+        }
+        article>h3{
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+            font-weight:lighter;
+        }
+        section{
+            position: relative;
+            background-color: white;
+            box-shadow:
+            0 -3em 3em rgba(0,0,0,0.1),
+                0 0  0 2px rgb(255,255,255),
+                0.3em 0.3em 1em rgba(0,0,0,0.3);
+            margin: 0 auto;
+        
+            width: 50%;
+            border-radius: 2px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        
+        }
+        section >p b{
+            font-size: 17px;
+        }
 
-section b>p{
-    font-size: 20px;
+        section b>p{
+            font-size: 20px;
 
-}
-section b>p b{
-    font-size: 35px;
-    text-decoration:underline;
-}
+        }
+        section b>p b{
+            font-size: 35px;
+            text-decoration:underline;
+        }
 
-section img{
-    
-    /*Centrar imagen*/
-    display: block;
-    margin: 0 auto;
-     /*Centrar imagen*/
-    width: 75%;
-    height: auto;
-    margin-bottom: 20px;
-}
-.BotonIrDiscord button{
-    margin: 0 auto;
-    display: block;
-    
-}
+        section img{
+            
+            /*Centrar imagen*/
+            display: block;
+            margin: 0 auto;
+            /*Centrar imagen*/
+            width: 75%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .BotonIrDiscord button{
+            margin: 0 auto;
+            display: block;
+            
+        }
 
-button {
-    background-color: #008CBA;
-    border: none;
-    color: white;
-    padding: 20px 40px;
-    text-align: center;
-    text-decoration: none;
-  
-    font-size: 20px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),
-     0 6px 20px 0 rgba(0,0,0,0.19);
-}
+        button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+        
+            font-size: 20px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),
+            0 6px 20px 0 rgba(0,0,0,0.19);
+        }
 
-#eslogen{
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight:100;
-    color: gray;
-    text-align: center;
-}
-
-
+        #eslogen{
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight:100;
+            color: gray;
+            text-align: center;
+        }
 
     </style>
-</head>
-<body>
+    </head>
+    <body>
 
 
-    <article>
-        <h3><i class='fas fa-compact-disc'></i> DiscOrder</h3>
-        <section>
-            <p>Hola <b>".$usuario."</b> </p>
-            <p>Bienvenido a DiscOrder, donde esperamos puedas encontrar lo que buscas en nuestra tienda</p>
-            <b><p>Recuerda que en tu primera compra recibiras un producto de <b>regalo</b>  </p></b>
-            <hr>
-            <img src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2a8158c9-a41d-4f6c-b552-cda0087e5087/deqbqsh-63ed886b-e492-4956-b2e1-9f6bbf519053.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJhODE1OGM5LWE0MWQtNGY2Yy1iNTUyLWNkYTAwODdlNTA4N1wvZGVxYnFzaC02M2VkODg2Yi1lNDkyLTQ5NTYtYjJlMS05ZjZiYmY1MTkwNTMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.uv5UC2CHuawSbijNaEVCjPVJF6H9FtjoorCe0Q3n3aI' alt='porque no jala T-T'>
-            <div class='BotonIrDiscord'>
-                <button>Ir a DiscOrder</button>
-            </div>
-            <br>
-           <p id='eslogen'>Somos especialistas en distribución discográfica. ¡Intenta ponernos a prueba!</p>
-            <br>
-        </section>
-       
-    </article>
+        <article>
+            <h3><i class='fas fa-compact-disc'></i> DiscOrder</h3>
+            <section>
+                <p>Hola <b>".$usuario."</b> </p>
+                <p>Bienvenido a DiscOrder, donde esperamos puedas encontrar lo que buscas en nuestra tienda</p>
+                <b><p>Recuerda que en tu primera compra recibiras un producto de <b>regalo</b>  </p></b>
+                <hr>
+                <img src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2a8158c9-a41d-4f6c-b552-cda0087e5087/deqbqsh-63ed886b-e492-4956-b2e1-9f6bbf519053.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJhODE1OGM5LWE0MWQtNGY2Yy1iNTUyLWNkYTAwODdlNTA4N1wvZGVxYnFzaC02M2VkODg2Yi1lNDkyLTQ5NTYtYjJlMS05ZjZiYmY1MTkwNTMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.uv5UC2CHuawSbijNaEVCjPVJF6H9FtjoorCe0Q3n3aI' alt='porque no jala T-T'>
+                <div class='BotonIrDiscord'>
+                    <button>Ir a DiscOrder</button>
+                </div>
+                <br>
+            <p id='eslogen'>Somos especialistas en distribución discográfica. ¡Intenta ponernos a prueba!</p>
+                <br>
+            </section>
+        
+        </article>
 
-   
-</body>
+    
+    </body>
 </html>
 ";
 

@@ -1,0 +1,53 @@
+// $arraycount=count($arrays);
+//   for ($i=0; $i <$arraycount ; $i++) { 
+//     print_r( $arrays[$i]);
+//   }
+
+  //  echo '<br>';
+  //  echo '<br>';
+  //  echo '<br>';
+  //  echo '<br>';
+  // //var_dump($_SESSION['s_usuario'][1]);
+ 
+  //  echo '<br>';
+  //  echo '<br>';
+  //  print_r ($_SESSION['s_usuario'][1]['productoscarro']);
+  //  echo '<br>';
+  //  echo '<br>';
+  
+
+  //  for ($i=0; $i <count($_SESSION['s_usuario'][1])-1 ; $i++) { 
+  //   var_dump($_SESSION['s_usuario'][1][$i]);
+  //   echo $i;
+  //   echo "<br>";
+    
+  //  }
+
+  //  echo '<br>';
+  //  echo '<br>';
+  //  echo '<br>';
+  //  echo '<br>';
+  //  var_dump($_SESSION['s_usuario'][1]);
+  // $nuevo=array(
+  //   "idProd"=>'1',
+  //   "nombreProd"=>'prod1', 
+  //   "cantidadProd"=>'3'
+  // );
+  //    $_SESSION['s_usuario'][1][]=$nuevo;
+
+  //   echo '<br>';
+  //   echo '<br>';
+  //   echo '<br>';
+  //   var_dump($_SESSION['s_usuario'][1]);
+
+    //  echo '<br>';
+    //  echo '<br>';
+    //  echo '<br>';
+    //  $nuevo2=array(
+    //    "idProd"=>'2',
+    //    "nombreProd"=>'prod5', 
+    //    "cantidadProd"=>'7'
+    //  );
+    //     $_SESSION['s_usuario'][1][]=$nuevo2;
+
+    // 

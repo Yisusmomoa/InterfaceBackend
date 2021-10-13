@@ -1,96 +1,38 @@
-<?php
+$con=mysqli_connect('localhost', 'root', '', 'discorder1');
 
-session_start();
+//   $consouatptu="SELECT * FROM producto p
+//   JOIN favorito fav ON p.IdProducto=fav.IdProductoFav
+//   WHERE fav.IdUsuarioFav= 70 AND p.Oferta=1;";
+//   $resultadotuipop=mysqli_query($con, $consouatptu);
+//   $arrays = array();
+//   $indice=0;
+//   while ($row=mysqli_fetch_assoc($resultadotuipop)){
 
-include_once "conexion.php";
-$objeto= new Conexion();
-
-
-$conexion=$objeto->Conectar();
- 
-//recpeción de los datos enviados mediante el método post de ajax
-
-$usuario=(isset($_POST['usuario'])) ? $_POST['usuario'] : '';
-$password=(isset($_POST['password'])) ? $_POST['password'] : '';
-echo $usuario;
-echo $password;
-
-$consulta="SELECT * FROM usuario 
-WHERE Username = '$usuario' AND Contraseña= '$password' ;";
-
-//select u.IdUsuario, u.Username, u.Correo, u.Contraseña, count(*) as 'numeroprods' from carrito c join usuario u on u.IdUsuario=c.IdUsCarritoFK WHERE u.Username='Admin3' AND u.Contraseña='Admin3';
-// $consulta="SELECT u.IdUsuario, u.Username, u.Correo, u.Contraseña, count(*) as 'numeroprods' 
-// from carrito c join usuario u on u.IdUsuario=c.IdUsCarritoFK WHERE u.Username='$usuario' AND u.Contraseña='$password';";
-
-
-$resultado=$conexion->prepare($consulta);
-$resultado->execute();
-
-if($resultado->rowCount()>=1){
-/*$dir = array();
-$cont = 0;
-while ($row = @mysqli_fetch_array($result)) {
-   $dir[$cont] = $row['direccion'];
-   $cont++;
-}*/
-
-    $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-
-    // //para el carrito
-    $nuevo=array(
-    'productoscarro' => array(
-        "idProd"=>'',
-        "nombreProd"=>'',
-        "cantidadProd"=>'' )
-    );
+//     $arrays[$indice]=$row;
+//     $indice++;
+//     // echo '<br>';
+//     // echo $row["IdProductoFav"];
     
-    $_SESSION["s_usuario"]=$data;
-    $_SESSION['s_usuario'][0]['Username'];
+//   }
+// $arraycount=count($arrays);
+//   for ($i=0; $i <$arraycount ; $i++) { 
+//     print_r( $arrays[$i]);
+//   }
 
-    //$_SESSION["s_usuario"][]=$nuevo;//para el carrito
-    $idUsfav=$_SESSION['s_usuario'][0]['IdUsuario'];
-    $consultaprodsfavOferta="SELECT * FROM producto p
-    JOIN favorito fav ON p.IdProducto=fav.IdProductoFav
-    WHERE fav.IdUsuarioFav= $idUsfav AND p.Oferta=1;";
-    $con=mysqli_connect('localhost', 'root', '', 'discorder1');
-    $resultadofavs=mysqli_query($con, $consultaprodsfavOferta);
-    $row_cnt = $resultadofavs->num_rows;
 
-    if($row_cnt>=1){
-        $correoFavs=$_SESSION['s_usuario'][0]['Correo'];
-        $asunt="Productos en rebaja";
-        // $arrays = array();
-        // $indice=0;
-        // while ($row=mysqli_fetch_assoc($resultado)){
-        //     $arrays[$indice]=$row;
-        //     $indice++;
-        // }
-        $emailBody="";
-        
-        while ($row=mysqli_fetch_assoc($resultadofavs)){
-            $emailBody.= '<div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="../Media/IsotipoB.PNG"
-                     class="img-fluid rounded-start" >
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h4 class="card-title">NOMBRE PRODUCTO</h4>
-                        <div class="precios">
-                            <h5 class="card-text">$5.56</h5>
-                            <h3 class="card-text">$3.56</h3>
-                        </div>
-                        <div class="BotonIrDiscord">
-                            <button>Ir a DiscOrder</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>';   }
-      
-            $message="
-            <html>
+
+
+
+
+
+
+
+
+
+
+while ($row = mysqli_fetch_assoc ($resultadofavs)){
+            $message.="
+            <html >
                     <head>
                         <title>Document</title>
                         <style>
@@ -234,7 +176,7 @@ while ($row = @mysqli_fetch_array($result)) {
                             <h3><i class='fas fa-compact-disc'></i> DiscOrder</h3>
                             <section>
                                 <div class='cabeceraoferta'>
-                                <img  id='logo' src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2a8158c9-a41d-4f6c-b552-cda0087e5087/deqbqsh-63ed886b-e492-4956-b2e1-9f6bbf519053.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJhODE1OGM5LWE0MWQtNGY2Yy1iNTUyLWNkYTAwODdlNTA4N1wvZGVxYnFzaC02M2VkODg2Yi1lNDkyLTQ5NTYtYjJlMS05ZjZiYmY1MTkwNTMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.uv5UC2CHuawSbijNaEVCjPVJF6H9FtjoorCe0Q3n3aI' alt='porque no jala T-T'>
+                                    <img id='logo' src='../Media/pixlr-bg-result.png'>
                                     <hr>
                                     <br>
                                     <h1>NEW PRICES!</h1>
@@ -242,10 +184,27 @@ while ($row = @mysqli_fetch_array($result)) {
                                     <h4>YOUR FAVOURITE GAMES:</h4>
                                     <br> 
                                 </div>
-                                <br>";
-                               
-                                $message.=$emailBody;
-            $mesaggefooter="                  
+                                <br>
+                                <div class='card mb-3' style='max-width: 540px;'>
+                                    <div class='row g-0'>
+                                        <div class='col-md-4'>
+                                            <img src='../Media/IsotipoB.PNG'
+                                             class='img-fluid rounded-start' >
+                                        </div>
+                                        <div class='col-md-8'>
+                                            <div class='card-body'>
+                                                <h4 class='card-title'>".$row["NombreProducto"]."</h4>
+                                                <div class='precios'>
+                                                    <h5 class='card-text'>$5.56</h5>
+                                                    <h3 class='card-text'>$3.56</h3>
+                                                </div>
+                                                <div class='BotonIrDiscord'>
+                                                    <button>Ir a DiscOrder</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                             </section>
                         
@@ -253,25 +212,5 @@ while ($row = @mysqli_fetch_array($result)) {
                   
                     </body>
             </html>";
-            $message.=$mesaggefooter;
-            // Always set content-type when sending HTML email
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $mailenviado=mail($correoFavs, $asunt, $message,$headers);
         }     
-} 
-else{
-    $_SESSION["s_usuario"]=null;
-    $data=null;
-}
-
-print json_encode($data);
-
-$conexion=null;
-
-
-
-
-
-
-?>
+       

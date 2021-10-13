@@ -136,55 +136,44 @@
  echo $_SESSION['s_usuario'][0]['IdUsuario'];
   ?>
   <?php
+  // $con=mysqli_connect('localhost', 'root', '', 'discorder1');
 
-  //  echo '<br>';
-  //  echo '<br>';
-  //  echo '<br>';
-  //  echo '<br>';
-  // //var_dump($_SESSION['s_usuario'][1]);
- 
-  //  echo '<br>';
-  //  echo '<br>';
-  //  print_r ($_SESSION['s_usuario'][1]['productoscarro']);
-  //  echo '<br>';
-  //  echo '<br>';
-  
+  // $consouatptu="SELECT * FROM producto p
+  // JOIN favorito fav ON p.IdProducto=fav.IdProductoFav
+  // WHERE fav.IdUsuarioFav= 70 AND p.Oferta=1;";
+  // $resultadotuipop=mysqli_query($con, $consouatptu);
+  // $arrays = array();
+  // $indice=0;
+  // $emailBody="";
+  // while ($row=mysqli_fetch_assoc($resultadotuipop)){ 
+//     $emailBody.='<div class="card mb-3" style="max-width: 540px;">
+//     <div class="row g-0">
+//         <div class="col-md-4">
+//             <img src="../Media/IsotipoB.PNG"
+//              class="img-fluid rounded-start" >
+//         </div>
+//         <div class="col-md-8">
+//             <div class="card-body">
+//                 <h4 class="card-title">NOMBRE PRODUCTO</h4>
+//                 <div class="precios">
+//                     <h5 class="card-text">$5.56</h5>
+//                     <h3 class="card-text">$3.56</h3>
+//                 </div>
+//                 <div class="BotonIrDiscord">
+//                     <button>Ir a DiscOrder</button>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>';
 
-  //  for ($i=0; $i <count($_SESSION['s_usuario'][1])-1 ; $i++) { 
-  //   var_dump($_SESSION['s_usuario'][1][$i]);
-  //   echo $i;
-  //   echo "<br>";
-    
-  //  }
+    ?>
 
-  //  echo '<br>';
-  //  echo '<br>';
-  //  echo '<br>';
-  //  echo '<br>';
-  //  var_dump($_SESSION['s_usuario'][1]);
-  // $nuevo=array(
-  //   "idProd"=>'1',
-  //   "nombreProd"=>'prod1', 
-  //   "cantidadProd"=>'3'
-  // );
-  //    $_SESSION['s_usuario'][1][]=$nuevo;
-
-  //   echo '<br>';
-  //   echo '<br>';
-  //   echo '<br>';
-  //   var_dump($_SESSION['s_usuario'][1]);
-
-    //  echo '<br>';
-    //  echo '<br>';
-    //  echo '<br>';
-    //  $nuevo2=array(
-    //    "idProd"=>'2',
-    //    "nombreProd"=>'prod5', 
-    //    "cantidadProd"=>'7'
-    //  );
-    //     $_SESSION['s_usuario'][1][]=$nuevo2;
-
-    //  var_dump($_SESSION['s_usuario'][1]);
+   
+   <?php 
+  // }
+  // print_r($emailBody);
+ var_dump($_SESSION['s_usuario'][1]);
 
   ?>
   <div class="row row-cols-1 row-cols-md-2 g-1 w-50 ">
