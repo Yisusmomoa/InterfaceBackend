@@ -57,7 +57,7 @@
     </a>
     <div class="navbar-links">
       <ul>
-        <li><a Submenu="no" href="../html/categorias.php">productos</a></li>
+        <li><a Submenu="no" href="../html/Productos.php?pagina=1">productos</a></li>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
           <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>

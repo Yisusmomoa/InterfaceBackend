@@ -614,6 +614,33 @@ debugger;
           });
             //ordenar prods
 
+
+
+            
+          //ordenar prods
+          $("#comboboxordenarporProds").change(function(){
+            var selectedordenar = $(this).children("option:selected").val();
+           
+debugger;
+
+           $.ajax({
+              url: "../bd/PaginadorProdsPantallaprods.php",
+              type:"POST",
+              datatype:"json",
+              async:false,
+              data:{selectedordenar: selectedordenar,pagina:1 }
+            }).done(function(listasords){
+              debugger;
+              document.getElementById("contenedorprodscateg").innerHTML=listasords;
+            });
+            
+
+            // alert(selectedordenar);
+            // alert(idcateg);
+        });
+          //ordenar prods
+
+
         var carousel1=document.getElementsByClassName('Card3');
         $('.owl-carousel').owlCarousel({
           loop:true,

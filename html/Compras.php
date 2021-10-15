@@ -128,7 +128,7 @@ $IdUsHistorial=$_SESSION['s_usuario'][0]['IdUsuario'];
 
 
     $consulta="SELECT * from venta 
-    where IdClienteVentaFK=$IdUsHistorial order by FechaVenta";
+    where IdClienteVentaFK=$IdUsHistorial order by FechaVenta desc";
     
     $resultado=mysqli_query($con, $consulta);
 
@@ -136,7 +136,7 @@ $IdUsHistorial=$_SESSION['s_usuario'][0]['IdUsuario'];
     ?>
         <div class="list-group">
             <a href="../html/DetalleVenta.php?IdVenta=<?php echo $row["IdVenta"]; ?>" class="list-group-item list-group-item-action">
-            <p > <?php  echo "IdVenta: ".$row["IdVenta"]; ?></p>
+            <p > <?php echo "IdVenta: ".$row["IdVenta"]; ?></p>
             <p> <?php echo "TotalVenta: ".$row["TotalVenta"]; ?></p>
             <p> <?php echo "FechaVenta: ".$row["FechaVenta"]; ?></p>
             <p> <?php echo "EstadoVenta: ".$row["EstadoVenta"]; ?></p>

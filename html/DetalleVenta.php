@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $IdUsCompra=$_SESSION['s_usuario'][0]['IdUsuario'];
+$IdVenta=$_GET['IdVenta'];
 ?>
 
 
@@ -134,7 +135,7 @@ $IdUsCompra=$_SESSION['s_usuario'][0]['IdUsuario'];
                 $consulta="SELECT * from venta v
                 join detalleventa d on v.IdVenta=d.IdVentaDetalleVentaFK
                 join producto p on p.IdProducto=d.IdProductoDetalleVentaFK 
-                where v.IdClienteVentaFK=$IdUsCompra ;";
+                where v.IdClienteVentaFK=$IdUsCompra AND IdVenta=$IdVenta;";
                 
                 $resultado=mysqli_query($con, $consulta);
                 $i=1;
