@@ -664,7 +664,7 @@ font-size: 16px;
 line-height: 16px;
 display: block;
 text-align: right;
-color: #BBBBBB;
+color: #414141;
 transition: .3s ease all;
 
 }
@@ -676,7 +676,8 @@ transition: .3s ease all;
 font-size: 33px;
 font-weight: 600;
 margin-bottom: 10px;
-opacity: 0;
+opacity: 1;
+color: #171717;
 }
 
 .popup h4{
@@ -684,6 +685,7 @@ opacity: 0;
   font-weight: 300;
   margin-bottom: 40px;
   opacity: 0;
+  color: #171717;
 }
   
 .popup form .contenedor-inputs{
@@ -698,7 +700,7 @@ opacity: 0;
   font-size: 18px;
   text-align: center;
   border: 1px solid #BBBBBB;
- 
+ border-radius: 5px;
 }
 
 .popup form .btn-submit{
@@ -706,8 +708,8 @@ opacity: 0;
   height: 40px;
   line-height: 40px;
   border:none;
-  color: #ffffff;
-  background: #5e7ed3;
+  color: white;
+  background-color: #555555; 
   border-radius: 3px;
   /* font-family:'Montserrat', sans-serif; */
   font-size: 16px;
@@ -716,7 +718,8 @@ opacity: 0;
 }
 
 .popup form .btn-submit:hover{
-  background: rgba(94, 125, 227, 0.9);
+  color:  #ebfb47;
+  background-color: #555555; 
 }
 /*Animaciones del popup*/
 

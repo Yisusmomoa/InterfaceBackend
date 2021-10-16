@@ -36,7 +36,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/index.css"  type="text/css" media="screen">
-  
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/introjs.min.css" 
+  integrity="sha512-631ugrjzlQYCOP9P8BOLEMFspr5ooQwY3rgt8SMUa+QqtVMbY/tniEUOcABHDGjK50VExB4CNc61g5oopGqCEw==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -60,7 +66,8 @@
         <li><a Submenu="no" href="../html/Productos.php?pagina=1">productos</a></li>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
-          <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
+          <li><a Submenu="no" href="#" data-bs-toggle="modal" 
+          data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesión</a></li>
         <?php }?>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
@@ -75,7 +82,6 @@
                 
                  include_once "../bd/conexion.php";
                  $objeto= new Conexion();
-                 
                  $conexion=$objeto->Conectar();
                  $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
                  $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
@@ -92,7 +98,9 @@
           
           <?php if(isset($_SESSION["s_usuario"])){?>
               <div class="dropdown show" style="top: 10%;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" 
+                type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+                aria-haspopup="true" aria-expanded="false">
               <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
                 </button>
                 <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
@@ -202,7 +210,7 @@
   
     <div id="Categorias"> 
 
-      <h1 >CATEGORIAS</h1>
+      <h1 >CATEGORÍAS</h1>
      
       <section class="container">
       <?php
@@ -235,7 +243,7 @@
   <br><br><br>
 
   <div id="ProductosGratis">
-    <h2>En tú primera compra te regalamos cualquiera de los siguientes productos</h2>
+    <h2>En tu primera compra te regalamos cualquiera de los siguientes productos</h2>
     <br><br>
     <section class="container2">
       <div class="Card2">
@@ -330,8 +338,13 @@
         <input type="password" name="ContraseñaLogin" id="Password" placeholder="Contraseña"required> 
        <!-- <input type="checkbox" name="remember" style="display block;"> <span>Recuerdame</span>-->
       </div>
-      <input type="submit" class="btn-submit" name="LogIn" value="IniciarSesion">
+      <input id="iniciasesionbtn" type="submit" class="btn-submit" name="LogIn" value="Iniciar Sesión">
     </form>
+  </div>
+  <div class="progress" id="prcess" >
+    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+      role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+    </div>
   </div>
 </div>
 
@@ -340,6 +353,7 @@
    
     <br><br><br>
     
+
   </article>
 
 
@@ -370,6 +384,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/intro.min.js" 
+  integrity="sha512-Q5ZL29wmQV0WWl3+QGBzOFSOwa4e8lOP/o2mYGg13sJR7u5RvnY4yq83W5+ssZ/VmzSBRVX8uGhDIpVSrLBQog==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 
   <script src="../js/script.js"></script>

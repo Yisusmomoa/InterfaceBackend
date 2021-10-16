@@ -125,8 +125,7 @@ $IdUsHistorial=$_SESSION['s_usuario'][0]['IdUsuario'];
     <br> <br>
     <?php
     $con=mysqli_connect('localhost', 'root', '', 'discorder1');
-
-
+    
     $consulta="SELECT * from venta 
     where IdClienteVentaFK=$IdUsHistorial order by FechaVenta desc";
     
