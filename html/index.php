@@ -63,6 +63,42 @@
     </a>
     <div class="navbar-links">
       <ul>
+        <li>
+          <a href="javascript:void(0);" Submenu="no" onclick="javascript:introJs().setOptions({
+                disableInteraction: true,
+                showProgress: true,
+                steps:[{
+                  element: document.querySelector('.navbar'),
+                  intro: 'Esta es la navbar donde estaran varias opciones',
+                  position:'bottom'
+                },{
+                  element: document.querySelector('.row'),
+                  intro: 'Productos más vendidos',
+                  position: 'left'
+                },
+                {
+                  element: document.querySelector('.container'),
+                  intro: 'Algunas de nuestras categorías',
+                  position: 'bottom'
+                },
+                {
+                  element: document.querySelector('.container2'),
+                  intro: 'Prouctos gratis en tu primera compra',
+                  position: 'right'
+                },
+                {
+                  element: document.querySelector('.owl-carousel'),
+                  intro: 'Un carrusel con nuestros productos ',
+                  position: 'top'
+                },
+                {
+                  element: document.querySelector('#QuienesSomos'),
+                  intro: 'Alguna información de nosotros',
+                  position: 'top'
+            
+                }]
+              }).start();" >Tour</a>
+        </li>
         <li><a Submenu="no" href="../html/Productos.php?pagina=1">productos</a></li>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
@@ -111,6 +147,7 @@
               </div>
           <?php } ?>
         </li>
+      
 
         <!-- <li><button type="menu"  data-bs-toggle="modal" data-bs-target="#exampleModal">
           Launch demo modal

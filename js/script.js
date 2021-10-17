@@ -1,46 +1,44 @@
 
-function tour(
-  window.addEventListener('DOMContentLoaded', () => {
-    //console.log('DOM fully loaded and parsed');
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   //console.log('DOM fully loaded and parsed');
   
-    introJs().setOptions({
-      disableInteraction: true,
-      showProgress: true,
-      steps:[{
-        element: document.querySelector('.navbar'),
-        intro: 'Esta es la navbar donde estaran varias opciones',
-        position:'bottom'
-      },{
-        element: document.querySelector('.row'),
-        intro: 'Productos más vendidos',
-        position: 'left'
-      },
-      {
-        element: document.querySelector('.container'),
-        intro: 'Algunas de nuestras categorías',
-        position: 'bottom'
-      },
-      {
-        element: document.querySelector('.container2'),
-        intro: 'Prouctos gratis en tu primera compra',
-        position: 'right'
-      },
-      {
-        element: document.querySelector('.owl-carousel'),
-        intro: 'Un carrusel con nuestros productos ',
-        position: 'top'
-      },
-      {
-        element: document.querySelector('#QuienesSomos'),
-        intro: 'Alguna información de nosotros',
-        position: 'top'
+  //   introJs().setOptions({
+  //     disableInteraction: true,
+  //     showProgress: true,
+  //     steps:[{
+  //       element: document.querySelector('.navbar'),
+  //       intro: 'Esta es la navbar donde estaran varias opciones',
+  //       position:'bottom'
+  //     },{
+  //       element: document.querySelector('.row'),
+  //       intro: 'Productos más vendidos',
+  //       position: 'left'
+  //     },
+  //     {
+  //       element: document.querySelector('.container'),
+  //       intro: 'Algunas de nuestras categorías',
+  //       position: 'bottom'
+  //     },
+  //     {
+  //       element: document.querySelector('.container2'),
+  //       intro: 'Prouctos gratis en tu primera compra',
+  //       position: 'right'
+  //     },
+  //     {
+  //       element: document.querySelector('.owl-carousel'),
+  //       intro: 'Un carrusel con nuestros productos ',
+  //       position: 'top'
+  //     },
+  //     {
+  //       element: document.querySelector('#QuienesSomos'),
+  //       intro: 'Alguna información de nosotros',
+  //       position: 'top'
   
-      }]
-    }).start();
+  //     }]
+  //   }).start();
   
-  });
+  // });
 
-);
 
 
 
