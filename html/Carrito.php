@@ -190,9 +190,7 @@
           </div>
         </div>
         
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+          <br><br>
           <footer class="RedesSociales">
             <h2>Redes sociales</h2>
             <a href=""><i class="fab fa-facebook-square"></i></a>

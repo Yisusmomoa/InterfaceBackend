@@ -179,15 +179,23 @@
             while ($row=mysqli_fetch_assoc($resultadoprod)) { 
           ?>
             <div class="box">
-                <a href="../bd/showProducto.php?IdProducto=<?php echo $row["IdProducto"]; ?>">
-                <img  src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+                <a href="../html/Producto.php?IdProducto=<?php echo $row["IdProducto"];?>">
+                  <img  src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
                 </a>
-                <div class="InfoProd">
-                  <h5><?php echo $row["NombreProducto"]; ?></h5>
-                  <h6><?php echo $row["NombreAutor"]; ?></h6>
-                  <h2><?php echo $row["Precio"]; ?></h2>
-                  <a href="" class="btn">Añadir carrito</a>
-                </div>
+                <form id="AgregarCarritoIndividual" action="" method="post">
+                  <div class="InfoProd">
+                    <input type="text" hidden 
+                    value="<?php echo $row["IdProducto"]; ?>" 
+                    id="idprodtu">
+                    <h5><?php echo $row["NombreProducto"]; ?></h5>
+                    <h6><?php echo $row["NombreAutor"]; ?></h6>
+                    <h2><?php echo $row["Precio"]; ?></h2>
+                    <button class="btn btn-light" id="botonagregarcarritoIndividual" type="submit">
+                        <i class="fas fa-shopping-cart"></i> Añadir carrito
+                    </button>
+                    <!-- <a href="" class="btn">Añadir carrito</a> -->
+                  </div>
+                </form>
             </div>
             <?php }?>
             
@@ -248,6 +256,10 @@
         })
   </script>
 
+  <!-- sweet alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+ 
   
   <!--Slider-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

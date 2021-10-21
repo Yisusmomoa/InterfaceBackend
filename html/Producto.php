@@ -187,9 +187,11 @@
                               <div class="d-grid gap-2 col-6 mx-auto">
                                 <button class="btn btn-light" id="botonagregarcarrito" 
                                 type="submit">
-                                <i class="fas fa-shopping-cart"></i> add to cart
+                                <i class="fas fa-shopping-cart"></i> Añadir carrito
                                 </button>
-                                <input type="text" id="IdUsuarioCarr" name="IdUsc" hidden value="<?php echo $_SESSION['s_usuario'][0]['IdUsuario']; ?>">
+                                <input type="text" id="IdUsuarioCarr" 
+                                name="IdUsc" hidden 
+                                value="<?php echo $_SESSION['s_usuario'][0]['IdUsuario']; ?>">
                               </div>
                           </form>
                           </div>

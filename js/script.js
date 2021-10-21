@@ -266,7 +266,7 @@ $("#agregacarrito").submit(function(e){
             type:'success',
             title:'Producto agregado con exito a tu carrito',
             confirmButtonColor:'#3885d6',
-            confirmButtonText:'Ingresar'
+            confirmButtonText:'Aceptar'
           })
           
           
@@ -276,7 +276,44 @@ $("#agregacarrito").submit(function(e){
   //$("#badgeProducto").text(Cantidad);
 });
 
-
+$("#AgregarCarritoIndividual").submit(function(e){
+  e.preventDefault();
+  var idprod=$('#idprodtu').val();
+  //var nombreprod=$('#nombreprod').val();
+  debugger;
+    $.ajax({
+      url:"../ajax/AñadirCarritoIndividual.php", //a donde se manda
+      type:"POST", //metodo de envío de datos
+      datatype:"json",
+      data:{idprod:idprod},
+      success:function(data){
+      //alert(data);
+        //let posicion = data.indexOf("null");
+      //alert(posicion);
+       debugger;
+        if(data=="agregado"){ //si pone un usuario que no existe
+          Swal.fire({
+            icon:'error',
+            type:'error',
+            title:'Error',
+          });
+        }
+        else{
+          $("#badgeProducto").text(data);
+          Swal.fire({
+            icon:'success',
+            type:'success',
+            title:'Producto agregado con exito a tu carrito',
+            confirmButtonColor:'#3885d6',
+            confirmButtonText:'Aceptar'
+          })
+          
+          
+        }
+      }
+    });
+  //$("#badgeProducto").text(Cantidad);
+});
 
 
 // //Carrito4
