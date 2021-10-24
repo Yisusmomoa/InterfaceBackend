@@ -231,7 +231,7 @@
    while($rowMasVendidos=mysqli_fetch_assoc($resultado)){
   ?>
  
-    <a href="">
+    <a href="../html/Producto.php?IdProducto=<?php echo $rowMasVendidos["IdProducto"];?>">
       <div class="col ">
         <div class="card">
           <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $rowMasVendidos['ImgProdMinRuta']; ?>" class="card-img-top" alt="...">

@@ -226,7 +226,7 @@ transition: .3s ease all;
 }
 .card-body {
   left: 0;
-  height: 10px;
+  height: auto;
 }
 .row img{
  margin: 0 auto;

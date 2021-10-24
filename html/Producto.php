@@ -155,16 +155,27 @@
                       <div class="col-md-4">
                           <div class="card-body">
                           <form id="agregacarrito" action="" method="POST">
-                            <h3 class="card-title"><?php echo $data["NombreProducto"]; ?> </h3>
+                            <h4 class="card-title"><?php echo $data["NombreProducto"]; ?> </h4>
                             <input type="text" hidden value="<?php echo $data["NombreProducto"]; ?>" id="nombreprod">
                             <input type="text" hidden value="<?php echo $data["IdProducto"]; ?>" id="idprodtu">
-                            <h3 class="card-title"><?php echo $data["NombreAutor"]; ?></h3>
-                            <h3 class="card-title"><?php echo $data["NombreGenero"]; ?> </h3>
-                            <h3 class="card-title"><?php echo $data["NombreCateg"]; ?></h3>
-                            <h1 class="card-title">Precio Producto: <b> <?php echo $data["Precio"]; ?> MXN </b></h1>
-                            <h3 class="card-title">Descripción Producto: 
-                              <b> <p class="card-text"><?php echo $data["DescripcionProducto"]; ?>.</p></b>
-                            </h3>
+                            <h4 class="card-title"><?php echo $data["NombreAutor"]; ?></h4>
+                            <h4 class="card-title"><?php echo $data["NombreGenero"]; ?> </h4>
+                            <h4 class="card-title"><?php echo $data["NombreCateg"]; ?></h4>
+                            <?php if($data["Descuento"]!=0){ 
+                              $PrecioConDescuento=0;
+                              $PrecioConDescuento=$data["Precio"]-($data["Precio"]*($data["Descuento"]/100));
+                              ?>
+                              <!-- <h4 class="card-title" style="background-color: red; width:35%; border-radius:2px;">DESCUENTO: -<?php echo $data["Descuento"]; ?>%</h4> -->
+                              <h4 class="card-title alert alert-danger" style="width:55%; height:55px;" role="alert">DESCUENTO: -<?php echo $data["Descuento"]; ?>%</h4>
+                              <!-- <h4 class="card-title alert alert-success     " style="width:55%; height:55px;" role="alert">DESCUENTO: -<?php echo $data["Descuento"]; ?>%</h4> -->
+                              <h4 class="card-title" style="text-decoration:line-through; opacity:85%;">Precio Producto: <b> <?php echo $data["Precio"]; ?> MXN </b></h4>
+                              <h3 class="card-title" style="font-size:39px;">Precio Producto: <b> <?php echo $PrecioConDescuento; ?> MXN </b></h3>
+                            <?php } else{?>
+                            <h3 class="card-title"  style="font-size:39px;">Precio Producto: <b> <?php echo $data["Precio"]; ?> MXN </b></h3>
+                            <?php }?>
+                            <h4 class="card-title">Descripción Producto: 
+                              <b> <p class="card-text"><?php echo $data["DescripcionProducto"]; ?></p></b>
+                            </h4>
                          
                               <label class="favorite-checkbox" title="Marcar como favorito">
                                 <input type="checkbox"  name="favorite" id="favorite"
