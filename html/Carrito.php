@@ -167,7 +167,7 @@
                       
                       <td>
                         <a href="#" onclick="AlertarEliminacion('<?php echo $row['IdProducto'] ?>', '<?php echo $_SESSION['s_usuario'][0]['IdUsuario'];?>');"> 
-                          <h1><i class="far fa-times-circle" style="color: red; padding-right: 5px; padding-left: 5px;"></i></h1>
+                          <h1><i class="far fa-times-circle" style="color: #b13265; padding-right: 5px; padding-left: 5px;"></i></h1>
                         </a>
                       </td>
                     </tr>
