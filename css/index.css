@@ -281,7 +281,7 @@ transition: .3s ease all;
 }
 
 .row{
-  background-color: #866c6c4f;
+  background-color: #171717;
   position: relative;
   left: 25%;
   margin: 0;
@@ -291,16 +291,23 @@ transition: .3s ease all;
 
 .row a{
   text-decoration: none;
-  color: #000;
+  color: white;
 }
 
 .row .col{
+ 
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
+.row .col .card{
+  background-color: #171717;
+  /* border: 1px solid #ffffff; */
+}
+
 .row .col .card h1{
   text-align: center;
+  border-style: solid white 1px;
 }
 
 .row .col .card img{
@@ -399,6 +406,8 @@ div#Categorias h1{
   color: #EDEDED;
   text-align: center;
   text-decoration: none;
+  font-size: 25px;
+  padding-top: 37px;
 }
 #Categorias a{
   text-decoration: none;
@@ -488,20 +497,17 @@ div#ProductosGratis h2{
 }
 
 .Card2-image{
-  
   background-color: #171717;
   height: 370px;
-  margin-bottom: 15px;
-
   background-size: cover;
   
 }
 .Card2-image img{
-  margin-top: 10px;
   width: 80%;
   height: 80%;
   display:block;
-margin:auto;
+  margin:auto;
+  margin-top: 15px;
 }
 /*
 .car-4{
@@ -532,7 +538,7 @@ margin:auto;
   color: white;
   text-align: center;
   text-decoration: none;
-  margin-top: 5px;
+  margin-top: 65px;
 }
 .Card3 h4{
   color: white;
@@ -549,18 +555,19 @@ margin:auto;
 .Card3 button{
  float: right;
  position: relative;
- right: 33%;
+ right: 30%;
  border-radius: 3px 3px 3px 3px;
- background-color: #e7e7e7; 
- color: black;
+ background-color: #555555; 
+ color: #ffffff;
  border: none;
- padding: 5px 16px;
+ padding: 10px 32px;
  text-align: center;
  text-decoration: none;
  display: inline-block;
  font-size: 16px;
 }
 .Card3{
+  padding-top: 20px;
   background-color: #171717;
   width: 350px;
   height: 150px;

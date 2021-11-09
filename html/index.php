@@ -112,10 +112,9 @@
 
         <?php if(isset($_SESSION["s_usuario"])){ ?>
           <li>
-            <a Submenu="no" href="../html/Carrito.php">Carrito<i class="fas fa-shopping-cart"></i> 
-              <span style="color: #F65F5F; font-size: 15px;" id="badgeProducto">
+            <a Submenu="no" href="../html/Carrito.php"> Carrito <i class="fas fa-shopping-cart"></i> 
+               <span style=" font-size: 17px; margin-left: 5px;" id="badgeProducto">
                 <?php 
-                
                  include_once "../bd/conexion.php";
                  $objeto= new Conexion();
                  $conexion=$objeto->Conectar();
@@ -141,7 +140,7 @@
                 </button>
                 <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Perfil.php">Favoritos</a>
-                  <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Compras.php">Compras</a>
+                  <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Compras.php">Mis compras</a>
                   <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
                 </div>
               </div>
@@ -175,10 +174,11 @@
     </ul>
   </div>
   <br>
-  <h1 id="tituloProductosDashboard">PRODUCTOS DE TU INTERES</h1>
-  <?php var_dump($_SESSION['s_usuario']);
- echo '<br>';
- echo $_SESSION['s_usuario'][0]['IdUsuario'];
+  <h1 id="tituloProductosDashboard">PRODUCTOS MÁS VENDIDOS</h1>
+  <br>
+  <?php //var_dump($_SESSION['s_usuario']);
+    //echo '<br>';
+    //echo $_SESSION['s_usuario'][0]['IdUsuario'];
   ?>
   <?php
   // $con=mysqli_connect('localhost', 'root', '', 'discorder1');
@@ -213,8 +213,7 @@
 // </div>';
 
     ?>
-
- 
+    
   <div class="row row-cols-1 row-cols-md-2 g-1 w-50 ">
       
    <?php 
@@ -235,7 +234,7 @@
       <div class="col ">
         <div class="card">
           <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $rowMasVendidos['ImgProdMinRuta']; ?>" class="card-img-top" alt="...">
-          <div class="card-body">
+          <div class="card-body" prodsmasvendidos="si">
             <h2 class="card-title"><?php echo $rowMasVendidos['NombreProducto']?></h2>
           </div>
         </div>
@@ -247,8 +246,8 @@
   
     <div id="Categorias"> 
 
-      <h1 >CATEGORÍAS</h1>
-     
+      <h1>CATEGORÍAS</h1>
+     <br><br>
       <section class="container">
       <?php
        
@@ -284,28 +283,28 @@
     <br><br>
     <section class="container2">
       <div class="Card2">
-        <h1>Gratis</h1>
         <div class="Card2-image car-4">
           <img src="../Media/ProdRegalo1.png"  alt="">
         </div>
+        <h1>Gratis</h1>
       </div>
       <div class="Card2">
-        <h1>Gratis</h1>
+        
         <div class="Card2-image car-5">
           <img src="../Media/ProdRegalo2.PNG" alt="">
         </div>
+        <h1>Gratis</h1>
       </div>
       
     </section> 
   </div>
-  <br><br><br><br>
+  <br><br><br>
 
   <h2>Algunos de nuestros productos</h2>
-  <br>
+  <br><br>
   <div class="owl-carousel owl-theme">
       
       <?php
-        
         $consulta="SELECT * from producto;";
         $resultado=mysqli_query($con, $consulta);//ImgCateg
 
@@ -316,9 +315,8 @@
             <div class="Card-image"><!-- <img src="data:image/jpg;base64,<?php //echo base64_encode($row['ImgProdMin'])?>" > -->
               <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta'];?>" alt="no aparece">
             </div>
-            <br>
+           
             <h3><?php echo $row["NombreProducto"] ?></h3>
-            <h5><?php echo $row["DescripcionProducto"] ?></h5>
             <h4><?php echo $row["Precio"] ?>MXN</h4>
             <a href="../html/Producto.php?IdProducto=<?php echo $row["IdProducto"];?>">
               <button class="VerProducto" id="VerProductocarrusel">Ver producto</button>
