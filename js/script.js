@@ -521,14 +521,14 @@ $(document).ready(function(){
     $(".navbar-links li a[Submenu=no]").mouseenter(
       function(){
         $(this).animate( {fontSize:"1.1rem"},10);
-        $(this).css({color: "#ebfb47"},100);
-        $(this).animate({opacity: '1'},'fast');
+        $(this).css({color: "white"},100);
+        $(this).animate({opacity: '1.7'},'fast');
       });
       $(".navbar-links li a[Submenu=no]").mouseleave(
         function(){
             $(this).animate( {fontSize:"1rem"},10);
-            $(this).css({color: "#EDEDED"},100);
-            $(this).animate({opacity: '1', },'fast');
+            $(this).css({color: "white"},100);
+            $(this).animate({opacity: '0.7', },'fast');
       });
       //toggle animacion slide
       $(".toggle-button").click(function(){

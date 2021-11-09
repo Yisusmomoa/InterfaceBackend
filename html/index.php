@@ -113,7 +113,7 @@
         <?php if(isset($_SESSION["s_usuario"])){ ?>
           <li>
             <a Submenu="no" href="../html/Carrito.php"> Carrito <i class="fas fa-shopping-cart"></i> 
-               <span style=" font-size: 17px; margin-left: 5px;" id="badgeProducto">
+               <span style="opacity:1; font-size: 17px; margin-left: 5px;" id="badgeProducto">
                 <?php 
                  include_once "../bd/conexion.php";
                  $objeto= new Conexion();
@@ -132,16 +132,19 @@
         <li>
           
           <?php if(isset($_SESSION["s_usuario"])){?>
-              <div class="dropdown show" style="top: 10%;">
+              <div class="dropdown  " style="top: 10%;">
                 <button class="btn btn-secondary dropdown-toggle" 
                 type="button" id="dropdownMenuButton" data-toggle="dropdown" 
                 aria-haspopup="true" aria-expanded="false">
               <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
                 </button>
-                <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Perfil.php">Favoritos</a>
-                  <a class="dropdown-item" style="color:white; font-size:10px;" href="../html/Compras.php">Mis compras</a>
-                  <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
+                <div class="dropdown-menu dropdown-menu-dark" style="width:100px;" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" style="color:white; opacity:1; font-size:11px;"
+                   href="../html/Perfil.php">Favoritos</a>
+                  <a class="dropdown-item" style="color:white; opacity:1; font-size:11px;" 
+                  href="../html/Compras.php">Mis compras</a>
+                  <a class="dropdown-item" style="color:white; opacity:1; font-size:11px;" 
+                  href="../bd/logout.php">Cerrar sesión</a>
                 </div>
               </div>
           <?php } ?>
@@ -315,7 +318,6 @@
             <div class="Card-image"><!-- <img src="data:image/jpg;base64,<?php //echo base64_encode($row['ImgProdMin'])?>" > -->
               <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta'];?>" alt="no aparece">
             </div>
-           
             <h3><?php echo $row["NombreProducto"] ?></h3>
             <h4><?php echo $row["Precio"] ?>MXN</h4>
             <a href="../html/Producto.php?IdProducto=<?php echo $row["IdProducto"];?>">
