@@ -33,7 +33,7 @@ body {
 nav{
     position: absolute;
     width: 100%;
-    
+   
     z-index: 10;
     background-color: #f0f0f0;
     top: 0px;
@@ -288,6 +288,7 @@ transition: .3s ease all;
   margin: 0;
   margin: 10px 10px 10px 10px;
   padding: 5px;
+  border-radius: 3px;
 }
 
 .row a{
@@ -303,6 +304,7 @@ transition: .3s ease all;
 
 .row .col .card{
   background-color: #171717;
+ 
   /* border: 1px solid #ffffff; */
 }
 

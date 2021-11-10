@@ -197,7 +197,7 @@
                               </div>
                               <br>
                               <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-light" id="botonagregarcarrito" 
+                                <button class="btn btn-secondary" id="botonagregarcarrito" 
                                 type="submit">
                                 <i class="fas fa-shopping-cart"></i> Añadir carrito
                                 </button>
