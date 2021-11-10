@@ -216,22 +216,26 @@ transition: .3s ease all;
   margin: 0 auto;
   display: block;
   width: 90%;
- 
+
 }
 
 
 .row{
   left:0;
   background-color: #171717;
+  
 }
 .card-body {
   left: 0;
   height: auto;
+  border-style: none;
 }
 .row img{
  margin: 0 auto;
  display: block;
   width: 90%;
+  
+  
 }
 .card-img-top{
   height: 600px;
@@ -240,6 +244,7 @@ transition: .3s ease all;
 .col-md-4{
   background-color: #353535;
   color: #EDEDED;
+  
 }
 #CantidadProd h3{
   padding-right: 10px;
@@ -400,7 +405,10 @@ transition: .3s ease all;
 
 
 
+article h2>span{
+  font-weight: 600;
 
+}
 
 
 

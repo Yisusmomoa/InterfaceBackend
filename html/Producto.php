@@ -144,18 +144,19 @@
           $idAutorProd=$data["IdAutorFK"];
           $IdGeneroProd=$data["IdGeneroFK"];
        ?>
-    
-          <div class="card mb-3 " >
-                    <div class="row g-7">
-                      <div class="col-md-7">
+      <h2>Detalles de <span><?php echo $data["NombreProducto"]; ?></span> </h2>
+      <br>
+          <div class="card mb-3 "  >
+                    <div class="row g-7" >
+                      <div class="col-md-8" > <!-- <div class="col-md-7"> -->
                          <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
-                      alt="..." id="zoom_01" height="50px" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>"> 
+                          alt="..." id="zoom_01" height="50px" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>"> 
                      
                       </div>
-                      <div class="col-md-4">
-                          <div class="card-body">
+                      <div class="col-md-4" >
+                          <div class="card-body" >
                           <form id="agregacarrito" action="" method="POST">
-                            <h4 class="card-title"><?php echo $data["NombreProducto"]; ?> </h4>
+                            
                             <input type="text" hidden value="<?php echo $data["NombreProducto"]; ?>" id="nombreprod">
                             <input type="text" hidden value="<?php echo $data["IdProducto"]; ?>" id="idprodtu">
                             <h4 class="card-title"><?php echo $data["NombreAutor"]; ?></h4>

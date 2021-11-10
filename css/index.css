@@ -181,7 +181,7 @@ transition: .3s ease all;
         font-size: 17px;
        
         border-radius: 3px;
-        
+        /* color:#b13265; */
       }
     .toggle-button {
         display: flex;
