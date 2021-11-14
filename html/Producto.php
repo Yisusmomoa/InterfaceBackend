@@ -44,6 +44,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
 
+    <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/Producto.css">
@@ -51,7 +53,7 @@
 </head>
 <body>
     
-  <nav class="navbar" id ="EjNav">
+<nav class="navbar" id ="EjNav">
     <div class="brand-title"><a href="../html/index.php"><img src="../Media/pixlr-bg-resultBN.png" alt=""width="150px" height="90px" id="imglogo"></a></div>
     <a href="#" class="toggle-button">
       <span class="bar"></span>
@@ -60,10 +62,12 @@
     </a>
     <div class="navbar-links">
       <ul>
-        <li><a Submenu="no" href="../html/categorias.php">productos</a></li>
+       
+        <li><a Submenu="no" href="../html/Productos.php?pagina=1">productos</a></li>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
-          <li><a Submenu="no" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesion</a></li>
+          <li><a Submenu="no" href="#" data-bs-toggle="modal" 
+          data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesión</a></li>
         <?php }?>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
@@ -72,45 +76,56 @@
 
         <?php if(isset($_SESSION["s_usuario"])){ ?>
           <li>
-            <a Submenu="no" href="../html/Carrito.php">Carrito
-              <i class="fas fa-shopping-cart"></i> 
-              <span style="color: rgb(255, 255, 255); font-size: 12px;" 
-              id="badgeProducto">
+            <a Submenu="no" href="../html/Carrito.php"> Carrito <i class="fas fa-shopping-cart"></i> 
+               <span style="opacity:1; font-size: 17px; margin-left: 5px;" id="badgeProducto">
                 <?php 
-                include_once "../bd/conexion.php";
-                $objeto= new Conexion();
-                
-                $conexion=$objeto->Conectar();
-                $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
-                $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
-                $resultado=$conexion->prepare($consultacuentadeproductos);
-                $resultado->execute();
-                $row_cnt = $resultado->rowCount();
-                echo $row_cnt;
+                 include_once "../bd/conexion.php";
+                 $objeto= new Conexion();
+                 $conexion=$objeto->Conectar();
+                 $idus=$_SESSION['s_usuario'][0]['IdUsuario'];
+                 $consultacuentadeproductos= "SELECT * from carrito WHERE IdUsCarritoFK=$idus ";  
+                 $resultado=$conexion->prepare($consultacuentadeproductos);
+                 $resultado->execute();
+                 $row_cnt = $resultado->rowCount();
+                 echo $row_cnt;
                 ?>
-            </span> 
+              </span> 
             </a>
           </li>
         <?php }?>
         <li>
-
+          
           <?php if(isset($_SESSION["s_usuario"])){?>
-            <div class="dropdown show" style="top: 10%;">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php  echo $_SESSION['s_usuario'][0]['Username']; ?>
-              </button>
-              <div class="dropdown-menu" style="background-color: black; width:100px;" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" style="color:white; font-size:10px;" href="#">Perfil</a>
-                <a class="dropdown-item"  style="color:white; font-size:10px;" href="../bd/logout.php">Cerrar sesión</a>
+              <div class="dropdown  " style="top: 10%;">
+                <button class="btn btn-secondary dropdown-toggle" 
+                type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+                aria-haspopup="true" aria-expanded="false">
+              <?php echo $_SESSION['s_usuario'][0]['Username']; ?>
+                </button>
+                <div class="dropdown-menu dropdown-menu-dark" style="width:100px;" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" style="color:white; opacity:1; font-size:11px;"
+                   href="../html/Perfil.php">Favoritos</a>
+                  <a class="dropdown-item" style="color:white; opacity:1; font-size:11px;" 
+                  href="../html/Compras.php">Mis compras</a>
+                  <a class="dropdown-item" style="color:white; opacity:1; font-size:11px;" 
+                  href="../bd/logout.php">Cerrar sesión</a>
+                </div>
               </div>
-            </div>
           <?php } ?>
         </li>
+      
+
         <!-- <li><button type="menu"  data-bs-toggle="modal" data-bs-target="#exampleModal">
           Launch demo modal
         </button></li> -->
-        <li><input type="text" placeholder="Search.."> <input type="button" value="Buscar" id="btn-buscar"></li>
-       
+        <form method ="GET" action="../html/ProductosBusqueda.php">
+          <li>
+            <input type="text" id="busqueda" placeholder="Search.." value="" name="nombre">
+            <input type="text" name="pagina" value="1" hidden>
+            <input type="submit" value="Buscar" id="btn-buscar" >
+          </li>
+        </form>
+
       </ul>
     </div>
   </nav>
@@ -150,7 +165,10 @@
                     <div class="row g-7" >
                       <div class="col-md-8" > <!-- <div class="col-md-7"> -->
                          <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
-                          alt="..." id="zoom_01" height="50px" data-zoom-image="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMax'])?>"> 
+                          alt="..."  height="50px" > 
+                          <!-- <img src="data:image/jpg;base64,<?php //echo //base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
+                          alt="..." id="zoom_01" height="50px" 
+                          data-zoom-image="data:image/jpg;base64,<?php //echo base64_encode($data['ImgProdMax'])?>">  -->
                      
                       </div>
                       <div class="col-md-4" >
@@ -203,7 +221,9 @@
                                 </button>
                                 <input type="text" id="IdUsuarioCarr" 
                                 name="IdUsc" hidden 
-                                value="<?php echo $_SESSION['s_usuario'][0]['IdUsuario']; ?>">
+                                value="<?php if(isset( $_SESSION['s_usuario'][0]['IdUsuario'])){
+                                  echo $_SESSION['s_usuario'][0]['IdUsuario'];}
+                                  else{echo "";}?>">
                               </div>
                           </form>
                           </div>
@@ -260,35 +280,49 @@
       
         </footer>
       
-        <div class="overlay" id="overlay">
-        <div class="popup" id="popup">
-          <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
-          <h3>REGISTRATE</h3>
-          <h4>Y recibe un cupón de descuento</h4>
-          <form action="">
-            <div class="contenedor-inputs">
-              <input type="" name="" id="" placeholder="Nombre">
-              <input type="email" name="" id="" placeholder="Correo">
-              <input type="password" name="" id="" placeholder="Contraseña">
-            </div>
-            <input type="submit" class="btn-submit" value="Suscribirse">
-          </form>
+  <div class="overlay" id="overlay">
+    <div class="popup" id="popup">
+      <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
+      <h3>REGISTRATE</h3>
+      <h4>Y recibe un cupón de descuento</h4>
+      <form action="" id="formRegistro" method="POST">
+        <div class="contenedor-inputs">
+          <input type="" name="Username" id="NombreUsuarioR" placeholder="NombreUsuario" required>
+          <input type="email" name="Correo" id="CorreoR" placeholder="Correo electronico" required>
+          <input type="password" name="Contraseña" 
+          id="ContraseñaR" placeholder="Contraseña" required>
+          <i class="far fa-eye" id="togglePasswordR"></i>
         </div>
+        <input type="submit" class="btn-submit" name="Registro" value="Registrarse">
+      </form>
+      <a Submenu="no" href="#" data-bs-toggle="modal" 
+          data-bs-target="#exampleModal" id="btn-abrir-popup2IniSesRespo">Iniciar sesión</a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay2">
+  <div class="popup" id="popup2">
+    <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
+    <h3>Inicia Sesión</h3>
+    <form id="formLogin" action="" method="POST">
+      <div class="contenedor-inputs">
+        <input type="" name="UsernameLogin" id="Usuario" placeholder="Nombre Usuario" required>
+        <input type="password" name="ContraseñaLogin" id="Password"
+         placeholder="Contraseña" required /> 
+         <i class="far fa-eye" id="togglePassword"></i>
+        <!-- <input type="checkbox" name="remember" style="display block;"> <span>Recuerdame</span>-->
       </div>
-      
-      <div class="overlay" id="overlay2">
-        <div class="popup" id="popup2">
-          <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
-          <h3>Inicia Sesión</h3>
-          <form action="">
-            <div class="contenedor-inputs">
-              <input type="email" name="" id="" placeholder="Correo">
-              <input type="password" name="" id="" placeholder="Contraseña">
-            </div>
-            <input type="submit" class="btn-submit" value="IniciarSesion">
-          </form>
-        </div>
-      </div>
+      <input id="iniciasesionbtn" type="submit" class="btn-submit" 
+            name="LogIn" value="Iniciar Sesión">
+    </form>
+    <a Submenu="no" href="#" id="btn-abrir-popupRegistroRespo">Registro</a>
+  </div>
+  <div class="progress" id="prcess" >
+    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+      role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+    </div>
+  </div>
+</div>
       
       </article>
 
@@ -321,9 +355,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="../js/jquery.elevateZoom-3.0.8.min.js"></script>
-
-  <script src="../js/carrito.js"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/carrito.js"></script>
+ 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
    integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" 

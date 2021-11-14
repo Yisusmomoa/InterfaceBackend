@@ -1,7 +1,44 @@
 
 
 
+//popup
+//registro
+var btnAbrirPopup=document.getElementById('btn-abrir-popupRegistroRespo'),
+    overlay=document.getElementById('overlay'),
+    popup=document.getElementById('popup'),
+    btncerrarpopup=document.getElementById('btn-cerrar-popup');
 
+btnAbrirPopup.addEventListener('click', function(){
+  debugger;
+    overlay.classList.add('active');
+    popup.classList.add('active');
+});
+
+
+btncerrarpopup.addEventListener('click',function(){
+  overlay.classList.remove('active');
+  popup.classList.remove('active');
+});
+
+
+
+//Iniciar sesión
+//popup
+var btnAbrirPopup2=document.getElementById('btn-abrir-popup2IniSesRespo'),
+    overlay2=document.getElementById('overlay2'),
+    popup2=document.getElementById('popup2'),
+    btncerrarpopup2=document.getElementById('btn-cerrar-popup2');
+
+btnAbrirPopup2.addEventListener('click', function(){
+      debugger;
+    overlay2.classList.add('active');
+    popup2.classList.add('active');
+});
+
+btncerrarpopup2.addEventListener('click',function(){
+  overlay2.classList.remove('active');
+  popup2.classList.remove('active');
+});
 
 
 

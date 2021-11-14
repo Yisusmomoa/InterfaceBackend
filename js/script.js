@@ -242,6 +242,28 @@ $("#agregacarrito").submit(function(e){
   //var nombreprod=$('#nombreprod').val();
   var Cantidad=$('#Cantidad').val();
   debugger;
+  if(idUs== ""){
+     
+
+    // url:"../ajax/agregarCarrito5.php"
+    Swal.fire({
+      icon:'error',
+      type:'error',
+      title:'Por favor registrate o inicia sesión para poder comprar',
+      confirmButtonColor:'#3885d6',
+      confirmButtonText:'Aceptar'
+    }).then((result)=>{
+      overlay2.classList.add('active');
+    popup2.classList.add('active');
+  });;
+   
+//Iniciar sesión
+    //popup
+    
+   
+   
+  }
+  else{
     $.ajax({
       url:"../ajax/agregarCarrito5.php", //a donde se manda
       type:"POST", //metodo de envío de datos
@@ -274,6 +296,8 @@ $("#agregacarrito").submit(function(e){
       }
     });
   //$("#badgeProducto").text(Cantidad);
+  }
+    
 });
 
 $("#AgregarCarritoIndividual").submit(function(e){
@@ -791,12 +815,14 @@ debugger;
 
 
 //popup
+//registro
 var btnAbrirPopup=document.getElementById('btn-abrir-popup'),
     overlay=document.getElementById('overlay'),
     popup=document.getElementById('popup'),
     btncerrarpopup=document.getElementById('btn-cerrar-popup');
 
 btnAbrirPopup.addEventListener('click', function(){
+  debugger;
     overlay.classList.add('active');
     popup.classList.add('active');
 });
@@ -816,13 +842,13 @@ var btnAbrirPopup2=document.getElementById('btn-abrir-popup2'),
     popup2=document.getElementById('popup2'),
     btncerrarpopup2=document.getElementById('btn-cerrar-popup2');
 
-    btnAbrirPopup2.addEventListener('click', function(){
+btnAbrirPopup2.addEventListener('click', function(){
+      debugger;
     overlay2.classList.add('active');
     popup2.classList.add('active');
 });
 
-
-  btncerrarpopup2.addEventListener('click',function(){
+btncerrarpopup2.addEventListener('click',function(){
   overlay2.classList.remove('active');
   popup2.classList.remove('active');
 });

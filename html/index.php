@@ -108,6 +108,11 @@
         <?php }?>
 
         <?php if(!isset($_SESSION["s_usuario"])){ ?>
+          <li><a Submenu="no" href="#" data-bs-toggle="modal" 
+          data-bs-target="#exampleModal" id="btn-abrir-popup2">Iniciar sesión</a></li>
+        <?php }?>
+
+        <?php if(!isset($_SESSION["s_usuario"])){ ?>
           <li><a Submenu="no" href="#" id="btn-abrir-popup">Registro</a></li>
         <?php }?>
 
@@ -341,7 +346,7 @@
    
     <br>
   </div>
-  
+  <br>
   <footer class="RedesSociales">
     <h2>Redes sociales</h2>
     <a href=""><i class="fab fa-facebook-square"></i></a>
