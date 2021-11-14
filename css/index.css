@@ -628,10 +628,11 @@ div#ProductosGratis h2{
   font-size: 40px;
   color: #EDEDED;
   margin-right: 15px;
+  opacity: 0.7;
 }
 
 .RedesSociales a:hover{
-  color: #ebfb47  ;
+  opacity: 1;
 }
 
 
@@ -655,7 +656,7 @@ div#ProductosGratis h2{
 
 }
 .popup{
-  background: #f8f8f8;
+  background: #f0f0f0;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   /* font-family:'Montserrat', sans-serif; */
@@ -744,8 +745,9 @@ color: #171717;
 }
 
 .popup form .btn-submit:hover{
-  color:  #ebfb47;
-  background-color: #555555; 
+  color:  #252525;
+  background-color: #fff; 
+  border: 1px solid #252525 ;
 }
 /*Animaciones del popup*/
 

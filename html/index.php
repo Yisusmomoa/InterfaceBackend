@@ -359,8 +359,9 @@
       <div class="contenedor-inputs">
         <input type="" name="Username" id="NombreUsuarioR" placeholder="NombreUsuario" required>
         <input type="email" name="Correo" id="CorreoR" placeholder="Correo electronico" required>
-        <input type="password" name="Contraseña" id="ContraseñaR" placeholder="Contraseña" required>
-        
+        <input type="password" name="Contraseña" 
+        id="ContraseñaR" placeholder="Contraseña" required>
+        <i class="far fa-eye" id="togglePasswordR"></i>
       </div>
       <input type="submit" class="btn-submit" name="Registro" value="Registrarse">
     </form>

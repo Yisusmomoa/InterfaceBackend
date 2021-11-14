@@ -841,6 +841,16 @@ togglePassword.addEventListener('click', function (e) {
 });
 
 
+const togglePasswordR = document.querySelector('#togglePasswordR');
+const passwordR = document.querySelector('#ContraseñaR');
+
+togglePasswordR.addEventListener('click', function (e) {
+  // toggle the type attribute
+  const type = passwordR.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordR.setAttribute('type', type);
+  // toggle the eye / eye slash icon
+  this.classList.toggle('bi-eye');
+});
 
 
 
