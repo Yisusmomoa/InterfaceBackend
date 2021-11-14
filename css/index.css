@@ -130,7 +130,7 @@ nav{
 transition: .3s ease all;
 }
 @media (min-width:1120px){
-    input[type=text] {
+    li>input[type=text] {
         border-color: #333;
         float: right; /**/
         padding: 6px; /**/
@@ -172,7 +172,7 @@ transition: .3s ease all;
         flex-direction: column;
         align-items: flex-start;
     }
-    input[type=text] {
+    li>input[type=text] {
         border-color: #333;
        
         border: none;
@@ -712,6 +712,22 @@ color: #171717;
   border: 1px solid #BBBBBB;
  border-radius: 5px;
 }
+
+/* Icono de ojo */
+.popup form .contenedor-inputs .far{
+  margin-left: -50px;
+  color: #000;
+  cursor: pointer;
+
+  position: absolute;
+  padding: 10px;
+  min-width: 40px;
+
+            text-align: left;
+
+  font-size: 30px;
+}
+
 
 .popup form .btn-submit{
   padding: 0px 20px;

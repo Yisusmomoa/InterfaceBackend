@@ -48,7 +48,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
   crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
 
   <title>Pagina Principal</title>
@@ -156,7 +157,7 @@
         </button></li> -->
         <form method ="GET" action="../html/ProductosBusqueda.php">
           <li>
-            <input type="text" placeholder="Search.." value="" name="nombre">
+            <input type="text" id="busqueda" placeholder="Search.." value="" name="nombre">
             <input type="text" name="pagina" value="1" hidden>
             <input type="submit" value="Buscar" id="btn-buscar" >
           </li>
@@ -359,6 +360,7 @@
         <input type="" name="Username" id="NombreUsuarioR" placeholder="NombreUsuario" required>
         <input type="email" name="Correo" id="CorreoR" placeholder="Correo electronico" required>
         <input type="password" name="Contraseña" id="ContraseñaR" placeholder="Contraseña" required>
+        
       </div>
       <input type="submit" class="btn-submit" name="Registro" value="Registrarse">
     </form>
@@ -371,9 +373,14 @@
     <h3>Inicia Sesión</h3>
     <form id="formLogin" action="" method="POST">
       <div class="contenedor-inputs">
+        
         <input type="" name="UsernameLogin" id="Usuario" placeholder="Nombre Usuario" required>
-        <input type="password" name="ContraseñaLogin" id="Password" placeholder="Contraseña"required> 
-       <!-- <input type="checkbox" name="remember" style="display block;"> <span>Recuerdame</span>-->
+        <input type="password" name="ContraseñaLogin" id="Password"
+         placeholder="Contraseña"required /> 
+         <i class="far fa-eye" id="togglePassword"></i>
+
+       
+        <!-- <input type="checkbox" name="remember" style="display block;"> <span>Recuerdame</span>-->
       </div>
       <input id="iniciasesionbtn" type="submit" class="btn-submit" name="LogIn" value="Iniciar Sesión">
     </form>

@@ -827,6 +827,27 @@ var btnAbrirPopup2=document.getElementById('btn-abrir-popup2'),
   popup2.classList.remove('active');
 });
 
+
+
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#Password');
+
+togglePassword.addEventListener('click', function (e) {
+  // toggle the type attribute
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+  // toggle the eye / eye slash icon
+  this.classList.toggle('bi-eye');
+});
+
+
+
+
+
+
+
+
+
 //combobox productos
 
 var comboboxordenarpor=document.getElementById('comboboxordenarpor');
