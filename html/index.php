@@ -292,14 +292,14 @@
         <div class="Card2-image car-4">
           <img src="../Media/ProdRegalo1.png"  alt="">
         </div>
-        <h1>Gratis</h1>
+       
       </div>
       <div class="Card2">
         
         <div class="Card2-image car-5">
           <img src="../Media/ProdRegalo2.PNG" alt="">
         </div>
-        <h1>Gratis</h1>
+       
       </div>
       
     </section> 
@@ -388,11 +388,16 @@
       <input id="iniciasesionbtn" type="submit" class="btn-submit" name="LogIn" value="Iniciar Sesión">
     </form>
   </div>
-  <div class="progress" id="prcess" >
-    <div class="progress-bar progress-bar-striped progress-bar-animated" 
-      role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
-    </div>
+  <div class="form-group" id="prcess">
+      <div class="progress" style="display:none;">
+          <div class="progress-bar progress-bar-striped active" 
+            role="progressbar" aria-valuemin="0" aria-valuemax="100" 
+            style="width: 100%">
+            
+          </div>
+      </div>
   </div>
+    
 </div>
 
   <!-- Modal -->

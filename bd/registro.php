@@ -168,6 +168,13 @@ $data="";
     if($resultado->execute()){
         $mailenviado=mail($correo,$asunt,$message, $headers);
         if($mailenviado){
+            
+            $consulta="SELECT * FROM usuario 
+            WHERE Username = '$usuario' AND Contraseña= '$password' ;";
+            $resultado=$conexion->prepare($consulta);
+            $resultado->execute();
+            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+            $_SESSION["s_usuario"]=$data;
             $data="registrado";
         }
         else{

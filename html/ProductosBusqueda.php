@@ -187,8 +187,10 @@
             while ($row=mysqli_fetch_assoc($resultadoprod)) { 
         ?>
             <div class="box">
+            
                 <a href="../bd/showProducto.php?IdProducto=<?php echo $row["IdProducto"]; ?>">
-                <img  src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+                <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta']; ?>">
+          
                 </a>
                 <div class="InfoProd">
                   <h5><?php echo $row["NombreProducto"]; ?></h5>

@@ -503,7 +503,7 @@ div#ProductosGratis h2{
 
 .Card2-image{
   background-color: #171717;
-  height: 370px;
+  height: 450px;
   background-size: cover;
   
 }
@@ -512,7 +512,7 @@ div#ProductosGratis h2{
   height: 80%;
   display:block;
   margin:auto;
-  margin-top: 15px;
+  margin-top: 70px;
 }
 /*
 .car-4{

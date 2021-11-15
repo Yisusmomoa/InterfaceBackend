@@ -164,8 +164,7 @@
           <div class="card mb-3 "  >
                     <div class="row g-7" >
                       <div class="col-md-8" > <!-- <div class="col-md-7"> -->
-                         <img src="data:image/jpg;base64,<?php echo base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
-                          alt="..."  height="50px" > 
+                      <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $data['ImgProdMinRuta']; ?>" class="card-img-top" alt="..." height="50px">
                           <!-- <img src="data:image/jpg;base64,<?php //echo //base64_encode($data['ImgProdMin'])?>" class="card-img-top" 
                           alt="..." id="zoom_01" height="50px" 
                           data-zoom-image="data:image/jpg;base64,<?php //echo base64_encode($data['ImgProdMax'])?>">  -->
@@ -255,7 +254,8 @@
           <div class="item">
             <div class="Card3">
               <div class="Card-image"> 
-                <img src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+              <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta']; ?>" alt="...">
+         
               </div>
               <br>
               <h3><?php echo $row["NombreProducto"]; ?> </h3>

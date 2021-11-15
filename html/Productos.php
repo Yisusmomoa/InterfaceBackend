@@ -178,7 +178,8 @@
           ?>
           <div class="box">
               <a href="../html/Producto.php?IdProducto=<?php echo $row["IdProducto"];?>">
-              <img  src="data:image/jpg;base64,<?php echo base64_encode($row['ImgProdMin'])?>" >
+              <img src="\php\DiscOrder3\ImagenesServidor\<?php echo $row['ImgProdMinRuta']; ?>">
+         
               </a>
               <form id="AgregarCarritoIndividual" action="" method="post">
                 <div class="InfoProd">

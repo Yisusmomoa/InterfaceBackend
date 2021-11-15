@@ -398,10 +398,10 @@ $('#formLogin').submit(function(e){
       type:"POST", //metodo de envío de datos
       datatype:"json",
       data:{usuario:usuario, password:password},
-      
+      // beforeSend:function(){
+      //   $('#prcess').css('display','block');
+      // },
       success:function(data){
-        
-        
       // alert(data);
         let posicion = data.indexOf("null");
      //   alert(posicion);
@@ -414,6 +414,12 @@ $('#formLogin').submit(function(e){
           });
         }
         else{
+          // var percentaje=0;
+          // var timer=setInterval(function(){
+          //   percentaje+=20;
+          //   progress_bar_process(percentaje,timer);
+          // },1000);
+
           Swal.fire({
             icon:'success',
             type:'success',
@@ -430,6 +436,12 @@ $('#formLogin').submit(function(e){
     });
   }
 });
+
+
+
+
+
+
 
 $('#formRegistro').submit(function(e){
   e.preventDefault();
@@ -485,7 +497,14 @@ $('#formRegistro').submit(function(e){
 
 $(document).ready(function(){
 
- 
+  // function progress_bar_process(percentaje,timer){
+  //   $('.progress-bar').css('width',percentaje+'%');
+  //   if(percentaje>100){
+  //     clearInterval(timer);
+  //     $('#prcess').css('display','none');
+  //     $('.progress-bar').css('width','0%');
+  //   }
+  // }
 
  
 
@@ -638,14 +657,14 @@ $(document).ready(function(){
           $(".InfoProd .btn").mouseenter(
             function(){
             
-              $(this).css({color: "#ebfb47"},100);
-              $(this).animate({background: '#444444'},"slow");
+              $(this).css({color: "#ffffff"},100);
+              $(this).animate({background: '#555555'},"slow"); 
             });
             $(".InfoProd .btn").mouseleave(
               function(){
              
-                  $(this).css({color: "#171717"},100);
-                  $(this).animate({  background: '#EDEDED', },"slow");
+                  $(this).css({color: "#555555"},100);
+                  $(this).animate({  background: '#ffffff', },"slow");
             });
 
 /*
