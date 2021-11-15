@@ -285,7 +285,7 @@
       <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
       <h3>REGISTRATE</h3>
       <h4>Y recibe un cupón de descuento</h4>
-      <form action="" id="formRegistro" method="POST">
+      <form action="" id="formRegistroFromProducto" method="POST">
         <div class="contenedor-inputs">
           <input type="" name="Username" id="NombreUsuarioR" placeholder="NombreUsuario" required>
           <input type="email" name="Correo" id="CorreoR" placeholder="Correo electronico" required>
@@ -295,8 +295,11 @@
         </div>
         <input type="submit" class="btn-submit" name="Registro" value="Registrarse">
       </form>
+
       <a Submenu="no" href="#" data-bs-toggle="modal" 
-          data-bs-target="#exampleModal" id="btn-abrir-popup2IniSesRespo">Iniciar sesión</a>
+          data-bs-target="#exampleModal" 
+          id="btn-abrir-popup2IniSesRespo">Iniciar sesión</a>
+
     </div>
 </div>
 
@@ -304,7 +307,7 @@
   <div class="popup" id="popup2">
     <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"> <i class="fas fa-times"></i> </a>
     <h3>Inicia Sesión</h3>
-    <form id="formLogin" action="" method="POST">
+    <form id="formLoginFromProducto" action="" method="POST">
       <div class="contenedor-inputs">
         <input type="" name="UsernameLogin" id="Usuario" placeholder="Nombre Usuario" required>
         <input type="password" name="ContraseñaLogin" id="Password"
@@ -315,7 +318,9 @@
       <input id="iniciasesionbtn" type="submit" class="btn-submit" 
             name="LogIn" value="Iniciar Sesión">
     </form>
+
     <a Submenu="no" href="#" id="btn-abrir-popupRegistroRespo">Registro</a>
+    
   </div>
   <div class="progress" id="prcess" >
     <div class="progress-bar progress-bar-striped progress-bar-animated" 

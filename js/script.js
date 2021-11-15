@@ -255,13 +255,10 @@ $("#agregacarrito").submit(function(e){
     }).then((result)=>{
       overlay2.classList.add('active');
     popup2.classList.add('active');
-  });;
+  });
    
 //Iniciar sesión
-    //popup
-    
-   
-   
+    //popup   
   }
   else{
     $.ajax({
